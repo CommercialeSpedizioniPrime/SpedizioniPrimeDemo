@@ -1,0 +1,1779 @@
+/* Language picker in the account dropdown, sitting opposite the logout button.
+   It reuses .btn-default.btn-flat so the footer keeps a single button style, and
+   marks the current language with Bootstrap's own pressed greys rather than an
+   accent colour — ps/ is white-label, and an accent picked here would clash with
+   any tenant that re-skins the app. */
+.navbar-nav > .user-menu > .dropdown-menu {
+	/* AdminLTE's 280px leaves the four flags and a translated "Logout" fighting
+	   over the same row; "Cerrar sesión" is the one that overflows. */
+	width: 300px;
+}
+/* The flags are shorter than the logout button, and AdminLTE's float layout hangs
+   both from the top, so they sat high. Flex centres them against it instead.
+   The clearfix pseudo-elements have to go with the floats: left in place they
+   become flex items of their own and space-between spreads the real two inwards. */
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer:before,
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer:after {
+	display: none;
+}
+.user-langs {
+	display: flex;
+	gap: 3px;
+}
+.user-langs .user-lang {
+	padding: 4px 6px;
+	line-height: 1;
+}
+.user-langs .user-lang .flag-icon {
+	display: block;
+	width: 21px;
+	height: 15px;
+	/* The white bands in the US and German flags disappear into the footer grey
+	   without an outline of their own. */
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, .12);
+}
+.user-langs .user-lang.active {
+	background-color: #e6e6e6;
+	border-color: #adadad;
+	/* Also suppresses the :hover background AdminLTE sets on .user-footer
+	   buttons, which would otherwise wash out the marker on the way past. */
+	pointer-events: none;
+}
+
+.table-controls { padding:10px; }
+.table { word-break: break-all; }
+.form-control {
+	height: 30px;
+	padding: 1px 2px;
+	font-size: 13px;
+}
+.select2-container {
+	width: 100% !important;
+}
+.select2-container .select2-selection--single {
+	height: 32px;
+	text-align: left;
+	padding-left: 0;
+}
+.pricelist-table
+{
+	display: block;
+	overflow: scroll;
+}
+.pricelist-table tbody td
+{
+	min-width: 100px;
+}
+.pricelist-table tbody td.first-row
+{
+	min-width: 180px;
+}
+
+.fa-rotate-45 {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.fa-rotate-90 {
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+.fa-rotate-180 {
+	-webkit-transform: rotate(180deg);
+	-moz-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+/* Items listed inside the order number column of the orders lists.
+   Fixed layout so the columns line up from one order to the next: left to itself
+   the browser sizes each table to its own content, and a wide product photo
+   squeezes the title down to a couple of pixels. */
+.order-items-table {
+	width: 100%;
+	min-width: 320px;
+	table-layout: fixed;
+	border-collapse: collapse;
+	border: 1px solid #e5e5e5;
+	font-size: 12px;
+}
+.order-items-table th {
+	border: 1px solid #ececec;
+	background: #fafafa;
+	padding: 4px 8px;
+	font-size: 11px;
+	font-weight: normal;
+	color: #999;
+	text-align: left;
+}
+.order-items-table td {
+	border: 1px solid #ececec;
+	padding: 5px 6px;
+	vertical-align: middle;
+}
+/* .table sets word-break: break-all, which spells long titles out one letter
+   per line once the column gets narrow. */
+.order-items-table th,
+.order-items-table td {
+	word-break: normal;
+	overflow-wrap: break-word;
+}
+.order-items-table .oit-qty {
+	width: 34px;
+	text-align: center;
+}
+/* A 14 digit barcode, the longest SKU seen in practice, measures about 92px here.
+   Anything longer wraps rather than widening the column for every other row. */
+.order-items-table .oit-sku {
+	width: 98px;
+	overflow-wrap: anywhere;
+}
+.order-items-table .oit-img {
+	width: 52px;
+}
+.oit-ean {
+	display: block;
+	margin-top: 2px;
+	font-size: 11px;
+	color: #999;
+	overflow-wrap: anywhere;
+}
+/* Three lines, then an ellipsis - the full text stays in the title attribute. */
+.oit-title {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	line-height: 1.45;
+	max-height: 52px;
+}
+.oit-variant {
+	display: block;
+	margin-top: 2px;
+	font-size: 11px;
+	color: #777;
+}
+/* A fixed box with object-fit keeps every thumbnail the same size whatever the
+   photo's proportions are. */
+.oit-thumb {
+	display: block;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ececec;
+	border-radius: 4px;
+	background: #fafafa;
+}
+.oit-thumb > img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+.oit-thumb-empty {
+	display: block;
+	color: #d5d5d5;
+	font-size: 16px;
+	line-height: 38px;
+	text-align: center;
+}
+/* Absolutely positioned so hovering never changes the height of the row. */
+.oit-preview {
+	display: none;
+	position: absolute;
+	right: 0;
+	bottom: 100%;
+	z-index: 1030;
+	width: 220px;
+	height: 220px;
+	margin-bottom: 4px;
+	padding: 6px;
+	background: #fff;
+	border: 1px solid #d5d5d5;
+	border-radius: 4px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+}
+.oit-thumb:hover .oit-preview {
+	display: block;
+}
+.oit-preview img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+/* "09/08 17:09" fits in about 70px, so the column only needs to stay on one line. */
+.order-datetime {
+	white-space: nowrap;
+}
+
+/* Recipient column. .table sets word-break: break-all globally, which was splitting
+   "Can Pastilla" into "C an pastilla" and "(ES)" into "(E S)" once the column got
+   narrow - so break between words here, and only inside one that genuinely cannot fit. */
+.rcp-cell {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	word-break: normal;
+	overflow-wrap: break-word;
+}
+.rcp-name {
+	line-height: 1.35;
+}
+.rcp-line {
+	line-height: 1.35;
+}
+.rcp-phone {
+	font-size: 11px;
+	color: #777;
+	white-space: nowrap;
+}
+/* Only ever present on a foreign order, which is the point of it. */
+.rcp-country {
+	padding: 1px 4px;
+	font-size: 10px;
+	vertical-align: 1px;
+}
+
+/* Total column: the amount, then the payment state that used to have a column of
+   its own. Same stacking as the shipment column so the two read alike. */
+.ot-cell {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 4px;
+}
+.ot-cell .label {
+	display: inline-block;
+	white-space: normal;
+	text-align: left;
+}
+.ot-amount {
+	white-space: nowrap;
+}
+/* Merchant defined and up to 62 characters, so one line with an ellipsis - the full
+   text stays in the title attribute. */
+.ot-gateway {
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 11px;
+	color: #777;
+}
+
+/* Shipment column: status, deadline, estimate and carrier stacked with one
+   consistent gap instead of <br />-separated fragments of different kinds. */
+.ldv-cell {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 4px;
+}
+.ldv-cell .label {
+	display: inline-block;
+	white-space: normal;
+	text-align: left;
+}
+.ldv-status {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+.ldv-deadline {
+	font-size: 11px;
+	color: #777;
+	white-space: nowrap;
+}
+.ldv-deadline.is-urgent {
+	color: #c9302c;
+}
+/* Fixed height so carriers with very different logo proportions line up. */
+.ldv-logo {
+	height: 20px;
+	width: auto;
+	max-width: 76px;
+	object-fit: contain;
+}
+
+/* ---------------------------------------------------------------------------
+   Shipment pipeline (client dashboard)
+
+   Four kanban-style steps read left to right: a parcel enters at step 1 and the
+   day's work is emptying every step into the next one. Built here instead of
+   AdminLTE .small-box blocks because four saturated colour panels in a row take
+   over the page, and because the steps need the chevrons between them - without
+   those they read as unrelated counters rather than one flow.
+
+   The cards sit straight on the page background, not inside a .box: wrapping
+   them was a card within a card. So they carry the theme's own card treatment -
+   radius, border and shadow copied from .small-box / .info-box - and .pipeline
+   supplies the 20px bottom margin every AdminLTE block leaves behind it.
+   --------------------------------------------------------------------------- */
+/* The window the board counts over, said quietly above it. */
+.pipeline-period {
+	text-align: right;
+	color: #999;
+	font-size: 12px;
+	margin-bottom: 4px;
+}
+.pipeline {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	/* Ends flush with the boxes below rather than centred inside the row: the
+	   cards are capped in width, so centring left a margin either side that did
+	   not line up with anything else on the page. */
+	justify-content: space-between;
+	gap: 14px;
+	margin-bottom: 20px;
+}
+
+/* Capped rather than stretched: four cards spread across the full row grow fat
+   enough to stop reading as steps, so they keep roughly the width they had when
+   there were six of them and the row centres what is left over. */
+.pipeline-step {
+	flex: 1 1 160px;
+	max-width: 215px;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	text-align: left;
+	background: #fff;
+	border: 1px solid #e4e7ea;
+	border-top: 3px solid #d2d6de;
+	border-radius: 2px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	padding: 12px 8px 0;
+	transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.pipeline-step:hover {
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.14);
+	transform: translateY(-2px);
+}
+
+/* The chevron sits between two cards and is the only thing carrying the "then"
+   between steps, so it keeps its own column rather than being drawn on a card. */
+.pipeline-arrow {
+	flex: 0 0 14px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #c7ccd1;
+	font-size: 22px;
+	padding-bottom: 26px;
+}
+
+/* Same slot as the chevron, in front of a card that is off the flow. A rule
+   rather than an arrow: nothing follows the last step, parcels fall out of the
+   line onto this one. Sized to match .pipeline-arrow so the row's rhythm holds. */
+.pipeline-split {
+	flex: 0 0 14px;
+	align-self: stretch;
+	margin-bottom: 26px;
+	border-left: 1px dashed #d8dce0;
+}
+
+/* Icon and count side by side rather than stacked: the count sits in the space
+   beside the icon instead of below it, which takes a whole row off the card. */
+.pipeline-head {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.pipeline-icon {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 18px;
+}
+
+.pipeline-count {
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 1.1;
+	color: #444;
+	/* Beside the icon the count has a share of the row rather than all of it, so
+	   a very large number is clipped rather than pushing the icon out. */
+	min-width: 0;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.pipeline-label {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.2px;
+	color: #777;
+	margin-top: 8px;
+	min-height: 30px;
+	text-align: center;
+}
+
+/* Full-bleed against the card's 8px side padding, and pushed to the bottom so
+   every card's footer lines up however tall its label wrapped. */
+.pipeline-footer {
+	display: block;
+	width: calc(100% + 16px);
+	margin: auto -8px 0;
+	padding: 6px 4px;
+	font-size: 11px;
+	text-transform: uppercase;
+	background: #f7f8f9;
+	border-top: 1px solid #eceef0;
+	color: #8a9096;
+	text-decoration: none;
+	text-align: center;
+}
+a.pipeline-footer:hover {
+	background: #eef0f2;
+	color: #444;
+	text-decoration: none;
+}
+/* Step 1 has no destination yet - the placeholder keeps the cards the same
+   height instead of leaving one short. */
+.pipeline-footer.is-disabled {
+	visibility: hidden;
+}
+
+/* A step with nothing in it is done; fade it so the eye lands on the ones that
+   still hold work. */
+.pipeline-step:not(.has-work) .pipeline-count {
+	color: #b3b8bd;
+}
+.pipeline-step:not(.has-work) .pipeline-icon {
+	opacity: 0.45;
+}
+
+/* Per-step colour, on the top border only - AdminLTE's bg-* classes already
+   colour the icon. */
+.pipeline-step-yellow     { border-top-color: #f39c12; }
+.pipeline-step-aqua       { border-top-color: #00c0ef; }
+.pipeline-step-light-blue { border-top-color: #3c8dbc; }
+.pipeline-step-purple     { border-top-color: #605ca8; }
+.pipeline-step-red        { border-top-color: #dd4b39; }
+
+/* Blocked parcels are the one count on the board that is bad news, so the
+   number carries the colour too - the top border alone is 3px and gets lost in
+   a row of five. Only when there are any: on a clean board the card fades with
+   the rest through the :not(.has-work) rules above, and a red zero would be
+   crying wolf. */
+.pipeline-step-red.has-work .pipeline-count {
+	color: #dd4b39;
+}
+
+/* Below the theme's md breakpoint four cards squeeze the labels into three
+   lines, so drop to two per row and hide the chevrons - stacked cards no longer
+   read as a left-to-right flow, and an arrow pointing right at the end of a row
+   would be pointing at nothing. */
+@media (max-width: 991px) {
+	/* Two per row, and the cap is lifted to exactly half: left at 215px a third
+	   card would slip onto the row on wider tablets and leave a 3 + 1 split. */
+	.pipeline-step {
+		flex: 1 1 42%;
+		max-width: calc(50% - 7px);
+	}
+	.pipeline-arrow,
+	.pipeline-split {
+		display: none;
+	}
+}
+@media (max-width: 767px) {
+	.pipeline-count {
+		font-size: 24px;
+	}
+}
+
+/* A month is 31 columns however narrow the screen. Crushed into a phone's
+   width each candle gets about nine pixels, which is narrower than the date
+   under it - the labels shear into each other and the counts vanish. A floor
+   per candle plus a scrolling plot keeps every day readable and lets the
+   thumb do what the viewport cannot. */
+@media (max-width: 767px) {
+	.candle-plot {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	.candle {
+		min-width: 20px;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   Month cash flow (client dashboard)
+
+   Candles for the month's deliveries on the left, the money they produced as a
+   column of figures on the right. Drawn in CSS rather than through the charting
+   library already on the page: the counts belong inside the bars, weekends want
+   their own shading and the whole thing has to survive without a build step, all
+   of which are a plugin and a config object in Chart.js and a flexbox here.
+   --------------------------------------------------------------------------- */
+.cash-period {
+	float: right;
+	color: #999;
+	font-size: 13px;
+	text-transform: capitalize;
+	line-height: 22px;
+}
+
+/* In the announcement header the date shares the right edge with the
+   Notifications link; a little air keeps them two things, not one. */
+.release-notes .cash-period {
+	margin-right: 14px;
+}
+
+.candle-plot-title {
+	margin-bottom: 6px;
+	font-size: 11px;
+	color: #999;
+}
+.candle-key {
+	margin-right: 12px;
+}
+.candle-key-ok {
+	color: #00a65a;
+}
+.candle-key-failed {
+	color: #dd4b39;
+}
+
+.candle-plot {
+	display: flex;
+	align-items: flex-end;
+	gap: 2px;
+	/* A floor, not a height. Wide screens hand the plot whatever height the
+	   worksheet beside it takes - see the .cash-row block at the end. */
+	height: 200px;
+	border-bottom: 1px solid #e4e7ea;
+	padding-bottom: 2px;
+}
+
+.candle {
+	flex: 1 1 0;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	/* Both undo the plot's align-items:flex-end, which would otherwise shrink
+	   each day to its own bar. height:100% is the one that bites while the plot
+	   is a fixed 200px; align-self picks it up when the plot is stretching and
+	   the percentage has no definite height to resolve against. */
+	height: 100%;
+	align-self: stretch;
+	text-align: center;
+}
+/* Saturdays and Sundays get the column shaded behind them rather than a
+   different bar colour - the bar colours already mean delivered and failed. */
+.candle.is-weekend {
+	background: #f4f6f8;
+}
+.candle.is-today .candle-day {
+	font-weight: 700;
+	color: #3c8dbc;
+}
+/* Days the month has not reached yet. They keep their place in the strip so the
+   chart reads as the whole month rather than the month so far, but their labels
+   fade back: an empty column under a full-strength date looks like a day that
+   went badly, not one that has not happened. Today's marker above is what tells
+   the reader where the two halves meet. */
+.candle.is-future .candle-day,
+.candle.is-future .candle-dow {
+	color: #ccd1d6;
+}
+
+/* The stack is the part that scales; the wrapper holds the full plot height so
+   every day's bar grows from the same baseline. */
+.candle-column {
+	flex: 1 1 auto;
+	display: flex;
+	align-items: flex-end;
+	min-height: 0;
+}
+.candle-stack {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	width: 100%;
+	min-height: 2px;
+}
+
+/* Each segment is sized by its share of the day, but never below the height its
+   own number needs: a single failure next to a fifty-parcel day would otherwise
+   be a hairline with the digit spilling out of it. Small days therefore read
+   slightly taller than they are, which is the trade for keeping every count
+   legible inside its own bar. */
+.candle-seg {
+	flex-basis: 0;
+	min-height: 17px;
+	font-size: 10px;
+	line-height: 17px;
+	color: #fff;
+	overflow: hidden;
+}
+.candle-seg.is-ok {
+	background: #00a65a;
+}
+.candle-seg.is-failed {
+	background: #dd4b39;
+}
+
+.candle-day {
+	font-size: 10px;
+	color: #777;
+	padding-top: 3px;
+}
+.candle-dow {
+	font-size: 9px;
+	color: #b3b8bd;
+	text-transform: lowercase;
+	padding-bottom: 3px;
+}
+.candle-empty {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* The figures beside the chart: a worksheet, so the numbers line up on the
+   decimal and the rule above the total does the arithmetic's talking. */
+.cash-sheet {
+	width: 100%;
+	font-size: 13px;
+}
+.cash-sheet td {
+	padding: 3px 0;
+}
+.cash-amount {
+	text-align: right;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+	padding-left: 10px;
+}
+.cash-amount.is-in {
+	color: #00a65a;
+}
+.cash-amount.is-out {
+	color: #dd4b39;
+}
+
+.cash-group td {
+	padding-top: 12px;
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.4px;
+	color: #b3b8bd;
+	border-bottom: 1px solid #eceef0;
+}
+.cash-sheet tr:first-child .cash-group td,
+.cash-sheet tr.cash-group:first-child td {
+	padding-top: 0;
+}
+
+/* Sub-lines: a breakdown of the row above, not a term of the sum. Indented and
+   greyed so nobody adds them in twice. */
+.cash-note td {
+	font-size: 11px;
+	color: #a0a5aa;
+	padding-left: 14px;
+}
+
+.cash-total td {
+	padding-top: 8px;
+	border-top: 2px solid #444;
+	font-weight: 700;
+	font-size: 15px;
+}
+.cash-total.is-negative td {
+	color: #dd4b39;
+}
+
+.cash-caveat {
+	margin-top: 12px;
+	font-size: 11px;
+	color: #a0a5aa;
+}
+
+@media (max-width: 991px) {
+	/* Stacked under the chart, the sheet gets a rule to sit against so it does
+	   not read as a continuation of the plot. */
+	.cash-sheet {
+		margin-top: 18px;
+		border-top: 1px solid #e4e7ea;
+		padding-top: 10px;
+	}
+	.candle-dow {
+		display: none;
+	}
+}
+
+/* Chart and worksheet side by side, the same height. Bootstrap 3 floats its
+   columns, so the shorter one simply ends early and the plot stopped 200px
+   down while the figures ran on past it. Flex on the row makes the two columns
+   items of the same line, and align-items:stretch - the default - gives them
+   both the height of the taller one; the plot then takes the slack in its own
+   column, with the 200px above acting as its floor.
+
+   Scoped to .cash-row rather than to .row: the grid stays exactly as Bootstrap
+   ships it everywhere else. The columns keep their 66.6/33.3 widths, since
+   flex-basis:auto reads the width the grid already set, and float is simply
+   ignored on a flex item. Only from 992px up, which is where col-md- stops
+   stacking - below that the two sit one under the other and equal height would
+   mean nothing. */
+@media (min-width: 992px) {
+	.cash-row {
+		display: flex;
+	}
+	/* .row's clearfix pseudo-elements would come through as two empty flex
+	   items. Nothing floats inside a flex container, so the clearfix has no
+	   work left to do here. */
+	.cash-row:before,
+	.cash-row:after {
+		display: none;
+	}
+	/* Only the chart column needs an inner axis to grow the plot along. The
+	   figures stay an ordinary block, so the worksheet table is laid out
+	   exactly as it is today. */
+	.cash-row > .cash-chart {
+		display: flex;
+		flex-direction: column;
+	}
+	.cash-chart > .candle-plot,
+	.cash-chart > .candle-empty {
+		flex: 1 1 auto;
+		height: auto;
+		min-height: 200px;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   Client dashboard: cash on delivery, the attention list, and the table of
+   destinations. All of them sit inside AdminLTE's .box, so only the insides are
+   styled here - the frame stays the frame every other box on the page uses.
+   --------------------------------------------------------------------------- */
+
+/* The "Details" link in a box header. AdminLTE floats its own tools right; this
+   is the same corner, for a link rather than a button. */
+.cod-more {
+	float: right;
+	font-size: 12px;
+	padding-top: 2px;
+}
+
+/* Three figures on one line, stacking on their own below the tablet break.
+   Flex rather than the grid because the middle rule between them has to run
+   the full height of the tallest, whatever that turns out to be. */
+.cod-figures {
+	display: flex;
+	flex-wrap: wrap;
+}
+.cod-figure {
+	flex: 1 1 200px;
+	padding: 4px 20px;
+	border-left: 1px solid #f0f0f0;
+}
+.cod-figure:first-child {
+	border-left: 0;
+	padding-left: 4px;
+}
+.cod-label {
+	color: #8a9199;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	margin-bottom: 6px;
+}
+.cod-value {
+	font-size: 26px;
+	font-weight: 600;
+	line-height: 1.1;
+	color: #444;
+}
+/* Money owed to the client is the one figure worth a colour, and only when
+   there is some: a green zero would be celebrating nothing. */
+.cod-figure.is-owed.has-money .cod-value {
+	color: #00733e;
+}
+.cod-note {
+	color: #999;
+	font-size: 12px;
+	margin-top: 6px;
+}
+
+/* The list of stuck parcels. No header row: five short columns whose meaning is
+   plain from what is in them, and a heading over each would be more furniture
+   than the six rows underneath deserve. */
+.attention-table > tbody > tr > td {
+	vertical-align: middle;
+	border-top-color: #f4f4f4;
+}
+.attention-table > tbody > tr:first-child > td {
+	border-top: 0;
+}
+.attention-ldv {
+	font-weight: 600;
+	white-space: nowrap;
+}
+.attention-dest {
+	color: #777;
+}
+.attention-cod,
+.attention-age {
+	text-align: right;
+	white-space: nowrap;
+	color: #999;
+	font-size: 12px;
+}
+/* On the admin board a row is a whole queue, and what it carries - an amount,
+   the age of its oldest - stacks in one column. As a column each they were
+   both mostly empty, and the eye crossed a hand's width of blank table to
+   read them. */
+.attention-meta {
+	white-space: nowrap;
+	line-height: 1.4;
+}
+
+.health-table > tbody > tr > td,
+.health-table > thead > tr > th {
+	vertical-align: middle;
+	border-top-color: #f4f4f4;
+}
+.health-name {
+	color: #555;
+}
+.health-count {
+	text-align: right;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+	color: #999;
+	width: 80px;
+}
+
+/* The map of destinations. jVectorMap sizes itself to its container, so the
+   container is the only thing that needs a height - Italy is tall and narrow,
+   and the list of provinces sits in the width it leaves over. */
+.destinations-map {
+	height: 320px;
+}
+.destinations-table > tbody > tr:first-child > td {
+	border-top: 0;
+}
+.destinations-table .health-name small {
+	margin-left: 4px;
+}
+.destinations-share {
+	text-align: right;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+	color: #555;
+	font-weight: 600;
+	width: 60px;
+}
+.destinations-note {
+	color: #999;
+	font-size: 12px;
+	margin: 6px 0 0;
+}
+
+/* Share of the month's parcels, under the zone's name. Drawn rather than only
+   printed because the rows worth noticing here are the short ones. */
+.zones-table > tbody > tr:first-child > td {
+	border-top: 0;
+}
+.zones-table .health-name {
+	padding-right: 12px;
+}
+.zone-bar {
+	background: #f0f1f3;
+	border-radius: 2px;
+	height: 5px;
+	margin-top: 5px;
+	overflow: hidden;
+}
+.zone-bar-fill {
+	background: #3c8dbc;
+	height: 100%;
+}
+.zones-footer {
+	color: #999;
+	font-size: 12px;
+	padding: 8px 10px;
+}
+
+/* The monthly chart, and the legend that doubles as its controls. Each key is
+   a button: it names a colour, prints that series' total for the whole window
+   so nobody has to add twelve columns up by eye, and switches the series off
+   when clicked. Carriage runs about thirty times the extras, so the extras band
+   is a sliver until the carriage is taken away - that switch is the only way to
+   read it. */
+.history-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-bottom: 14px;
+}
+.history-key {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	background: #fff;
+	border: 1px solid #e6e8ea;
+	border-radius: 20px;
+	padding: 5px 14px 5px 10px;
+	font-size: 12px;
+	color: #555;
+	line-height: 1.4;
+	transition: background .15s, opacity .15s;
+}
+.history-key:hover {
+	background: #f7f8f9;
+}
+.history-key i {
+	width: 12px;
+	height: 12px;
+	border-radius: 3px;
+	display: inline-block;
+	flex: none;
+}
+/* The count is drawn as a dashed line, not a filled band, so its key is a rule
+   rather than a block - the swatch should look like the thing it stands for. */
+.history-key i.is-line {
+	height: 3px;
+	border-radius: 2px;
+}
+.history-key b {
+	color: #333;
+	font-variant-numeric: tabular-nums;
+}
+/* Switched off: still readable, plainly inactive. */
+.history-key.is-off {
+	opacity: .45;
+}
+.history-key.is-off b {
+	text-decoration: line-through;
+}
+.history-plot {
+	height: 300px;
+}
+.status-plot {
+	height: 300px;
+}
+
+/* Two cards that read as one thought, set to the same height: the map beside
+   its zones, the monthly chart beside the status it breaks down. Bootstrap 3
+   floats its columns and the shorter one simply stops early; flex on the row
+   makes them items of one line and align-items:stretch - the default - gives
+   both the height of the taller.
+
+   The gutter is stated rather than inherited. Left to the grid it is two
+   15px paddings that happen to meet, which is fine until a flex container is
+   put over the top of it and the two systems have to agree about who owns the
+   space between the columns. Written as a gap, the distance between these two
+   cards is one number and it cannot drift. 20px rather than the grid's 30:
+   these pairs are one thought split in two, and they were reading as two
+   separate things with that much air between them.
+
+   With the gap holding real space, the columns can no longer be 66.6% and
+   33.3% of the full width - that would add up to more than there is. flex 2:1
+   over what is left of the row gives the same proportions and lets the gap
+   come out of the middle, where it belongs.
+
+   Only from 992px up, which is where col-md- stops stacking: below that the two
+   sit one under the other and none of this applies. */
+@media (min-width: 992px) {
+	.split-row {
+		display: flex;
+		gap: 20px;
+		/* The grid's negative margins existed to cancel the columns' padding.
+		   With the padding gone they would pull the cards 15px wider than every
+		   other row on the page. */
+		margin-left: 0;
+		margin-right: 0;
+	}
+	/* .row's clearfix pseudo-elements would come through as two empty flex
+	   items, and nothing floats inside a flex container anyway. */
+	.split-row:before,
+	.split-row:after {
+		display: none;
+	}
+	/* The column becomes the axis the box grows along; without this the box
+	   keeps its content height and only the column stretches. */
+	.split-row > [class*="col-"] {
+		display: flex;
+		flex-direction: column;
+		padding-left: 0;
+		padding-right: 0;
+		/* A flex item will not go below its content's natural width unless it is
+		   told it may. The zone names are long enough to push past a third of the
+		   row, and the difference would come out of the map. */
+		min-width: 0;
+	}
+	.split-row > [class*="col-"] > .box {
+		flex: 1 1 auto;
+	}
+	/* A pair that is not two-to-one takes its proportion from the col-md-N the
+	   markup already carries. flex-basis 0 makes the grid class's percentage
+	   width inert on the main axis, so the number in the class name becomes a
+	   share of whatever the gap leaves rather than a share of the whole row -
+	   which is the same reason .split-main and .split-side exist. Those two
+	   stay: 8/4 is the common case and reads better named than numbered, and
+	   they are declared last so they win the tie on equal specificity. */
+	.split-row > .col-md-3 {
+		flex: 3 1 0;
+	}
+	.split-row > .col-md-4 {
+		flex: 4 1 0;
+	}
+	.split-row > .col-md-5 {
+		flex: 5 1 0;
+	}
+	.split-row > .col-md-6 {
+		flex: 6 1 0;
+	}
+	.split-row > .col-md-7 {
+		flex: 7 1 0;
+	}
+	.split-row > .col-md-8 {
+		flex: 8 1 0;
+	}
+	.split-row > .col-md-9 {
+		flex: 9 1 0;
+	}
+	.split-row > .split-main {
+		flex: 2 1 0;
+	}
+	.split-row > .split-side {
+		flex: 1 1 0;
+	}
+}
+
+/* Under the tablet break the three COD figures stand one above the other, so
+   the rule between them belongs on top rather than at the side. */
+@media (max-width: 767px) {
+	.cod-figure {
+		flex-basis: 100%;
+		border-left: 0;
+		border-top: 1px solid #f0f0f0;
+		padding: 12px 4px;
+	}
+	.cod-figure:first-child {
+		border-top: 0;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   The four figures at the top of the client dashboard. AdminLTE's small-box,
+   with room for a line of context under the label - and a smaller headline,
+   because a formatted euro amount at 38px does not fit a quarter-width card
+   and the h3 is set to never wrap.
+   --------------------------------------------------------------------------- */
+
+.dash-card h3 {
+	font-size: 28px;
+	margin-bottom: 6px;
+}
+/* All four end level whatever their label runs to, so the footers line up
+   across the row rather than stepping. */
+.dash-card > .inner {
+	min-height: 116px;
+}
+
+/* A floor is enough while every card carries one line of context, which is the
+   client's row. On the admin's some carry two, and a card that outgrows the
+   floor simply stands taller than the three beside it - the row steps and the
+   Details strips no longer line up.
+
+   Flex settles it without a second guess at a number: the row becomes one
+   line, every card an equal-height item of it, and the body the part that
+   stretches - so the footer is pushed to the bottom of the tallest card rather
+   than sitting wherever its own text happened to end.
+
+   From 768px up, which is where the cards stop being one per line. Below it
+   they stack, each as tall as it needs to be, and none of this applies. */
+@media (min-width: 768px) {
+	.dash-card-row {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	/* .row's clearfix pseudo-elements would come through as two empty flex
+	   items and break the wrapping; nothing floats inside a flex container
+	   anyway. */
+	.dash-card-row:before,
+	.dash-card-row:after {
+		display: none;
+	}
+	.dash-card-row > [class*="col-"] {
+		display: flex;
+	}
+	.dash-card-row > [class*="col-"] > .dash-card {
+		display: flex;
+		flex-direction: column;
+		/* The card is the flex item's only child and has to fill it; without
+		   this it shrinks to its text and the coloured panel stops short. */
+		width: 100%;
+	}
+	.dash-card-row > [class*="col-"] > .dash-card > .inner {
+		flex: 1 1 auto;
+	}
+}
+.dash-card > .inner > p {
+	margin-bottom: 2px;
+}
+/* The plan bar on the month card. The track borrows the darkened-background
+   trick AdminLTE's info-box progress uses on coloured panels, so it reads on
+   aqua and on the red the card turns near the limit alike. */
+.dash-card-progress {
+	height: 5px;
+	margin-top: 8px;
+	border-radius: 3px;
+	background: rgba(0, 0, 0, .2);
+}
+.dash-card-progress > div {
+	height: 100%;
+	border-radius: 3px;
+	background: rgba(255, 255, 255, .85);
+}
+/* Five cards on the row since the today card joined it: twelve columns have
+   no fifth, so above the lg breakpoint the widths are dealt out here and the
+   col-lg-* the markup still carries is simply overridden. Below it the
+   sm/xs classes keep working: two a row, then a stack. */
+@media (min-width: 1200px) {
+	.dash-card-row-fifths > [class*="col-"] {
+		width: 20%;
+	}
+}
+.small-box-note {
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 1.35;
+	opacity: .75;
+	margin: 0;
+}
+/* A card with nowhere to send the reader keeps the footer strip - without it
+   the card would stand shorter than the three beside it - but nothing about it
+   should invite a click. */
+.small-box-footer.is-quiet {
+	cursor: default;
+}
+.small-box-footer.is-quiet:hover {
+	background: rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 991px) {
+	/* Two per line from the tablet break down, where a quarter of the width is
+	   narrower than the number standing in it. */
+	.dash-card > .inner {
+		min-height: 0;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   The driver app card on the logistics dashboard. It is the one block on these
+   pages that sells something rather than reports it, so it is allowed two
+   screenshots and a row of chips - but it wears the same box, the same header
+   and the same greys as everything around it.
+   --------------------------------------------------------------------------- */
+
+.driver-shots {
+	position: relative;
+	text-align: center;
+	min-height: 300px;
+}
+/* Two phones, the second tucked behind and to the side: overlapped they read
+   as one device photographed twice rather than as two unrelated pictures, and
+   they fit a third of the row where side by side they would not. */
+.driver-shot {
+	width: 150px;
+	max-width: 45%;
+	border-radius: 14px;
+	border: 1px solid #e4e6e9;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+	background: #fff;
+}
+.driver-shot.is-behind {
+	position: absolute;
+	left: 50%;
+	top: 26px;
+	z-index: -1;
+	opacity: .92;
+	transform: rotate(4deg);
+}
+.driver-intro {
+	color: #666;
+	margin-bottom: 14px;
+}
+
+/* The three scans a parcel has to pass through. Numbered by the list itself,
+   so the numerals cannot drift out of step with the markup. */
+.driver-steps {
+	list-style: none;
+	counter-reset: driver-step;
+	padding: 0;
+	margin: 0 0 14px;
+}
+.driver-steps > li {
+	counter-increment: driver-step;
+	position: relative;
+	padding: 0 0 10px 42px;
+	/* The rule joins one step to the next; the last one has nothing to join
+	   to, so it is switched off below. */
+	border-left: 1px solid #e4e6e9;
+	margin-left: 15px;
+}
+.driver-steps > li:last-child {
+	border-left-color: transparent;
+	padding-bottom: 0;
+}
+.driver-steps > li:before {
+	content: counter(driver-step);
+	position: absolute;
+	left: -15px;
+	top: 0;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 50%;
+	background: #00733e;
+	color: #fff;
+	font-weight: 700;
+	text-align: center;
+}
+.driver-step-icon {
+	display: none;
+}
+.driver-step-label {
+	display: block;
+	font-weight: 700;
+	line-height: 30px;
+}
+.driver-step-note {
+	display: block;
+	color: #999;
+	font-size: 12px;
+	line-height: 1.35;
+}
+
+/* What the app does, as chips rather than another bullet list - four short
+   facts read faster in a row than stacked. */
+.driver-features {
+	margin-bottom: 14px;
+}
+.driver-feature {
+	display: inline-block;
+	background: #f0f1f3;
+	border-radius: 12px;
+	padding: 3px 10px;
+	margin: 0 6px 6px 0;
+	font-size: 12px;
+	color: #555;
+	white-space: nowrap;
+}
+.driver-feature i {
+	color: #3c8dbc;
+	margin-right: 3px;
+}
+
+.driver-reqs {
+	color: #999;
+	font-size: 12px;
+	line-height: 1.45;
+	margin-bottom: 14px;
+}
+.driver-actions .btn {
+	margin: 0 6px 6px 0;
+}
+
+/* The two stores, each a card with its code beside its name. The code is the
+   point of the block: the reader is at a desk and the driver is next to them
+   holding the phone, so a square to point a camera at beats a link somebody
+   would have to type out. */
+.driver-stores {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 14px;
+}
+.driver-store {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 12px 8px 8px;
+	border: 1px solid #e4e6e9;
+	border-radius: 8px;
+	background: #fff;
+	color: #333;
+	text-decoration: none;
+	transition: border-color .15s, box-shadow .15s;
+}
+.driver-store:hover,
+.driver-store:focus {
+	color: #333;
+	text-decoration: none;
+	border-color: #3c8dbc;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+/* Rendered from the store URL and committed, not drawn per request. 74px is
+   about the smallest a 33-module code survives on a screen somebody is
+   pointing a camera at. */
+.driver-qr {
+	width: 74px;
+	height: 74px;
+	display: block;
+}
+.driver-store-name {
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1.25;
+	white-space: nowrap;
+}
+.driver-store-name small {
+	display: block;
+	font-size: 11px;
+	font-weight: normal;
+	color: #999;
+}
+.driver-store-name .fa {
+	font-size: 18px;
+	margin-right: 4px;
+	vertical-align: -1px;
+}
+
+/* Below the tablet break the text column drops under the phones, and the
+   overlapped pair would sit in a column narrow enough to crop them. */
+@media (max-width: 991px) {
+	.driver-shots {
+		min-height: 0;
+		margin-bottom: 18px;
+	}
+	.driver-shot {
+		width: 130px;
+	}
+}
+
+/* ============================================================
+   The one field standard: .filter-fields / .filter-field /
+   .filter-actions lay out both the x-filter-box filter bars and
+   the plain .action-panel boxes (operational rows that are not
+   filters, e.g. admin/drivers/deliveries). Three control kinds
+   (text input, select/select2, date-range trigger) share the
+   same label, size, type and border metrics; fields sit on a
+   15px gap - the same gutter the cards use.
+   ============================================================ */
+/* AdminLTE gives boxes 20px below; 15px matches the column gutters,
+   so the vertical rhythm between cards equals the horizontal one. */
+.box {
+    margin-bottom: 15px;
+}
+.filter-box .box-body,
+.action-panel > .box-body {
+    padding: 15px;
+}
+.filter-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+}
+.filter-field {
+    width: 200px;
+    margin: 0;
+}
+.filter-field > label {
+    display: block;
+    margin: 0 0 5px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #444;
+}
+.filter-field .form-control,
+.filter-field .drp-btn,
+.filter-field .drp-group {
+    width: 100%;
+    max-width: none;
+}
+.filter-field .form-control,
+.filter-field .drp-btn {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #d2d6de;
+    border-radius: 3px;
+    box-shadow: none;
+}
+/* Safari (iOS/macOS) keeps the native select chrome - own corners, own
+   gradient - until appearance is reset by hand; that also removes the native
+   arrow, so we draw our caret as a background SVG. select2-backed selects are
+   hidden by the plugin and unaffected. */
+.filter-field select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 30px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23777'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+.filter-field select.form-control::-ms-expand {
+    display: none;
+}
+.filter-field .select2-container {
+    width: 100% !important;
+}
+.filter-field .select2-container .select2-selection--single {
+    height: 34px;
+    border: 1px solid #d2d6de;
+    border-radius: 3px;
+}
+.filter-field .select2-container .select2-selection__rendered {
+    line-height: 32px;
+    font-size: 14px;
+    color: #555;
+}
+.filter-field .select2-container .select2-selection__arrow {
+    height: 32px;
+}
+/* Actions live at the right edge of the last row of fields. */
+.filter-actions {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    margin-left: auto;
+}
+.filter-actions .btn {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+@media (max-width: 480px) {
+    .filter-field { width: 100%; }
+    .filter-actions { margin-left: 0; width: 100%; justify-content: flex-end; }
+}
+
+/* Highlight for filters currently holding a value (skin-blue) */
+.filter-box .filter-active > label,
+.filter-box .filter-active label {
+    color: #3c8dbc;
+}
+.filter-box .filter-active .form-control,
+.filter-box .filter-active .drp-btn,
+.filter-box .filter-active .select2-container .select2-selection--single {
+    border-color: #3c8dbc;
+}
+/* A field edited since the last apply, on pages with a Filter button:
+   amber (the theme's warning tone) until Filter is pressed. Declared
+   after .filter-active so it wins when both would match. */
+.filter-box .filter-pending > label,
+.filter-box .filter-pending label {
+    color: #f39c12;
+}
+.filter-box .filter-pending .form-control,
+.filter-box .filter-pending .drp-btn,
+.filter-box .filter-pending .select2-container .select2-selection--single {
+    border-color: #f39c12;
+}
+.filter-box .box-name .filter-active-count {
+    margin-left: 6px;
+}
+
+/* Date-range trigger styled exactly like the theme's form fields
+   (also on the pages not yet moved to the filter-field grid) */
+.drp-group {
+    width: 100%;
+    max-width: 250px;
+}
+.drp-btn,
+.drp-btn:hover,
+.drp-btn:active,
+.drp-btn:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #d2d6de;
+    border-radius: 3px;
+    box-shadow: none;
+    text-align: left;
+}
+.drp-btn:hover,
+.drp-btn:focus {
+    border-color: #3c8dbc;
+}
+.drp-btn > .fa {
+    color: #777;
+}
+.drp-btn > span {
+    flex: 1;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ============================================================
+   The API App pages: admin/api-app and client/api-app, where an
+   OAuth2 App is created and its credentials shown next to the two
+   curl calls that use them.
+
+   Two typefaces, and no more than two - the page is half prose and
+   half machine text, and every extra face on it costs the eye a
+   pause. Everything a person reads keeps the theme's UI face;
+   everything a machine reads - client id, secret, endpoint path,
+   curl - is set in the one monospace stack pinned below rather than
+   left to Bootstrap's Menlo/Monaco/Consolas/"Courier New" list,
+   which resolves to a different typeface on each of the three
+   desktop platforms and to Courier on some Linux desktops.
+
+   Four sizes carry the whole page, and nothing else may be added:
+   24px the page title (the theme's), 18px the box title (the
+   theme's), 14px prose - with 600 weight, not a larger size, for the
+   step headings - and 13px for machine text, table labels and
+   captions. The step headings were <h4>, which Bootstrap sets at
+   18px bold: the same size as the box title above them, so the two
+   levels read as one.
+   ============================================================ */
+.api-app > .box-body {
+    padding: 15px;
+}
+.api-app code,
+.api-app pre,
+.api-app kbd {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+                 "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+}
+/* Bootstrap sets inline code in #c7254e on #f9f2f4 - the theme's red is
+   what a revoked App and a failed call are drawn in, and a client id is
+   neither. A quiet grey chip says "machine text" without saying "wrong". */
+.api-app code {
+    padding: 2px 6px;
+    color: #444;
+    background-color: #f4f6f9;
+    border-radius: 3px;
+}
+/* A curl command is meant to be copied whole, and Bootstrap's break-all
+   would split the url wherever the box happens to end; the block keeps its
+   own line breaks and scrolls sideways instead. */
+.api-app pre {
+    padding: 12px 15px;
+    margin: 0 0 15px;
+    color: #444;
+    background-color: #f4f6f9;
+    border: 1px solid #e4e8ee;
+    border-radius: 3px;
+    white-space: pre;
+    word-break: normal;
+    word-wrap: normal;
+    overflow-x: auto;
+}
+.api-app-intro {
+    margin: 0 0 15px;
+}
+/* The same label the filter fields use: 13px, 600, #444. */
+.api-app-creds {
+    margin-bottom: 15px;
+}
+.api-app-creds > tbody > tr > th {
+    width: 180px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    background-color: #f9fafb;
+    vertical-align: middle;
+}
+.api-app-creds > tbody > tr > td {
+    vertical-align: middle;
+}
+/* A step in the walkthrough. The hairline above it, not a bigger type
+   size, is what separates one step from the last. */
+.api-app-step {
+    margin: 0 0 10px;
+    padding-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #444;
+    border-top: 1px solid #f4f4f4;
+}
+/* The endpoints: collection and detail on one row, told apart by the
+   space between two chips rather than by a dash between them. */
+.api-app-endpoints {
+    margin: 0 0 15px;
+    padding: 0;
+    list-style: none;
+}
+/* A resource with sub-resources carries four chips, which wrap on a narrow
+   box; the line height is what keeps two wrapped rows of chips from
+   touching. */
+.api-app-endpoints > li {
+    padding: 6px 0;
+    line-height: 2;
+    border-bottom: 1px solid #f4f4f4;
+}
+.api-app-endpoints > li:last-child {
+    border-bottom: 0;
+}
+.api-app-endpoints code {
+    margin-right: 8px;
+}
+@media (max-width: 480px) {
+    .api-app-creds > tbody > tr > th {
+        width: 110px;
+    }
+}
+
+/* ============================================================
+   The one table standard, part 1: the DataTables chrome.
+
+   DataTables draws four controls around every list - "Mostra N
+   elementi" and the search box above, "Risultati da .. a .." and the
+   pager below - inside Bootstrap rows whose -15px margin cancels the
+   15px column padding, so all four land flush on the table's outer
+   edge: the text on the left sits 8px outside the cell text, the
+   input and the pager on the right sit 8px outside the buttons in the
+   last column. Setting the row margin to zero and giving the outer
+   rows the cell padding instead puts the four on the same edges the
+   cells use, whatever the box around them pads (.box-body 10px,
+   .box-content nothing). The middle row holds the table itself and
+   keeps its full width.
+   ============================================================ */
+.dataTables_wrapper > .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.dataTables_wrapper > .row > .col-sm-5,
+.dataTables_wrapper > .row > .col-sm-6,
+.dataTables_wrapper > .row > .col-sm-7 {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.dataTables_wrapper > .row > .col-sm-12 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* ============================================================
+   admin/codlists - "rows not processed" modal
+   The red badge in the Error column opens it; the list can run to
+   hundreds of rows, so the table scrolls inside the modal and the
+   waybill is set in the one monospace stack, as a grey chip.
+   ============================================================ */
+.codlist-errors-link,
+.codlist-errors-link:hover,
+.codlist-errors-link:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.codlist-errors-scroll {
+    max-height: 60vh;
+    overflow: auto;
+}
+#codlist-errors-table th,
+#codlist-errors-table td {
+    font-size: 13px;
+    white-space: nowrap;
+}
+#codlist-errors-table td:last-child {
+    white-space: normal;
+}
+#codlist-errors-table code {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+                 "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    padding: 2px 6px;
+    color: #444;
+    background-color: #f4f6f9;
+    border-radius: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+   Row actions in list tables (admin/clients)
+
+   Four full-size buttons per row overflowed the column and wrapped onto a
+   second line; bare icons in their place were too small to hit; saturated
+   30px squares fit but shouted. This is the quiet version of the same idea:
+   a 30px square with a light tint of the action's colour and the icon in
+   the full colour (profile blue, edit green, settings amber, movements
+   teal), which turns solid on hover. One line per row, a finger-sized
+   target, and the colour still tells the four apart at a glance.
+   ============================================================ */
+.row-actions {
+    white-space: nowrap;
+}
+.row-actions a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 4px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.row-actions a:last-child {
+    margin-right: 0;
+}
+/* A destructive action that must POST (delete, set default) is a button
+   inside its own form; it takes the same tile as the anchors. */
+.row-actions form {
+    display: inline-block;
+    margin: 0;
+}
+.row-actions button {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    margin-right: 4px;
+    border: 0;
+    background: transparent;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.row-actions .row-action-blue   { color: #3c8dbc; background-color: #e2eef6; }
+.row-actions .row-action-green  { color: #00a65a; background-color: #dff5ea; }
+.row-actions .row-action-amber  { color: #d98a0c; background-color: #fdf0d9; }
+.row-actions .row-action-teal   { color: #1fa8a8; background-color: #e0f7f7; }
+.row-actions .row-action-blue:hover,  .row-actions .row-action-blue:focus  { color: #fff; background-color: #3c8dbc; }
+.row-actions .row-action-green:hover, .row-actions .row-action-green:focus { color: #fff; background-color: #00a65a; }
+.row-actions .row-action-amber:hover, .row-actions .row-action-amber:focus { color: #fff; background-color: #f39c12; }
+.row-actions .row-action-teal:hover,  .row-actions .row-action-teal:focus  { color: #fff; background-color: #39cccc; }
+.row-actions .row-action-plain { color: #999; }
+.row-actions .row-action-plain:hover,
+.row-actions .row-action-plain:focus { color: #3c8dbc; background-color: #f4f6f9; }

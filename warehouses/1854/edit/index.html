@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Ecommerceitalia - Spedisci.Online</title>
+    
+            <link rel="shortcut icon" href="../../../img/favicon.ico" type="image/x-icon"/>
+    
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.4 -->
+    <link href="../../../bootstrap/css/bootstrap336.min.css" rel="stylesheet" type="text/css"/>
+    <!-- FontAwesome 4.3.0 -->
+    <link href="../../../css/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Ionicons 2.0.0 -->
+    <link href="../../../css/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Theme style -->
+
+    <link href="../../../dist/css/AdminLTE.min237.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../plugins/flag-icon-css/css/flag-icon.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css"
+          rel="stylesheet" type="text/css"/>
+    <link href="../../../plugins/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <style>
+        /* -------------------------------------------------
+       RELEASE-NOTES – TABLE STYLING
+       ------------------------------------------------- */
+        .release-notes table {
+            width: 100%;
+            border-collapse: separate;          /* nicer spacing */
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,.07);
+            font-size: 1.3rem;
+        }
+
+        .release-notes table th,
+        .release-notes table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid #e0e7ff;
+        }
+
+        .release-notes table th {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #1565c0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            font-size: 1.3rem;
+        }
+
+        .release-notes table td {
+            background: #fafcff;
+            color: #2c3e50;
+        }
+
+        /* Zebra striping for better readability */
+        .release-notes table tbody tr:nth-child(even) td {
+            background: #f5f9ff;
+        }
+
+        /* Hover effect */
+        .release-notes table tbody tr:hover td {
+            background: #e8f0fe;
+            transition: background .2s ease;
+        }
+
+        /* Responsive – collapse on very small screens */
+        @media (max-width: 480px) {
+            .release-notes table,
+            .release-notes table thead,
+            .release-notes table tbody,
+            .release-notes table th,
+            .release-notes table td,
+            .release-notes table tr {
+                display: block;
+            }
+            .release-notes table thead tr { display: none; }
+            .release-notes table tr {
+                margin-bottom: 1rem;
+                border: 1px solid #bbdefb;
+                border-radius: 8px;
+                padding: .5rem;
+            }
+            .release-notes table td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+            }
+            .release-notes table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 12px;
+                width: 45%;
+                font-weight: 600;
+                color: #1565c0;
+            }
+        }
+
+
+        .ui-autocomplete-loading {
+            background: white url("../../../plugins/jquery-ui-1.11.4/images/ajax-loader.gif") right center no-repeat;
+        }
+
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+        }
+
+        /* .order-items-table lives in css/custom.css, shared with nomenu.blade.php */
+
+        .rowTempHighlight {
+            animation: 4s bgcolorchange;
+        }
+        @keyframes bgcolorchange {
+            0% {
+                color: black;
+            }
+            50% {
+                background: yellow;
+            }
+        }
+    </style>
+    <style>
+        .pdf-faq {
+            max-width: 900px;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* The clickable title */
+        .pdf-faq-summary {
+            display: block;
+            padding: 16px 20px;
+            background: #f7f7f7;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .pdf-faq-summary:hover { background: #efefef; }
+
+        /* Arrow indicator */
+        .pdf-faq-summary::after {
+            content: "▼";
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s ease;
+        }
+        .pdf-faq[open] .pdf-faq-summary::after {
+            transform: rotate(180deg);
+        }
+
+        /* The PDF container (hidden by default) */
+        .pdf-faq-content {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.4s ease;
+        }
+        .pdf-faq[open] .pdf-faq-content {
+            height: 800px; /* adjust to your preferred open height */
+        }
+
+        .pdf-faq iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Optional: nice focus style for keyboard users */
+        .pdf-faq-summary:focus-visible {
+            outline: 2px solid #0066cc;
+            outline-offset: -2px;
+        }
+
+        /* Button padding  for faq summary */
+        .pdf-faq-content .btn {
+            margin: 10px;
+        }
+    </style>
+
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link href="../../../plugins/iCheck/all.css" rel="stylesheet" type="text/css"/>
+
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="../../../dist/css/skins/_all-skins2.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Viewport-locked shell: menu and content scroll on their own instead of the page.
+         After the skins so it wins on geometry, before the tenant stylesheet so a
+         white-label install can still adjust it without !important. -->
+    <link href="../../../css/layout-shell.css" rel="stylesheet" type="text/css"/>
+    <!-- Custom skin -->
+        <!-- iCheck -->
+    <link href="../../../plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css"/>
+    <!-- Morris chart -->
+    <link href="../../../plugins/morris/morris.css" rel="stylesheet" type="text/css"/>
+    <!-- jvectormap -->
+    <link href="../../../plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css"/>
+    <!-- Date Picker -->
+    <link href="../../../plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css"/>
+    <!-- Daterange picker -->
+    <link href="../../../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link href="../../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="../../../plugins/bootstrap-switch/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../plugins/fineuploader/fineuploader-new-5.6.0.min.css" rel="stylesheet" type="text/css"/>
+    <!--  Select2 -->
+    <link href="../../../plugins/select2/select2.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="../../../css/custom.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    
+    
+    <![endif]-->
+    <style>
+        canvas {
+            width: 100% !important;
+            max-height: 450px;
+            height: auto !important;
+
+        }
+
+    </style>
+
+</head>
+<body class="skin-blue sidebar-mini">
+<div class="wrapper">
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="../../../index.html" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini">
+                                <b>S.</b>O
+                        </span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg">
+                                <img src="../../../storage/logo.png" style="width:150px;" />
+                        </span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+                <!-- Notifications: style can be found in dropdown.less -->
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                        <i class="fa fa-bell-o"></i>
+                        
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">
+                                                    </li>
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+
+                                                            </ul>
+                        </li>
+                        <li class="footer"><a href="../../../notifications/index.html">Visualizza tutto</a></li>
+                    </ul>
+                </li>
+
+                <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src=../../../dist/img/user2-160x160.jpg class="user-image" alt="User Image"/>
+
+                  <span class="hidden-xs">
+                 	 							SPEDIZIONI PRIME DEMO
+					 </span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                                        <img src=../../../dist/img/user2-160x160.jpg class="img-circle" alt="User Image" />
+                    
+                    <p>
+                      								SPEDIZIONI PRIME DEMO
+						                    </p>
+                  </li>
+
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    
+                    <div class="pull-left user-langs">
+                                                                                <a href="../../../language/en/index.html"
+                               class="btn btn-default btn-flat user-lang"
+                               title="English"
+                               aria-label="English"
+                               >
+                                
+                                <span class="flag-icon flag-icon-us"></span>
+                            </a>
+                                                                                <a href="../../../language/de/index.html"
+                               class="btn btn-default btn-flat user-lang"
+                               title="German"
+                               aria-label="German"
+                               >
+                                
+                                <span class="flag-icon flag-icon-de"></span>
+                            </a>
+                                                                                <a href="../../../language/it/index.html"
+                               class="btn btn-default btn-flat user-lang active"
+                               title="Italiano"
+                               aria-label="Italiano"
+                                aria-current="true" >
+                                
+                                <span class="flag-icon flag-icon-it"></span>
+                            </a>
+                                                                                <a href="../../../language/es/index.html"
+                               class="btn btn-default btn-flat user-lang"
+                               title="Spanish"
+                               aria-label="Spanish"
+                               >
+                                
+                                <span class="flag-icon flag-icon-es"></span>
+                            </a>
+                                            </div>
+                    <div class="pull-right">
+                        <a class="btn btn-default btn-flat" href="../../../login/index.html"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Esci
+                        </a>
+                        <form id="logout-form" action="../../../login/index.html" method="POST" style="display: none;">
+                            <input type="hidden" name="_token" value="sandbox" autocomplete="off">                        </form>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            
+
+            </ul>
+          </div>
+        </nav>
+      </header>
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            
+            <!-- Sidebar Menu -->
+                            <ul class="sidebar-menu"
+                                    >
+                                                    <li class="header">Navigazione</li>
+
+<!-- Dashboard - same destination as the logo -->
+<li class="">
+    <a href="../../../index.html">
+        <i class="fa fa-dashboard"></i>
+        <span class="hidden-xs">Dashboard</span>
+    </a>
+</li>
+
+<!-- Lettere di Vettura -->
+<li class="treview ">
+    <a href="#">
+        <i class="fa fa-indent"></i>
+        <span class="hidden-xs">Spedizioni</span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+    </a>
+    <ul class="treeview-menu">
+        <li class=""><a
+                href="../../../shippings/create/index.html">Nuova Spedizione</a></li>
+        <li class=""><a href="../../../shippings/index.html">
+                Elenco Spedizioni</a></li>
+                    <li class=""><a
+                    href="../../../shippinglists/create/index.html">Crea Distinta</a></li>
+            <li class=""><a
+                    href="../../../shippinglists/index.html">Lista Distinte</a></li>
+                <li class=""><a
+                href="../../../stocks/index.html">Giacenze</a>
+        </li>
+        <li class=""><a
+                href="../../../shippings/contrassegni/index.html">Contrassegni</a></li>
+                    <li class=""><a href="../../../cancelled/index.html">
+                    Spedizioni Cancellate</a></li>
+            </ul>
+</li>
+
+<!-- Importa / Esporta -->
+<li class="treeview ">
+    <a href="#">
+        <i class="glyphicon glyphicon-transfer"></i>
+        <span class="hidden-xs">Importa Ordini </span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  </span>
+    </a>
+    <ul class="treeview-menu ">
+                                                                                                                                                            <li class=""><a href="../../../imports/index.html">
+                    Ordini da File CSV o XLS</a></li>
+                <li class="">
+            <span class="label label-primary pull-left" style="margin-left: 10px;margin-top: 5px;">+</span>
+            <a href="../../../clientstores/index.html">Collega Negozio</a></li>
+
+
+    </ul>
+</li>
+<!-- Ritiri -->
+<li class="treview ">
+    <a href="#">
+        <i class="fa fa-undo"></i>
+        <span class="hidden-xs">Ritiri</span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+    </a>
+    <ul class="treeview-menu">
+        <li class="">
+            <a href="../../../pickups/create/index.html">
+                Nuovo Ritiro</a>
+        </li>
+        <li class="">
+            <a href="../../../pickups/index.html">
+                Elenco Ritiri</a>
+        </li>
+    </ul>
+</li>
+    <!--  Distinte Resi -->
+    <li class="treview ">
+        <a href="#">
+            <i class="fa fa-list-alt"></i>
+            <span class="hidden-xs">Resi</span>
+            <span class="pull-right-container">
+					  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+        </a>
+        <ul class="treeview-menu">
+            <li class=""><a
+                    href="../../../renderlists/index.html">Distinte Resi</a></li>
+        </ul>
+    </li>
+<!-- Fatture -->
+    <li class="treeview ">
+        <a href="#">
+            <i class="fa  fa-file-text-o"></i>
+            <span class="hidden-xs">Fatture</span>
+            <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  	</span>
+        </a>
+        <ul class="treeview-menu ">
+            <li class=""><a href="../../../invoices/index.html">
+                    Elenco Fatture</a></li>
+            <li class=""><a href="../../../proforma/index.html">
+                    Elenco Proforme</a></li>
+            <li class=""><a href="../../../receipts/index.html">
+                    Ricevute</a></li>
+
+        </ul>
+    </li>
+
+
+<!-- Reports -->
+<li class="treeview ">
+    <a href="#">
+        <i class="fa  fa-file-text-o"></i>
+        <span class="hidden-xs">Report</span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  	</span>
+    </a>
+    <ul class="treeview-menu ">
+        <li class=""><a
+                href="../../../reports/shippings/index.html">Report Spedizioni</a></li>
+        <li class=""><a
+                href="../../../reports/shippinglists/index.html">Report Distinte</a></li>
+        <li class=""><a
+                href="../../../reports/contrassegni/index.html">Report Contrassegni</a></li>
+        <li class=""><a
+                href="../../../reports/consumables/index.html">Report Consumabili</a></li>
+        <li class=""><a
+                href="../../../reports/priceupdates/index.html">Report Rettifiche</a></li>
+    </ul>
+</li>
+<!--  Distinte vettori -->
+<li class="treview ">
+    <a href="#">
+        <i class="fa fa-cubes"></i>
+        <span
+            class="label label-primary pull-right">Nuovo</span>
+                    <span class="label label-warning pull-right"><i class="fa fa-star"></i></span>
+                <span class="hidden-xs">Prodotti</span>
+        <span class="pull-right-container">
+					  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+    </a>
+    <ul class="treeview-menu">
+        <li class=""><a
+                href="../../../client/products/index.html">Catalogo</a></li>
+    </ul>
+</li>
+
+<!-- Il Mio account -->
+<li class="treeview ">
+    <a href="#">
+        <i class="fa  fa-user"></i>
+        <span class="hidden-xs">Mio Account</span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  	</span>
+    </a>
+    <ul class="treeview-menu ">
+        <li class=""><a
+                href="../../../client/profile/index.html">Il Mio Profilo</a></li>
+                    <li class=""><a href="../../../listini/view/index.html">
+                    Listino Prezzi</a></li>
+                <li class=""><a href="../../../movimenti/index.html">
+                Lista Movimenti</a></li>
+        <li class=""><a href="../../../sms/index.html">
+                Notifiche SMS</a></li>
+                    <li class=""><a
+                    href="../../../consumables/index.html">Spese sped. Extra, Resi, etc</a></li>
+            </ul>
+</li>
+<!-- AddressBook -->
+<li class="treeview ">
+    <a href="#">
+        <i class="fa  fa-users"></i>
+        <span class="hidden-xs">Rubrica</span>
+        <span class="pull-right-container" style="padding-right: 20px"></span>
+                    <span class="label label-warning pull-right"><i class="fa fa-star"></i></span>
+        
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  	</span>
+    </a>
+    <ul class="treeview-menu ">
+        <li class=""><a
+                href="../../../addressbook/index.html">Elenco</a></li>
+        <li class=""><a
+                href="../../../addressbook/create/index.html">Aggiungi</a></li>
+    </ul>
+</li>
+<!-- Settings -->
+<li class="treeview active">
+    <a href="#">
+        <i class="fa  fa-gears"></i>
+        <span
+            class="label label-primary pull-right">Nuovo</span>
+        <span class="hidden-xs">Impostazioni</span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  </span>
+
+    </a>
+    <ul class="treeview-menu ">
+        <li class="active"><a
+                href="../../../warehouses/index.html">Punti di ritiro</a></li>
+        <li class=""><a
+                href="../../../packs/index.html">Pacchi</a></li>
+                <li class=""><a
+                href="../../../clientsettings/index.html">Stampa e Notifiche</a></li>
+        <li class=""><a href="../../../clientstores/index.html">
+                Negozi Online</a></li>
+            <li class=""><a
+                    href="../../../subscription/index.html">Abbonamento</a></li>
+        <li class="">
+                            <span class="label label-warning pull-right"><i class="fa fa-star"></i></span>
+                        <a href="../../../client/team/index.html">Utenti - Team</a></li>
+                    <li class=""><a href="../../../password/index.html">
+                    Cambia Password</a></li>
+                <li class=""><a
+                href="../../../apikeys/index.html">Chiave API</a></li>
+        <li class="">
+            <span class="label label-primary pull-right">Nuovo</span>
+            <a href="../../../client/api-app/index.html">API App (OAuth2)</a></li>
+
+        <li class="">
+             <span class="label label-primary pull-right">Nuovo</span>
+                            <span class="label label-warning pull-right"><i class="fa fa-star"></i></span>
+            
+            <a href="../../../webhooks/index.html">Webhooks</a></li>
+
+        <li class="">
+            <span class="label label-primary pull-right">Nuovo</span>
+                            <span class="label label-warning pull-right"><i class="fa fa-star"></i></span>
+                        <a href="../../../client/logo/index.html">Logo</a></li>
+
+                    <li class=""><a
+                    href="../../../2fa/disable/index.html">Disabilita Google 2FA App</a></li>
+        
+    </ul>
+</li>
+
+<!-- Support Tickets (only on demo1 while testing) -->
+
+<!-- Manuale -->
+<li class="treeview ">
+    <a href="https://docs.spedisci.online/Smart" target="_blank">
+        <i class="fa fa-book"></i>
+        <span class="hidden-xs">Manuale</span>
+    </a>
+</li>
+
+
+<li>
+    <a href="../../../login/index.html"
+       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+        <i class='fa fa-power-off'></i>
+        <span>Esci</span>
+
+    </a>
+    <form id="logout-form" action="../../../login/index.html" method="POST" style="display: none;">
+        <input type="hidden" name="_token" value="sandbox" autocomplete="off">    </form>
+</li>
+
+                                                            </ul><!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+
+        
+        <div class="sidebar-footer">
+            <span class="sidebar-footer-copy">
+                &copy; 2016–2026
+                <a href="#" target="_blank">spedisci.online</a>
+            </span>
+            <span class="sidebar-footer-version" title="Tutti i diritti riservati">v2026.30</span>
+        </div>
+    </aside>
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+
+
+                <div class="content-header clearfix">
+        <h1 class="pull-left">Modifica sede ritiro</h1>
+        <div class="pull-right">
+            <a class="btn btn-default" href="../../../warehouses/index.html"><i class="fa fa-arrow-left"></i> Punti di ritiro</a>
+        </div>
+    </div>
+
+            
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+                        <!-- Messagi di ERRORE -->
+            
+            
+
+
+
+                        <!-- END MESSAGGI -->
+
+                <form method="POST" action="../../../warehouses/1854/index.html" accept-charset="UTF-8" id="warehouse-form"><input name="_method" type="hidden" value="PATCH"><input name="_token" type="hidden" value="sandbox">
+    <div class="row">
+    <div class="col-md-7">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Indirizzo del mittente</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="title">Nome Location</label>
+                        <input class="form-control" required="required" maxlength="100" placeholder="es. Magazzino principale" name="title" type="text" value="SPEDIZIONI PRIME DEMO" id="title">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="sender_reference">Rif. Mittente</label>
+                        <input class="form-control" maxlength="100" name="sender_reference" type="text" id="sender_reference">
+                        <small class="text-muted">Stampato sulle etichette come riferimento mittente.</small>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="origin_company">Azienda</label>
+                        <input class="form-control" required="required" maxlength="255" name="origin_company" type="text" value="SPEDIZIONI PRIME DEMO" id="origin_company">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="origin_name">Nome e Cognome</label>
+                        <input class="form-control" required="required" maxlength="255" name="origin_name" type="text" value="NOME COGNOME DEMO" id="origin_name">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="origin_country">Paese</label>
+                        <select class="form-control" required="required" id="origin_country" data-provinces="#origin_state" name="origin_country"><option value="AT">Austria</option><option value="BE">Belgio</option><option value="BG">Bulgaria</option><option value="CY">Cipro</option><option value="HR">Croazia</option><option value="DK">Danimarca</option><option value="EE">Estonia</option><option value="FI">Finlandia</option><option value="FR">Francia</option><option value="DE">Germania</option><option value="GR">Grecia</option><option value="IE">Irlanda</option><option value="IT" selected="selected">Italia</option><option value="LV">Lettonia</option><option value="LT">Lituania</option><option value="LU">Lussemburgo</option><option value="MT">Malta</option><option value="NL">Paesi Bassi</option><option value="PL">Polonia</option><option value="PT">Portogallo</option><option value="GB">Regno Unito</option><option value="CZ">Repubblica Ceca</option><option value="RO">Romania</option><option value="SK">Slovacchia</option><option value="SI">Slovenia</option><option value="ES">Spagna</option><option value="SE">Svezia</option><option value="CH">Svizzera</option><option value="HU">Ungheria</option></select>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <label for="origin_street1">Indirizzo</label>
+                        <input class="form-control" required="required" maxlength="255" placeholder="Via e numero civico" name="origin_street1" type="text" value="VIA ESEMPIO 1" id="origin_street1">
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="origin_street2">Indirizzo (riga 2)</label>
+                        <input class="form-control" maxlength="255" placeholder="Edificio, piano, cancello (facoltativo)" name="origin_street2" type="text" id="origin_street2">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="origin_zip">CAP</label>
+                        <input class="form-control" required="required" maxlength="10" name="origin_zip" type="text" value="80100" id="origin_zip">
+                    </div>
+                    <div class="form-group col-sm-5">
+                        <label for="origin_city">Città</label>
+                        <input class="form-control" required="required" maxlength="255" name="origin_city" type="text" value="NAPOLI" id="origin_city">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="origin_state">Provincia</label>
+                        <select class="form-control province-select" id="origin_state" required="required" name="origin_state"><option value=""></option><option value="AG">Agrigento</option><option value="AL">Alessandria</option><option value="AN">Ancona</option><option value="AO">Aosta</option><option value="AR">Arezzo</option><option value="AP">Ascoli Piceno</option><option value="AT">Asti</option><option value="AV">Avellino</option><option value="BA">Bari</option><option value="BT">Barletta-Andria-Trani</option><option value="BL">Belluno</option><option value="BN">Benevento</option><option value="BG">Bergamo</option><option value="BI">Biella</option><option value="BO">Bologna</option><option value="BZ">Bolzano</option><option value="BS">Brescia</option><option value="BR">Brindisi</option><option value="CA">Cagliari</option><option value="CL">Caltanissetta</option><option value="CB">Campobasso</option><option value="CI">Carbonia-Iglesias</option><option value="CE">Caserta</option><option value="CT">Catania</option><option value="CZ">Catanzaro</option><option value="CH">Chieti</option><option value="CO">Como</option><option value="CS">Cosenza</option><option value="CR">Cremona</option><option value="KR">Crotone</option><option value="CN">Cuneo</option><option value="EN">Enna</option><option value="FM">Fermo</option><option value="FE">Ferrara</option><option value="FI">Firenze</option><option value="FG">Foggia</option><option value="FC">Forlì-Cesena</option><option value="FR">Frosinone</option><option value="GE">Genova</option><option value="GO">Gorizia</option><option value="GR">Grosseto</option><option value="IM">Imperia</option><option value="IS">Isernia</option><option value="AQ">L&#039;Aquila</option><option value="SP">La spezia</option><option value="LT">Latina</option><option value="LE">Lecce</option><option value="LC">Lecco</option><option value="LI">Livorno</option><option value="LO">Lodi</option><option value="LU">Lucca</option><option value="MC">Macerata</option><option value="MN">Mantova</option><option value="MS">Massa e Carrara</option><option value="MT">Matera</option><option value="VS">Medio Campidano</option><option value="ME">Messina</option><option value="MI">Milano</option><option value="MO">Modena</option><option value="MB">Monza e Brianza</option><option value="NA" selected="selected">Napoli</option><option value="NO">Novara</option><option value="NU">Nuoro</option><option value="OG">Ogliastra</option><option value="OT">Olbia-Tempio</option><option value="OR">Oristano</option><option value="PD">Padova</option><option value="PA">Palermo</option><option value="PR">Parma</option><option value="PV">Pavia</option><option value="PG">Perugia</option><option value="PU">Pesaro e Urbino</option><option value="PE">Pescara</option><option value="PC">Piacenza</option><option value="PI">Pisa</option><option value="PT">Pistoia</option><option value="PN">Pordenone</option><option value="PZ">Potenza</option><option value="PO">Prato</option><option value="RG">Ragusa</option><option value="RA">Ravenna</option><option value="RC">Reggio Calabria</option><option value="RE">Reggio Emilia</option><option value="RI">Rieti</option><option value="RN">Rimini</option><option value="RM">Roma</option><option value="RO">Rovigo</option><option value="SA">Salerno</option><option value="SM">San Marino</option><option value="SS">Sassari</option><option value="SV">Savona</option><option value="SI">Siena</option><option value="SR">Siracusa</option><option value="SO">Sondrio</option><option value="SU">Sud Sardegna</option><option value="TA">Taranto</option><option value="TE">Teramo</option><option value="TR">Terni</option><option value="TO">Torino</option><option value="TP">Trapani</option><option value="TN">Trento</option><option value="TV">Treviso</option><option value="TS">Trieste</option><option value="UD">Udine</option><option value="VA">Varese</option><option value="VE">Venezia</option><option value="VB">Verbano Cusio Ossola</option><option value="VC">Vercelli</option><option value="VR">Verona</option><option value="VV">Vibo Valentia</option><option value="VI">Vicenza</option><option value="VT">Viterbo</option></select>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="origin_phone">Telefono</label>
+                        <input class="form-control" required="required" maxlength="20" name="origin_phone" type="text" value="0000000000" id="origin_phone">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="origin_email">Email</label>
+                        <input class="form-control" maxlength="255" name="origin_email" type="email" value="DEMO@ESEMPIO.IT" id="origin_email">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Indirizzo di reso</h3>
+            </div>
+            <div class="box-body">
+                <div class="checkbox" style="margin-top:0;">
+                    <label>
+                        <input name="return_same" type="hidden" value="0">
+                        <input id="return_same" checked="checked" name="return_same" type="checkbox" value="1">
+                        Uguale all&#039;indirizzo del mittente
+                    </label>
+                </div>
+                <div class="row" id="return-fields">
+                    <div class="form-group col-sm-6">
+                        <label for="return_company">Azienda</label>
+                        <input class="form-control" maxlength="255" name="return_company" type="text" id="return_company">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="return_name">Nome e Cognome</label>
+                        <input class="form-control" maxlength="255" name="return_name" type="text" id="return_name">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="return_country">Paese</label>
+                        <select class="form-control" id="return_country" data-provinces="#return_state" name="return_country"><option value="AT">Austria</option><option value="BE">Belgio</option><option value="BG">Bulgaria</option><option value="CY">Cipro</option><option value="HR">Croazia</option><option value="DK">Danimarca</option><option value="EE">Estonia</option><option value="FI">Finlandia</option><option value="FR">Francia</option><option value="DE">Germania</option><option value="GR">Grecia</option><option value="IE">Irlanda</option><option value="IT" selected="selected">Italia</option><option value="LV">Lettonia</option><option value="LT">Lituania</option><option value="LU">Lussemburgo</option><option value="MT">Malta</option><option value="NL">Paesi Bassi</option><option value="PL">Polonia</option><option value="PT">Portogallo</option><option value="GB">Regno Unito</option><option value="CZ">Repubblica Ceca</option><option value="RO">Romania</option><option value="SK">Slovacchia</option><option value="SI">Slovenia</option><option value="ES">Spagna</option><option value="SE">Svezia</option><option value="CH">Svizzera</option><option value="HU">Ungheria</option></select>
+                    </div>
+                    <div class="form-group col-sm-8">
+                        <label for="return_street1">Indirizzo</label>
+                        <input class="form-control" maxlength="255" name="return_street1" type="text" id="return_street1">
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label for="return_street2">Indirizzo (riga 2)</label>
+                        <input class="form-control" maxlength="255" name="return_street2" type="text" id="return_street2">
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label for="return_zip">CAP</label>
+                        <input class="form-control" maxlength="10" name="return_zip" type="text" id="return_zip">
+                    </div>
+                    <div class="form-group col-sm-5">
+                        <label for="return_city">Città</label>
+                        <input class="form-control" maxlength="255" name="return_city" type="text" id="return_city">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="return_state">Provincia</label>
+                        <select class="form-control province-select" id="return_state" name="return_state"><option value="" selected="selected"></option><option value="AG">Agrigento</option><option value="AL">Alessandria</option><option value="AN">Ancona</option><option value="AO">Aosta</option><option value="AR">Arezzo</option><option value="AP">Ascoli Piceno</option><option value="AT">Asti</option><option value="AV">Avellino</option><option value="BA">Bari</option><option value="BT">Barletta-Andria-Trani</option><option value="BL">Belluno</option><option value="BN">Benevento</option><option value="BG">Bergamo</option><option value="BI">Biella</option><option value="BO">Bologna</option><option value="BZ">Bolzano</option><option value="BS">Brescia</option><option value="BR">Brindisi</option><option value="CA">Cagliari</option><option value="CL">Caltanissetta</option><option value="CB">Campobasso</option><option value="CI">Carbonia-Iglesias</option><option value="CE">Caserta</option><option value="CT">Catania</option><option value="CZ">Catanzaro</option><option value="CH">Chieti</option><option value="CO">Como</option><option value="CS">Cosenza</option><option value="CR">Cremona</option><option value="KR">Crotone</option><option value="CN">Cuneo</option><option value="EN">Enna</option><option value="FM">Fermo</option><option value="FE">Ferrara</option><option value="FI">Firenze</option><option value="FG">Foggia</option><option value="FC">Forlì-Cesena</option><option value="FR">Frosinone</option><option value="GE">Genova</option><option value="GO">Gorizia</option><option value="GR">Grosseto</option><option value="IM">Imperia</option><option value="IS">Isernia</option><option value="AQ">L&#039;Aquila</option><option value="SP">La spezia</option><option value="LT">Latina</option><option value="LE">Lecce</option><option value="LC">Lecco</option><option value="LI">Livorno</option><option value="LO">Lodi</option><option value="LU">Lucca</option><option value="MC">Macerata</option><option value="MN">Mantova</option><option value="MS">Massa e Carrara</option><option value="MT">Matera</option><option value="VS">Medio Campidano</option><option value="ME">Messina</option><option value="MI">Milano</option><option value="MO">Modena</option><option value="MB">Monza e Brianza</option><option value="NA">Napoli</option><option value="NO">Novara</option><option value="NU">Nuoro</option><option value="OG">Ogliastra</option><option value="OT">Olbia-Tempio</option><option value="OR">Oristano</option><option value="PD">Padova</option><option value="PA">Palermo</option><option value="PR">Parma</option><option value="PV">Pavia</option><option value="PG">Perugia</option><option value="PU">Pesaro e Urbino</option><option value="PE">Pescara</option><option value="PC">Piacenza</option><option value="PI">Pisa</option><option value="PT">Pistoia</option><option value="PN">Pordenone</option><option value="PZ">Potenza</option><option value="PO">Prato</option><option value="RG">Ragusa</option><option value="RA">Ravenna</option><option value="RC">Reggio Calabria</option><option value="RE">Reggio Emilia</option><option value="RI">Rieti</option><option value="RN">Rimini</option><option value="RM">Roma</option><option value="RO">Rovigo</option><option value="SA">Salerno</option><option value="SM">San Marino</option><option value="SS">Sassari</option><option value="SV">Savona</option><option value="SI">Siena</option><option value="SR">Siracusa</option><option value="SO">Sondrio</option><option value="SU">Sud Sardegna</option><option value="TA">Taranto</option><option value="TE">Teramo</option><option value="TR">Terni</option><option value="TO">Torino</option><option value="TP">Trapani</option><option value="TN">Trento</option><option value="TV">Treviso</option><option value="TS">Trieste</option><option value="UD">Udine</option><option value="VA">Varese</option><option value="VE">Venezia</option><option value="VB">Verbano Cusio Ossola</option><option value="VC">Vercelli</option><option value="VR">Verona</option><option value="VV">Vibo Valentia</option><option value="VI">Vicenza</option><option value="VT">Viterbo</option></select>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="return_phone">Telefono</label>
+                        <input class="form-control" maxlength="20" name="return_phone" type="text" id="return_phone">
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="return_email">Email</label>
+                        <input class="form-control" maxlength="255" name="return_email" type="email" id="return_email">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="box box-default" id="warehouse-map-box">
+    <div class="box-header with-border">
+        <h3 class="box-title">Posizione sulla mappa</h3>
+    </div>
+    <div class="box-body">
+        <p>La posizione viene ricavata dall&#039;indirizzo al salvataggio. Se il segnaposto finisce nel posto sbagliato, trascinalo nel punto giusto.
+                    </p>
+        <div id="warehouse-map"
+             style="height: 340px; background: #eee;"
+             data-lat="40.9920236"
+             data-lng="14.1741442"
+             data-address="VIA ESEMPIO 1, 80100 NAPOLI, (NA)"></div>
+        <input id="warehouse_latitude" name="latitude" type="hidden" value="40.9920236">
+        <input id="warehouse_longitude" name="longitude" type="hidden" value="14.1741442">
+        <div style="margin-top: 10px;">
+            <button type="button" class="btn btn-default btn-sm" id="warehouse-map-locate">
+                <i class="fa fa-crosshairs"></i> Trova l&#039;indirizzo sulla mappa
+            </button>
+            <span class="text-muted" id="warehouse-map-status" style="margin-left: 8px;">
+                            </span>
+        </div>
+    </div>
+</div>
+
+        <div class="box">
+            <div class="box-body">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Salva</button>
+                <a href="../../../warehouses/index.html" class="btn btn-default">Chiudi</a>
+            </div>
+        </div>
+    </div>
+</div>
+    </form>
+        </section><!-- /.content -->
+
+    </div><!-- /.content-wrapper -->
+    
+    <!-- Ecommerce Italia Widget -->
+        <script>
+
+    </script>
+    
+    </div>
+
+
+<!-- jQuery 2.1.4 -->
+<script src="../../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../../../recorded/data.js"></script>
+<script src="../../../sandbox.js"></script>
+<script src="../../../plugins/jquery-ui-1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+
+<script src="../../../plugins/jQueryUI/jquery-ui-i18n.js"></script>
+<script>
+var language = 'it';
+</script>
+
+<!-- Bootstrap 3.3.6 JS -->
+<script src="../../../bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../../../plugins/bootstrap-select/1.6.2/css/bootstrap-select.min.css">
+
+
+<!-- DATA TABES SCRIPT -->
+<script src="../../../plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="../../../plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+<script src="../../../plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"
+    type="text/javascript"></script>
+
+
+<!-- SlimScroll -->
+<script src="../../../plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<!-- FastClick -->
+<script src="../../../plugins/fastclick/fastclick.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="../../../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+<!-- daterangepicker -->
+<script type="text/javascript" src="../../../plugins/daterangepicker/moment.min.js"></script>
+<script src="../../../plugins/daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="../../../plugins/daterangepicker/daterangepicker.css"/>
+<!-- DatePicker -->
+<script src="../../../plugins/datepicker/bootstrap-datepicker.js"></script>
+<script>
+//set default datepicker language
+$.fn.datepicker.defaults.language = language;
+</script>
+
+<script src="../../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"
+    type="text/javascript"></script>
+<script src="../../../plugins/bootstrap-switch/bootstrap-switch.min.js" type="text/javascript"></script>
+
+<script src="../../../plugins/select2/select2.min.js"></script>
+<script src="../../../plugins/datepicker/locales/bootstrap-datepicker.it.js"></script>
+<script src="../../../plugins/select2/i18n/it.js"></script>
+
+
+<!-- Sparkline -->
+<script src="../../../plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+<!-- jvectormap -->
+<script src="../../../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+<script src="../../../plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+<!-- jQuery Knob Chart -->
+<script src="../../../plugins/knob/jquery.knob.js" type="text/javascript"></script>
+
+
+<!-- AdminLTE App -->
+<script src="../../../dist/js/app.js" type="text/javascript"></script>
+<!-- Viewport-locked shell. Must stay after app.js: it replaces
+     $.AdminLTE.layout.fix from a ready handler that has to run after AdminLTE's own. -->
+<script src="../../../js/layout-shell.js" type="text/javascript"></script>
+<!-- AdminLTE for demo purposes -->
+
+<script src="../../../dist/js/demo.js" type="text/javascript"></script>
+<!-- page script -->
+<script src="../../../js/custom.js" type="text/javascript"></script>
+<!--custom script functions -->
+<script src="../../../js/BrowserPrint-2.0.0.75.min.js" type="text/javascript"></script>
+<script src="../../../js/printZpl.js" type="text/javascript"></script>
+
+<script src="../../../plugins/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('.selectpicker').selectpicker();
+});
+</script>
+
+
+
+
+    <script src="../../../js/client-warehouse-form.js"></script>
+
+<script>
+    $(function () {
+        ClientWarehouseForm.init({
+            provincesUrl: '../../../api/provinces',
+            provincePlaceholder: 'Seleziona provincia...',
+            labels: {
+                located: 'Localizzato',
+                notFound: 'Indirizzo non trovato, trascina il segnaposto a mano',
+                preview: 'Posizione indicativa: trascina il segnaposto nel punto esatto',
+                searching: 'Searching...'
+            }
+        });
+    });
+</script>
+</body>
+</html>

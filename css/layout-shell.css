@@ -1,0 +1,316 @@
+/*
+ |--------------------------------------------------------------------------
+ | Viewport-locked app shell
+ |--------------------------------------------------------------------------
+ |
+ | Loaded only by resources/views/app.blade.php, the AdminLTE 2 shell that 244
+ | of the 255 views extend. Turns the stock document-scroll layout into a
+ | viewport-locked one: the page fills the window exactly, and the menu and the
+ | content each scroll on their own.
+ |
+ | Why it was needed: AdminLTE sizes .content-wrapper to whichever is taller,
+ | the window or the sidebar (dist/js/app.js, $.AdminLTE.layout.fix). Both
+ | sidebars run to 16 and 11 top-level entries, so the sidebar always won and
+ | every page grew a block of empty space below the content plus a single
+ | document scrollbar. layout.fix() writes that height as an INLINE style, so
+ | it cannot be beaten from a stylesheet — js/layout-shell.js replaces it with
+ | a no-op, and the shell sizes itself here instead.
+ |
+ | Load position matters. This file goes after dist/css/skins/_all-skins2.min.css
+ | (which only ever sets colours, borders and shadows on these selectors, never
+ | geometry) and BEFORE the per-tenant {subdomain}_custom.css, so a white-label
+ | tenant can still adjust the shell without having to use !important.
+ |
+ | Nothing here edits the vendor stylesheets — AdminLTE.min237.css and the skins
+ | are minified and already carry local patches. Removing the one <link> in
+ | app.blade.php reverts the whole change.
+ */
+
+/* --------------------------------------------------------------------------
+ | 1. The document itself no longer scrolls
+ |--------------------------------------------------------------------------*/
+
+html {
+    height: 100%;
+}
+
+body {
+    /* dvh so the iOS address bar does not push the footer out of reach; the vh
+       pair above it is the fallback for browsers that do not know dvh. */
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* AdminLTE sets overflow-y:auto here, which is what produced the page-level
+       scrollbar. Scrolling now belongs to .sidebar and .content. */
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+ | 2. .wrapper — header on top, content region taking the rest
+ |--------------------------------------------------------------------------*/
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* AdminLTE ships min-height:100%, which on a flex child means "never shrink
+       below the full window" and would push the shell past the viewport. */
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* The header is 50px wide-screen and 100px below 768px, where the logo stacks
+   above the navbar. Letting flex measure it keeps both cases right without a
+   hardcoded calc(). */
+.wrapper > .main-header {
+    flex: 0 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+ | 3. Sidebar — full height, its own scrollbar, footer pinned to the bottom
+ |--------------------------------------------------------------------------*/
+
+/* Still position:absolute inside .wrapper, exactly as AdminLTE places it, so
+   the 0.3s collapse transition on width and on .content-wrapper's margin-left
+   keeps working untouched. Only the height model changes. */
+.main-sidebar {
+    top: 0;
+    bottom: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-sidebar > .sidebar {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Mini mode: the submenu flies out at left:50px, i.e. outside the 50px bar,
+   and AdminLTE relies on .sidebar-menu:hover{overflow:visible} to let it
+   through. A scroll container would clip it — once overflow-y is auto,
+   overflow-x can no longer compute to visible — so mini mode trades the
+   scrollbar for working flyouts. Icons-only, the menu is roughly 670px tall;
+   on a window shorter than that the last entries are reachable by expanding
+   the sidebar again. */
+body.sidebar-collapse .main-sidebar > .sidebar {
+    overflow: visible;
+}
+
+/* Thin, low-contrast scrollbar — the default chrome one is a bright slab
+   against the dark sidebar. Progressive enhancement; Firefox gets the
+   standard properties, everything else the WebKit ones. */
+.main-sidebar > .sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, .2) transparent;
+}
+
+.main-sidebar > .sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-sidebar > .sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-sidebar > .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .2);
+    border-radius: 3px;
+}
+
+.main-sidebar > .sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, .35);
+}
+
+/* --------------------------------------------------------------------------
+ | 4. Compact footer, at the foot of the menu
+ |--------------------------------------------------------------------------*/
+
+/* Replaces the full-width .main-footer bar, which cost ~50px of height on
+   every page to show a copyright line. Colours are inherited from the active
+   skin's .main-sidebar rules so this stays correct on every skin and for a
+   tenant that re-themes the sidebar. */
+.sidebar-footer {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    font-size: 11px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, .45);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sidebar-footer a {
+    color: rgba(255, 255, 255, .65);
+}
+
+.sidebar-footer a:hover,
+.sidebar-footer a:focus {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.sidebar-footer-version {
+    display: block;
+    color: rgba(255, 255, 255, .35);
+}
+
+/* Mini mode leaves 50px of width — only the version number still fits. */
+body.sidebar-collapse .sidebar-footer {
+    padding: 8px 4px;
+    text-align: center;
+}
+
+body.sidebar-collapse .sidebar-footer-copy {
+    display: none;
+}
+
+body.sidebar-collapse .sidebar-footer-version {
+    font-size: 10px;
+}
+
+/* --------------------------------------------------------------------------
+ | 5. Content — page header fixed, .content scrolls
+ |--------------------------------------------------------------------------*/
+
+/* AdminLTE gives .content-wrapper z-index 800, 820 and — in sidebar-mini —
+   840, but never a position, so on a static block all three were ignored and
+   the element was not a stacking context. Making .wrapper a flex container
+   changed that on its own: z-index applies to a flex ITEM whatever its
+   position, so .content-wrapper started painting as a stacking context at 840,
+   and every Bootstrap modal declared inside @section('content') was sealed in
+   with it. .modal's 1050 then only ranked against its siblings, while
+   .modal-backdrop — which Bootstrap appends to <body> — kept ranking at 1040 in
+   the root context and so covered the dialog. Handing the z-index back to auto
+   restores exactly the computed value the element had before this file existed;
+   nothing ever depended on the number, because it never applied. The second
+   selector is only there to outrank AdminLTE's .sidebar-mini.sidebar-collapse
+   rule, which is more specific than the first.
+
+   Deliberately not solved by moving the dialogs to <body>, either in the markup
+   or with an appendTo at show.bs.modal: 58 views carry a modal, three of them
+   (admin/renderlists, admin/clients/options, admin/shippinglists) declare it
+   inside the page <form>, where relocating the node drops its fields off the
+   submit — exactly the regression pass this avoids. */
+.wrapper > .content-wrapper,
+.sidebar-mini.sidebar-collapse .wrapper > .content-wrapper {
+    z-index: auto;
+}
+
+.content-wrapper {
+    flex: 1 1 auto;
+    /* !important covers two sources at once: AdminLTE's min-height:100% and any
+       inline height a stale cached copy of dist/js/app.js might still write. */
+    min-height: 0 !important;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 188 views fill @section('content-header') with the page title and its action
+   buttons — worth keeping in place while the list below it scrolls.
+   It is not purely fixed-size, though: app.blade.php also renders the monthly
+   plan-limit box in here, so it may still scroll internally, and it is capped
+   so the content area always keeps at least 55% of the height.
+
+   flex-shrink is 0, not 1. With 1, the flex algorithm shares the overflow
+   between the two items in proportion to their base sizes, and .content's base
+   is the whole page — so on any page longer than the window the header was
+   pulled straight down to its 54px floor whatever it actually contained.
+   Measured at 1440x900: admin/clients/show needs 64px and got 54, losing its
+   action buttons behind a scrollbar; a page carrying the plan-limit box needs
+   211px and got 100, which hid half of the very warning this overflow rule was
+   added for. With 0 the header keeps its own height and max-height is the only
+   thing that can take it away, which is what the cap was written to do. */
+.content-wrapper > .content-header {
+    flex: 0 0 auto;
+    max-height: 45%;
+    overflow-y: auto;
+}
+
+/* A floor for a header whose content is shorter than the strip it sits in, so
+   a page with one small element in it does not come out visibly thinner than
+   the 188 that carry a full-size title. It is gated on the header actually
+   having something in it: app.blade.php emits <section class="content-header">
+   on every page whether or not the view fills it, so the markup cannot answer
+   "is there a header" — 188 views fill it, 56 leave it empty, and three of
+   those declare the section and put nothing inside. :has() answers it from the
+   content, and picks up the admin plan-limit box too, which lands in the header
+   independently of the section.
+
+   Where the header carries content it also supplies the gap above the page, so
+   .content drops its own padding there — and only there, which is what the
+   sibling combinator says. Headerless pages keep AdminLTE's 15px.
+
+   A browser without :has() drops both rules and gets today's behaviour. */
+.content-wrapper > .content-header:has(*) {
+    min-height: 54px;
+}
+.content-wrapper > .content-header:has(*) + .content {
+    padding-top: 0;
+}
+
+/* Bootstrap gives h1 line-height:1.1, and AdminLTE sizes the page title at
+   24px — 26.4px a line. A single line hides under the 54px floor above, but a
+   title that wraps lands the header on a fractional height: the used height
+   rounds down, scrollHeight rounds up, and overflow-y:auto answers a 1px gap
+   with a full scrollbar. Measured on a 768px-wide window, and 2px at 375px.
+   1.25 x 24px is 30px exactly, so every line count comes out whole. Chosen
+   over rounding the padding because it survives a change of title font size,
+   and it is invisible on the single-line titles the floor already governs. */
+.content-wrapper > .content-header h1 {
+    line-height: 1.25;
+}
+
+/* The empty header is still a 15px strip of its own top padding, which put 30px
+   above a headerless page against 15px at the sides. Collapse it so .content's
+   own padding is the only spacing and the three sides match. */
+.content-wrapper > .content-header:not(:has(*)) {
+    padding: 0;
+}
+
+.content-wrapper > .content {
+    flex: 1 1 auto;
+    /* AdminLTE's min-height:250px would stop this from shrinking on a short
+       window and push the bottom of the content past the viewport. */
+    min-height: 0;
+    /* AdminLTE gives .content margin-left:auto and margin-right:auto. As a block
+       that did nothing, but a flex item with an auto margin on the cross axis is
+       exempt from align-items:stretch: it is sized to fit its content and the
+       auto margins centre what is left over. Every page whose content was
+       narrower than the window came out shrink-wrapped and centred rather than
+       full width - the pricelist accordion is where it showed first. A definite
+       cross size overrides the shrink-to-fit; border-box is global here, so the
+       15px padding stays inside it. */
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* --------------------------------------------------------------------------
+ | 6. Printing
+ |--------------------------------------------------------------------------*/
+
+/* AdminLTE already hides the sidebar, header and content-header when printing.
+   A viewport-locked shell would still print exactly one page and drop the rest,
+   so hand the height back to the content for print. Borderò, shipping lists and
+   the reports all go through here. */
+@media print {
+    html,
+    body,
+    .wrapper,
+    .content-wrapper,
+    .content-wrapper > .content {
+        height: auto !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+}
