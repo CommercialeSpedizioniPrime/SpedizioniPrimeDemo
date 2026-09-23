@@ -103,6 +103,10 @@
         if (/\/(shippings|invoices)\/ajax_multipdf(\/index\.html)?$/.test(url)) {
             return $.Deferred().resolve({ ok: true });
         }
+        // Qualsiasi altra POST verso la sandbox: l'hosting statico risponderebbe 405.
+        if ((options.type || 'GET').toUpperCase() === 'POST' && !/^https?:\/\//.test(url)) {
+            return $.Deferred().resolve({ ok: true });
+        }
         return null;
     }
 
@@ -315,6 +319,34 @@
             var sel = $(this).find('select[name=file]').val();
             var fmt = sel === 'csv' ? 'csv' : (sel === 'xls' ? 'xlsx' : 'pdf');
             window.open(BASE + 'sandbox/reports/' + m[1] + '.' + fmt, '_blank');
+        });
+    });
+    // Form POST (Crea Spedizione, Crea Distinta, Conferma Ritiro, filtri, ...): l'hosting statico
+    // non accetta POST (405), quindi il form porta alla pagina di destinazione in GET.
+    // I form gia' gestiti sopra (negozi, ordini, report) fermano l'evento prima e non passano di qui.
+    $(function () {
+        var FALLBACK = [
+            [/orders\/bulkupdate/, 'imports/index.html'],
+            [/subscription\/cancel/, 'subscription/index.html'],
+            [/setoptions/, 'clientsettings/index.html'],
+            [/packs\/\d+\/(delete|edit)/, 'packs/index.html'],
+            [/shippinglists\/(confirmclosure|scanclosure)/, 'shippinglists/index.html'],
+            [/imports\/upload/, 'imports/index.html'],
+            [/warehouses\/\d+\//, 'warehouses/index.html'],
+            [/clientstores\/new\//, 'clientstores/index.html']
+        ];
+        $(document).on('submit', 'form', function (e) {
+            if (e.isDefaultPrevented()) return;
+            var $f = $(this);
+            if (($f.attr('method') || 'get').toLowerCase() !== 'post') return;
+            var action = $f.attr('action') || '';
+            if (!action || action === '#' || /^https?:\/\//.test(action)) return;
+            e.preventDefault();
+            var url = action;
+            if (/privacy\/accept/.test(action)) { $f.closest('.modal').modal('hide'); return; }
+            if (/login\/index\.html$/.test(action) && this.id !== 'logout-form') url = BASE + 'index.html';
+            for (var i = 0; i < FALLBACK.length; i++) if (FALLBACK[i][0].test(action)) { url = BASE + FALLBACK[i][1]; break; }
+            if ($f.attr('target') === '_blank') window.open(url, '_blank'); else window.location.href = url;
         });
     });
 })(window.jQuery);
