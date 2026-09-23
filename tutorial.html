@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>Demo guidata - Primi passi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#0e6b8c 0%,#3c8dbc 60%,#5fb0d8 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;color:#fff}
+  .box{max-width:640px;padding:40px;text-align:center}
+  .logo{background:#fff;border-radius:16px;padding:18px 30px;display:inline-block;box-shadow:0 14px 40px rgba(0,0,0,.3)}
+  .logo img{width:260px;display:block}
+  h1{font-size:34px;margin:34px 0 10px}
+  p{font-size:17px;line-height:1.5;opacity:.95}
+  .btn{display:inline-block;margin:10px 6px 0;padding:14px 26px;border-radius:8px;font-weight:bold;text-decoration:none;font-size:16px}
+  .primary{background:#fff;color:#0e6b8c}
+  .secondary{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.6)}
+  small{display:block;margin-top:26px;opacity:.8;font-size:13px}
+  small a{color:#fff}
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="logo"><img src="storage/logo.png" alt="Spedizioni Prime"></div>
+    <h1>Demo guidata: i primi passi sul portale</h1>
+    <p>In pochi minuti creerai una spedizione, la stamperai, seguirai il tracking e chiuderai la giornata con la distinta. È un ambiente dimostrativo con dati fittizi: puoi cliccare senza timore.</p>
+    <a class="btn primary" href="#" id="start">Inizia il tutorial</a>
+    <a class="btn secondary" href="index.html" id="free">Esplora liberamente</a>
+    <small>Manuale completo: <a href="https://docs.spedisci.online" target="_blank" rel="noopener">docs.spedisci.online</a></small>
+  </div>
+<script>
+  document.getElementById('start').addEventListener('click', function (e) {
+    e.preventDefault();
+    try { localStorage.setItem('spedisci_tutorial', JSON.stringify({ active: true, step: 0 })); localStorage.removeItem('spedisci_sandbox_v1'); } catch (x) {}
+    location.href = 'index.html';
+  });
+  document.getElementById('free').addEventListener('click', function () {
+    try { localStorage.setItem('spedisci_tutorial', JSON.stringify({ active: false, step: 0 })); } catch (x) {}
+  });
+</script>
+</body>
+</html>
