@@ -103,8 +103,11 @@
         if (/\/(shippings|invoices)\/ajax_multipdf(\/index\.html)?$/.test(url)) {
             return $.Deferred().resolve({ ok: true });
         }
+        if (/\/shippinglists\/session(\/index\.html)?$/.test(url)) {
+            return $.Deferred().resolve({ draw: 1, recordsTotal: 0, recordsFiltered: 0, data: [] });
+        }
         // Qualsiasi altra POST verso la sandbox: l'hosting statico risponderebbe 405.
-        if ((options.type || 'GET').toUpperCase() === 'POST' && !/^https?:\/\//.test(url)) {
+        if ((options.type || 'GET').toUpperCase() === 'POST' && (!/^https?:\/\//.test(url) || url.indexOf(location.origin) === 0)) {
             return $.Deferred().resolve({ ok: true });
         }
         return null;

@@ -1,0 +1,2 @@
+destinatario;indirizzo;cap;localita;provincia;country;peso;colli;contrassegno;rif_mittente;rif_destinatario;note;telefono;email_destinatario;contenuto;order_id;totale_ordine;
+Mario Rossi;"Via Roma, n 20";58100;Grosseto;GR;IT;1;1;25.5;Amazon;Mario Rossi;343555666;Fragile;mario.rossi@gmail.com;frame 20x20;21545-45454-5454;25.5
