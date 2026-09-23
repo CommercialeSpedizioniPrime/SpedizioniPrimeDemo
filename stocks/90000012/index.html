@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Giacenza - Ecommerceitalia - Spedisci.Online</title>
+    
+            <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon"/>
+    
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.4 -->
+    <link href="../../bootstrap/css/bootstrap336.min.css" rel="stylesheet" type="text/css"/>
+    <!-- FontAwesome 4.3.0 -->
+    <link href="../../css/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Ionicons 2.0.0 -->
+    <link href="../../css/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Theme style -->
+
+    <link href="../../dist/css/AdminLTE.min237.css" rel="stylesheet" type="text/css"/>
+    <link href="../../plugins/flag-icon-css/css/flag-icon.css" rel="stylesheet" type="text/css"/>
+    <link href="../../plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../../plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css"
+          rel="stylesheet" type="text/css"/>
+    <link href="../../plugins/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <style>
+        /* -------------------------------------------------
+       RELEASE-NOTES – TABLE STYLING
+       ------------------------------------------------- */
+        .release-notes table {
+            width: 100%;
+            border-collapse: separate;          /* nicer spacing */
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,.07);
+            font-size: 1.3rem;
+        }
+
+        .release-notes table th,
+        .release-notes table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid #e0e7ff;
+        }
+
+        .release-notes table th {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            color: #1565c0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            font-size: 1.3rem;
+        }
+
+        .release-notes table td {
+            background: #fafcff;
+            color: #2c3e50;
+        }
+
+        /* Zebra striping for better readability */
+        .release-notes table tbody tr:nth-child(even) td {
+            background: #f5f9ff;
+        }
+
+        /* Hover effect */
+        .release-notes table tbody tr:hover td {
+            background: #e8f0fe;
+            transition: background .2s ease;
+        }
+
+        /* Responsive – collapse on very small screens */
+        @media (max-width: 480px) {
+            .release-notes table,
+            .release-notes table thead,
+            .release-notes table tbody,
+            .release-notes table th,
+            .release-notes table td,
+            .release-notes table tr {
+                display: block;
+            }
+            .release-notes table thead tr { display: none; }
+            .release-notes table tr {
+                margin-bottom: 1rem;
+                border: 1px solid #bbdefb;
+                border-radius: 8px;
+                padding: .5rem;
+            }
+            .release-notes table td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+            }
+            .release-notes table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 12px;
+                width: 45%;
+                font-weight: 600;
+                color: #1565c0;
+            }
+        }
+
+
+        .ui-autocomplete-loading {
+            background: white url("../../plugins/jquery-ui-1.11.4/images/ajax-loader.gif") right center no-repeat;
+        }
+
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+        }
+
+        /* .order-items-table lives in css/custom.css, shared with nomenu.blade.php */
+
+        .rowTempHighlight {
+            animation: 4s bgcolorchange;
+        }
+        @keyframes bgcolorchange {
+            0% {
+                color: black;
+            }
+            50% {
+                background: yellow;
+            }
+        }
+    </style>
+    <style>
+        .pdf-faq {
+            max-width: 900px;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* The clickable title */
+        .pdf-faq-summary {
+            display: block;
+            padding: 16px 20px;
+            background: #f7f7f7;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .pdf-faq-summary:hover { background: #efefef; }
+
+        /* Arrow indicator */
+        .pdf-faq-summary::after {
+            content: "▼";
+            position: absolute;
+            right: 20px;
+            transition: transform 0.3s ease;
+        }
+        .pdf-faq[open] .pdf-faq-summary::after {
+            transform: rotate(180deg);
+        }
+
+        /* The PDF container (hidden by default) */
+        .pdf-faq-content {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.4s ease;
+        }
+        .pdf-faq[open] .pdf-faq-content {
+            height: 800px; /* adjust to your preferred open height */
+        }
+
+        .pdf-faq iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Optional: nice focus style for keyboard users */
+        .pdf-faq-summary:focus-visible {
+            outline: 2px solid #0066cc;
+            outline-offset: -2px;
+        }
+
+        /* Button padding  for faq summary */
+        .pdf-faq-content .btn {
+            margin: 10px;
+        }
+    </style>
+
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link href="../../plugins/iCheck/all.css" rel="stylesheet" type="text/css"/>
+
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link href="../../dist/css/skins/_all-skins2.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Viewport-locked shell: menu and content scroll on their own instead of the page.
+         After the skins so it wins on geometry, before the tenant stylesheet so a
+         white-label install can still adjust it without !important. -->
+    <link href="../../css/layout-shell.css" rel="stylesheet" type="text/css"/>
+    <!-- Custom skin -->
+        <!-- iCheck -->
+    <link href="../../plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css"/>
+    <!-- Morris chart -->
+    <link href="../../plugins/morris/morris.css" rel="stylesheet" type="text/css"/>
+    <!-- jvectormap -->
+    <link href="../../plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css"/>
+    <!-- Date Picker -->
+    <link href="../../plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css"/>
+    <!-- Daterange picker -->
+    <link href="../../plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="../../plugins/bootstrap-switch/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../plugins/fineuploader/fineuploader-new-5.6.0.min.css" rel="stylesheet" type="text/css"/>
+    <!--  Select2 -->
+    <link href="../../plugins/select2/select2.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="../../css/custom.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    
+    
+    <![endif]-->
+    <style>
+        canvas {
+            width: 100% !important;
+            max-height: 450px;
+            height: auto !important;
+
+        }
+
+    </style>
+
+</head>
+<body class="skin-blue sidebar-mini">
+<div class="wrapper">
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="../../index.html" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini">
+                                <b>S.</b>O
+                        </span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg">
+                                <img src="../../storage/logo.png" style="width:150px;" />
+                        </span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+                <!-- Notifications: style can be found in dropdown.less -->
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                        <i class="fa fa-bell-o"></i>
+                        
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">
+                                                    </li>
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+
+                                                            </ul>
+                        </li>
+                        <li class="footer"><a href="../../notifications/index.html">Visualizza tutto</a></li>
+                    </ul>
+                </li>
+
+                <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src=../../dist/img/user2-160x160.jpg class="user-image" alt="User Image"/>
+
+                  <span class="hidden-xs">
+                 	 							SPEDIZIONI PRIME DEMO
+					 </span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                                        <img src=../../dist/img/user2-160x160.jpg class="img-circle" alt="User Image" />
+                    
+                    <p>
+                      								SPEDIZIONI PRIME DEMO
+						                    </p>
+                  </li>
+
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    
+                    <div class="pull-left user-langs">
+                                                                                <a href="#"
+                               class="btn btn-default btn-flat user-lang"
+                               title="English"
+                               aria-label="English"
+                               >
+                                
+                                <span class="flag-icon flag-icon-us"></span>
+                            </a>
+                                                                                <a href="#"
+                               class="btn btn-default btn-flat user-lang"
+                               title="German"
+                               aria-label="German"
+                               >
+                                
+                                <span class="flag-icon flag-icon-de"></span>
+                            </a>
+                                                                                <a href="#"
+                               class="btn btn-default btn-flat user-lang active"
+                               title="Italiano"
+                               aria-label="Italiano"
+                                aria-current="true" >
+                                
+                                <span class="flag-icon flag-icon-it"></span>
+                            </a>
+                                                                                <a href="#"
+                               class="btn btn-default btn-flat user-lang"
+                               title="Spanish"
+                               aria-label="Spanish"
+                               >
+                                
+                                <span class="flag-icon flag-icon-es"></span>
+                            </a>
+                                            </div>
+                    <div class="pull-right">
+                        <a class="btn btn-default btn-flat" href="../../login/index.html"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Esci
+                        </a>
+                        <form id="logout-form" action="../../login/index.html" method="POST" style="display: none;">
+                            <input type="hidden" name="_token" value="sandbox" autocomplete="off">                        </form>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            
+
+            </ul>
+          </div>
+        </nav>
+      </header>
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            
+            <!-- Sidebar Menu -->
+                            <ul class="sidebar-menu"
+                                    >
+                                                    <li class="header">Navigazione</li>
+
+<!-- Dashboard - same destination as the logo -->
+<li class="">
+    <a href="../../index.html">
+        <i class="fa fa-dashboard"></i>
+        <span class="hidden-xs">Dashboard</span>
+    </a>
+</li>
+
+<!-- Lettere di Vettura -->
+<li class="treview active">
+    <a href="#">
+        <i class="fa fa-indent"></i>
+        <span class="hidden-xs">Spedizioni</span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+    </a>
+    <ul class="treeview-menu">
+        <li class=""><a
+                href="../../shippings/create/index.html">Nuova Spedizione</a></li>
+        <li class=""><a href="../../shippings/index.html">
+                Elenco Spedizioni</a></li>
+                    <li class=""><a
+                    href="../../shippinglists/create/index.html">Crea Distinta</a></li>
+            <li class=""><a
+                    href="../../shippinglists/index.html">Lista Distinte</a></li>
+                <li class="active"><a
+                href="../../stocks/index.html">Giacenze</a>
+        </li>
+        <li class=""><a
+                href="../../shippings/contrassegni/index.html">Contrassegni</a></li>
+                    <li class=""><a href="../../cancelled/index.html">
+                    Spedizioni Cancellate</a></li>
+            </ul>
+</li>
+
+<!-- Importa / Esporta -->
+<li class="treeview ">
+    <a href="#">
+        <i class="glyphicon glyphicon-transfer"></i>
+        <span class="hidden-xs">Importa Ordini </span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  </span>
+    </a>
+    <ul class="treeview-menu ">
+                                                                                                                                                            <li class=""><a href="../../imports/index.html">
+                    Ordini da File CSV o XLS</a></li>
+                <li class="">
+            <span class="label label-primary pull-left" style="margin-left: 10px;margin-top: 5px;">+</span>
+            <a href="../../clientstores/index.html">Collega Negozio</a></li>
+
+
+    </ul>
+</li>
+<!-- Ritiri -->
+<li class="treview ">
+    <a href="#">
+        <i class="fa fa-undo"></i>
+        <span class="hidden-xs">Ritiri</span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+    </a>
+    <ul class="treeview-menu">
+        <li class="">
+            <a href="../../pickups/create/index.html">
+                Nuovo Ritiro</a>
+        </li>
+        <li class="">
+            <a href="../../pickups/index.html">
+                Elenco Ritiri</a>
+        </li>
+    </ul>
+</li>
+    <!--  Distinte Resi -->
+    <li class="treview ">
+        <a href="#">
+            <i class="fa fa-list-alt"></i>
+            <span class="hidden-xs">Resi</span>
+            <span class="pull-right-container">
+					  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+        </a>
+        <ul class="treeview-menu">
+            <li class=""><a
+                    href="../../renderlists/index.html">Distinte Resi</a></li>
+        </ul>
+    </li>
+<!-- Fatture -->
+    <li class="treeview ">
+        <a href="#">
+            <i class="fa  fa-file-text-o"></i>
+            <span class="hidden-xs">Fatture</span>
+            <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  	</span>
+        </a>
+        <ul class="treeview-menu ">
+            <li class=""><a href="../../invoices/index.html">
+                    Elenco Fatture</a></li>
+            <li class=""><a href="../../proforma/index.html">
+                    Elenco Proforme</a></li>
+            <li class=""><a href="../../receipts/index.html">
+                    Ricevute</a></li>
+
+        </ul>
+    </li>
+
+
+<!-- Reports -->
+<li class="treeview ">
+    <a href="#">
+        <i class="fa  fa-file-text-o"></i>
+        <span class="hidden-xs">Report</span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  	</span>
+    </a>
+    <ul class="treeview-menu ">
+        <li class=""><a
+                href="../../reports/shippings/index.html">Report Spedizioni</a></li>
+        <li class=""><a
+                href="../../reports/shippinglists/index.html">Report Distinte</a></li>
+        <li class=""><a
+                href="../../reports/contrassegni/index.html">Report Contrassegni</a></li>
+        <li class=""><a
+                href="../../reports/consumables/index.html">Report Consumabili</a></li>
+        <li class=""><a
+                href="../../reports/priceupdates/index.html">Report Rettifiche</a></li>
+    </ul>
+</li>
+<!--  Distinte vettori -->
+<li class="treview ">
+    <a href="#">
+        <i class="fa fa-cubes"></i>
+        <span
+            class="label label-primary pull-right">Nuovo</span>
+                    <span class="label label-warning pull-right"><i class="fa fa-star"></i></span>
+                <span class="hidden-xs">Prodotti</span>
+        <span class="pull-right-container">
+					  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+    </a>
+    <ul class="treeview-menu">
+        <li class=""><a
+                href="../../client/products/index.html">Catalogo</a></li>
+    </ul>
+</li>
+
+<!-- Il Mio account -->
+<li class="treeview ">
+    <a href="#">
+        <i class="fa  fa-user"></i>
+        <span class="hidden-xs">Mio Account</span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  	</span>
+    </a>
+    <ul class="treeview-menu ">
+        <li class=""><a
+                href="../../client/profile/index.html">Il Mio Profilo</a></li>
+                    <li class=""><a href="../../listini/view/index.html">
+                    Listino Prezzi</a></li>
+                <li class=""><a href="../../movimenti/index.html">
+                Lista Movimenti</a></li>
+        <li class=""><a href="../../sms/index.html">
+                Notifiche SMS</a></li>
+                    <li class=""><a
+                    href="../../consumables/index.html">Spese sped. Extra, Resi, etc</a></li>
+            </ul>
+</li>
+<!-- AddressBook -->
+<li class="treeview ">
+    <a href="#">
+        <i class="fa  fa-users"></i>
+        <span class="hidden-xs">Rubrica</span>
+        <span class="pull-right-container" style="padding-right: 20px"></span>
+                    <span class="label label-warning pull-right"><i class="fa fa-star"></i></span>
+        
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  	</span>
+    </a>
+    <ul class="treeview-menu ">
+        <li class=""><a
+                href="../../addressbook/index.html">Elenco</a></li>
+        <li class=""><a
+                href="../../addressbook/create/index.html">Aggiungi</a></li>
+    </ul>
+</li>
+<!-- Settings -->
+<li class="treeview ">
+    <a href="#">
+        <i class="fa  fa-gears"></i>
+        <span
+            class="label label-primary pull-right">Nuovo</span>
+        <span class="hidden-xs">Impostazioni</span>
+        <span class="pull-right-container">
+						  <i class="fa fa-angle-left pull-right"></i>
+					  </span>
+
+    </a>
+    <ul class="treeview-menu ">
+        <li class=""><a
+                href="../../warehouses/index.html">Punti di ritiro</a></li>
+        <li class=""><a
+                href="../../packs/index.html">Pacchi</a></li>
+                <li class=""><a
+                href="../../clientsettings/index.html">Stampa e Notifiche</a></li>
+        <li class=""><a href="../../clientstores/index.html">
+                Negozi Online</a></li>
+            <li class=""><a
+                    href="../../subscription/index.html">Abbonamento</a></li>
+        <li class="">
+                            <span class="label label-warning pull-right"><i class="fa fa-star"></i></span>
+                        <a href="../../client/team/index.html">Utenti - Team</a></li>
+                    <li class=""><a href="../../password/index.html">
+                    Cambia Password</a></li>
+                <li class=""><a
+                href="../../apikeys/index.html">Chiave API</a></li>
+        <li class="">
+            <span class="label label-primary pull-right">Nuovo</span>
+            <a href="../../client/api-app/index.html">API App (OAuth2)</a></li>
+
+        <li class="">
+             <span class="label label-primary pull-right">Nuovo</span>
+                            <span class="label label-warning pull-right"><i class="fa fa-star"></i></span>
+            
+            <a href="../../webhooks/index.html">Webhooks</a></li>
+
+        <li class="">
+            <span class="label label-primary pull-right">Nuovo</span>
+                            <span class="label label-warning pull-right"><i class="fa fa-star"></i></span>
+                        <a href="../../client/logo/index.html">Logo</a></li>
+
+                    <li class=""><a
+                    href="#">Disabilita Google 2FA App</a></li>
+        
+    </ul>
+</li>
+
+<!-- Support Tickets (only on demo1 while testing) -->
+
+<!-- Manuale -->
+<li class="treeview ">
+    <a href="https://docs.spedisci.online/Smart" target="_blank">
+        <i class="fa fa-book"></i>
+        <span class="hidden-xs">Manuale</span>
+    </a>
+</li>
+
+
+<li>
+    <a href="../../login/index.html"
+       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+        <i class='fa fa-power-off'></i>
+        <span>Esci</span>
+
+    </a>
+    <form id="logout-form" action="../../login/index.html" method="POST" style="display: none;">
+        <input type="hidden" name="_token" value="sandbox" autocomplete="off">    </form>
+</li>
+
+                                                            </ul><!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+
+        
+        <div class="sidebar-footer">
+            <span class="sidebar-footer-copy">
+                &copy; 2016–2026
+                <a href="#" target="_blank">spedisci.online</a>
+            </span>
+            <span class="sidebar-footer-version" title="Tutti i diritti riservati">v2026.30</span>
+        </div>
+    </aside>
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+
+
+            
+	<h1>Giacenza - ECIT00000012</h1>
+
+
+            
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header with-border"><h3 class="box-title">Info Giacenza</h3></div>
+      <div class="box-body">
+        <p><i class="fa fa-user"></i> <b>Destinatario:</b> DESTINATARIO DEMO 12<br>
+           <i class="fa fa-map-marker"></i> <b>Indirizzo:</b> VIA ESEMPIO 12, 35100, PADOVA, PD<br>
+           <i class="fa fa-phone"></i> <b>Tel:</b> 0000000000</p>
+        <p><b>Motivo:</b> <span id="stock-reason">Rifiuto della merce</span></p>
+        <table class="table table-bordered">
+          <thead><tr><th>Data spedizione</th><th>Data apertura giacenza</th></tr></thead>
+          <tbody><tr><td>12/09/2026 16:05</td><td>14/09/2026 19:05</td></tr></tbody>
+        </table>
+        <p>Stato: <span id="stock-status" class="label label-danger">Aperta - In attesa di istruzioni</span></p>
+      </div>
+    </div>
+    <div class="box box-primary">
+      <div class="box-header with-border"><h3 class="box-title">Gestisci</h3></div>
+      <div class="box-body">
+        <div id="stock-alert" style="display:none" class="alert alert-success"><i class="icon fa fa-check"></i> Istruzioni inviate al corriere. Stato della giacenza: <b>In gestione - Istruzioni inviate</b>.</div>
+        <form method="POST" action="../../stocks/index.html" id="stock-manage-form" data-stock-id="90000012" data-ldv="ECIT00000012">
+          <input name="_token" type="hidden" value="sandbox">
+          <div class="row">
+            <div class="form-group col-sm-7"><label for="stock_action">Scegli l'operazione da effettuare</label>
+              <select class="form-control" id="stock_action" name="action"><option value="riconsegna">Riconsegna</option></select></div>
+            <div class="form-group col-sm-5"><label for="stock_date">Data</label>
+              <input class="form-control" id="stock_date" name="date" type="text" value="23/09/2026"></div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6"><label><input type="checkbox" name="preavviso" id="stock_preavviso" checked> Con preavviso telefonico</label></div>
+            <div class="form-group col-sm-6"><label for="stock_phone">Telefono:<span class="text-danger">*</span></label>
+              <input class="form-control" id="stock_phone" name="phone" type="text" value=""></div>
+          </div>
+          <div class="form-group">
+            <div class="checkbox"><label><input type="checkbox" name="annulla_cod"> Annullando il contrassegno</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="varia_cod"> Variando l'importo del contrassegno</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="porto_franco"> Variando la spedizione in Porto Franco (a carico del mittente)</label></div>
+            <div class="checkbox"><label><input type="checkbox" name="porto_assegnato"> Variando la spedizione in Porto Assegnato (a carico del destinatario)</label></div>
+          </div>
+          <div class="form-group"><label>Spese da addebitare:<span class="text-danger">*</span></label>
+            <label class="radio-inline"><input type="radio" name="spese" value="mittente" checked> al mittente</label>
+            <label class="radio-inline"><input type="radio" name="spese" value="destinatario"> al destinatario</label></div>
+          <div class="form-group"><label for="stock_note">Note</label><input class="form-control" id="stock_note" name="note" type="text" value=""></div>
+          <div class="text-right"><button type="submit" class="btn btn-primary" id="stock_confirm">Conferma</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header with-border"><h3 class="box-title">Storico Azioni</h3></div>
+      <div class="box-body table-responsive">
+        <table class="table table-bordered" id="stock-history">
+          <thead><tr><th>Data</th><th>Utente</th><th>Azione</th><th>COD</th><th>Stato</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="box box-primary">
+      <div class="box-header with-border"><h3 class="box-title">Costo totale giacenza: <span id="stock-cost">XX.XX €</span></h3></div>
+      <div class="box-body table-responsive">
+        <table class="table table-bordered"><thead><tr><th>Data</th><th>Nota</th><th class="text-right">Importo</th></tr></thead><tbody></tbody></table>
+      </div>
+    </div>
+  </div>
+</div>
+</section><!-- /.content -->
+
+    </div><!-- /.content-wrapper -->
+    
+    <!-- Ecommerce Italia Widget -->
+        <script>
+
+    </script>
+    
+    </div>
+
+
+<!-- jQuery 2.1.4 -->
+<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="../../recorded/data.js"></script>
+<script src="../../sandbox.js"></script>
+<script src="../../tutorial.js"></script>
+<script src="../../plugins/jquery-ui-1.11.4/jquery-ui.min.js" type="text/javascript"></script>
+
+<script src="../../plugins/jQueryUI/jquery-ui-i18n.js"></script>
+<script>
+var language = 'it';
+</script>
+
+<!-- Bootstrap 3.3.6 JS -->
+<script src="../../bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../../plugins/bootstrap-select/1.6.2/css/bootstrap-select.min.css">
+
+
+<!-- DATA TABES SCRIPT -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="../../plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+<script src="../../plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"
+    type="text/javascript"></script>
+
+
+<!-- SlimScroll -->
+<script src="../../plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/fastclick.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="../../plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+<!-- daterangepicker -->
+<script type="text/javascript" src="../../plugins/daterangepicker/moment.min.js"></script>
+<script src="../../plugins/daterangepicker/daterangepicker.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" type="text/css" href="../../plugins/daterangepicker/daterangepicker.css"/>
+<!-- DatePicker -->
+<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
+<script>
+//set default datepicker language
+$.fn.datepicker.defaults.language = language;
+</script>
+
+<script src="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"
+    type="text/javascript"></script>
+<script src="../../plugins/bootstrap-switch/bootstrap-switch.min.js" type="text/javascript"></script>
+
+<script src="../../plugins/select2/select2.min.js"></script>
+<script src="../../plugins/datepicker/locales/bootstrap-datepicker.it.js"></script>
+<script src="../../plugins/select2/i18n/it.js"></script>
+
+
+<!-- Sparkline -->
+<script src="../../plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+<!-- jvectormap -->
+<script src="../../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+<script src="../../plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+<!-- jQuery Knob Chart -->
+<script src="../../plugins/knob/jquery.knob.js" type="text/javascript"></script>
+
+
+<!-- AdminLTE App -->
+<script src="../../dist/js/app.js" type="text/javascript"></script>
+<!-- Viewport-locked shell. Must stay after app.js: it replaces
+     $.AdminLTE.layout.fix from a ready handler that has to run after AdminLTE's own. -->
+<script src="../../js/layout-shell.js" type="text/javascript"></script>
+<!-- AdminLTE for demo purposes -->
+
+<script src="../../dist/js/demo.js" type="text/javascript"></script>
+<!-- page script -->
+<script src="../../js/custom.js" type="text/javascript"></script>
+<!--custom script functions -->
+<script src="../../js/BrowserPrint-2.0.0.75.min.js" type="text/javascript"></script>
+<script src="../../js/printZpl.js" type="text/javascript"></script>
+
+<script src="../../plugins/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('.selectpicker').selectpicker();
+});
+</script>
+
+
+
+
+
+
+
+	<script>
+        var oTable= $('#shippings-table').DataTable({
+            processing: true,
+            "bSortClasses": false,
+            autoWidth: false,
+            stateSave: true,
+            serverSide: false,
+            responsive:true,
+            "language": {"url": "../../plugins/datatables/languages/"+language+".json"},
+            ajax: {
+                url: '../../data/stocks/shippings-table.json',
+                data: function (d) {
+                    d.dalla_data = $('input[name=dalla_data]').val();
+                    d.alla_data = $('input[name=alla_data]').val();
+                    d.status = $('select[name=status]').val();
+                    d.ldv = $('input[name=ldv]').val();
+                }
+            },
+
+            columns: [
+
+                { data: 'ldv', name: 'ldv',responsivePriority: 1 },
+                { data: 'nominativo', name: 'nominativo', orderable: false, responsivePriority: 1,searchable: false },
+                { data: 'citta', name: 'citta', orderable: false, responsivePriority: 2,searchable: false },
+                { data: 'notes', name: 'notes', orderable: false, responsivePriority: 2,searchable: false },
+                { data: 'created_at', name: 'created_at',responsivePriority: 2 },
+                { data: 'total_price', name: 'total_price',responsivePriority: 2 },
+                { data: 'status', name: 'status',orderable: false, searchable: false,responsivePriority: 1 },
+                { data: 'action', name: 'action',orderable: false, searchable: false,responsivePriority: 1 }
+            ],
+            "order": [[ 6, "desc" ]]
+
+        });
+
+	</script>
+    <script>
+    $('#search-form').on('submit', function(e) {
+        oTable.draw();
+        e.preventDefault();
+        $('input[name=ldv]').val('');
+    });
+</script>
+
+
+	<script type="text/javascript">
+
+
+        $(function() {
+            $("#documentsModal").on("show.bs.modal", function(e) {
+                var link = $(e.relatedTarget);
+                $(this).find(".modal-body").load(link.attr("href"));
+            });
+
+            $('#confirm').on('show.bs.modal', function(e) {
+                var shipping_id = $(e.relatedTarget).data('shipping-id');
+                var shipping_ldv = $(e.relatedTarget).data('shipping-ldv');
+                var shipping_contrassegno = $(e.relatedTarget).data('shipping-contrassegno');
+                $(e.currentTarget).find('input[name="shipping_id"]').val(shipping_id);
+                $(e.currentTarget).find('#shipping_ldv').html(shipping_ldv);
+                $(e.currentTarget).find('#shipping_contrassegno').html(shipping_contrassegno);
+            });
+
+        });
+	</script>
+
+	<script>
+    $(function () {
+                    var start = moment().subtract(2, 'days').startOf('day');
+            var end = moment().endOf('day');
+                //Date range as a button
+        $('#daterange-btn').daterangepicker(
+            {
+                ranges: {
+                                    "Oggi" : [moment().startOf('day'), moment().endOf('day')],
+                    "Ieri" : [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
+                    "Ultimi 3 giorni": [moment().subtract(2, 'days').startOf('day'), moment().endOf('day')],
+                    "Ultimi 7 giorni": [moment().subtract(6, 'days').startOf('day'), moment().endOf('day')],
+                    "Ultimi 30 giorni": [moment().subtract(29, 'days').startOf('day'), moment().endOf('day')],
+                    "Questo mese": [moment().startOf('month'), moment().endOf('day')],
+                    "Ultimo mese": [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                                },
+                startDate: start,
+                endDate: end,
+                                                opens: "right",
+                "alwaysShowCalendars": true,
+                "timePicker": true,
+                "locale": {
+                    "format": "MM/DD/YYYY",
+                    "separator": " - ",
+                    "applyLabel": "Applica",
+                    "cancelLabel": "Annulla",
+                    "fromLabel": "Da",
+                    "toLabel": "A",
+                    "customRangeLabel": "Intervallo personalizzato",
+                    "weekLabel": "W",
+                    "daysOfWeek": ["Do", "Lu", "Ma", "Me", "Gi", "Ve", "Sa"],
+                    "monthNames": ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+                    "firstDay": 1
+                },
+            },
+            function (start, end) {
+                // Date-only label; the inputs keep the full format the
+                // controllers parse.
+                $('#daterange-btn span').html(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
+                $('input[name=dalla_data]').prop("value", start.format('DD/MM/YYYY h:mm a'));
+                $('input[name=alla_data]').prop("value", end.format('DD/MM/YYYY h:mm a'));
+                                oTable.draw();
+                            }
+        )
+    })
+</script>
+	<script type="text/javascript">
+ $(document.body).on('click','.track', function(e){
+
+		e.preventDefault();
+
+	    var ldv   		= $(this).data('id');
+
+	  //  $('#tracking').modal({  backdrop: 'static', keyboard: true });
+        $('#tracking').modal({    });
+
+        $("#contract_name_title").text('');
+        $("#numero-ldv").text('');
+        $("#stato-ldv").empty();
+
+        $('#destinatario').empty();
+	    $('#tracking_table').empty();
+        $('#colli_table').empty();
+	 	$('#error').empty();
+	    $('.overlay-modal').show();
+
+	    $.ajax({
+		      url: "../../tracking"+"/"+ldv,
+		      type: "GET",
+                headers: {'Content-Type': 'application/json'},
+                responseType: 'application/json',
+
+		      success: function(data)
+              {
+                  var response = $.parseJSON(data);
+
+                  $("#contract_name_title").text(response.shipping.vector_contract.name);
+                  $("#numero-ldv").text(response.shipping.ldv);
+
+                  var statoHtml ='';
+                  switch (response.shipping.status) {
+                      case 0: statoHtml ="<span class=\"label label-default\">In Lavorazione</span>";break;
+                      case 2: statoHtml ="<span class=\"label label-default\">Spedita</span>";break;
+                      case 3: statoHtml ="<span class=\"label label-info\">In transito</span>";break;
+                      case 4: statoHtml ="<span class=\"label label-warning\">In Consegna</span>";break;
+                      case 5: statoHtml ="<span class=\"label label-success\">Consegnata</span>";break;
+                      case 6: statoHtml ="<span class=\"label label-danger\">In Giacenza</span>";break;
+                      case 7: statoHtml ="<span class=\"label label-default\">Reso al mittente</span>";break;
+                      case 8: statoHtml ="<span class=\"label label-default\">Non consegnata</span>";break;
+                      case 9: statoHtml ="<span class=\"label label-default\">In attesa di istruzioni</span>";break;
+
+                  }
+
+                  var destHTML = '<p><b>Nominativo: </b>'+ response.shipping.nominativo +
+                          '<br /><b>Indirizzo:</b> '+ response.shipping.indirizzo  +
+                          '<br /><b>Tel:</b> '+ response.shipping.tel_dest +
+                          '<br /><b>Email:</b> '+ response.shipping.email_dest +
+                          '</p>';
+                  if(response.shipping.contrassegno != 0)
+                  {
+                      destHTML+='<p><b>Contrassegno:</b> '+response.shipping.contrassegno+' &euro;</p>';
+                  }
+                  if(response.shipping.insurance_value != 0)
+                  {
+                      destHTML+='<p><b>Assicurazione:</b> '+response.shipping.insurance_value+' &euro;</p>';
+                  }
+                  if(response.shipping.source_logo)
+                  {
+                      destHTML+='<b>Importazione da: </b><img src="'+response.shipping.source_logo+'" />';
+                  }
+                  if(response.order.order_id)
+                  {
+                      destHTML+='<p><b>ID Ordine:</b> '+response.order.order_id+'</p>';
+                  }
+
+                  if(response.shipping.contenuto)
+                  {
+                      destHTML+='<p><b>Contenuto:</b> '+response.shipping.contenuto+'</p>';
+                  }
+                  if(response.createdBy)
+                  {
+                      destHTML+='<p><b>Creato da:</b> '+response.createdBy+'</p>';
+                  }
+                  if(response.pin_required === true)
+                  {
+                      destHTML+='<p><b>PIN richiesto:</b> <span class="label label-warning">Si</span></p>';
+                  }
+                  else if(response.pin_required === false)
+                  {
+                      destHTML+='<p><b>PIN richiesto:</b> No</p>';
+                  }
+                  $('#destinatario').html(destHTML);
+
+                  var colliHTML = '';
+                  if(response.packs)
+                  {
+                      $.each(response.packs, function (i, item) {
+                          var packNr = item.pack_number;
+                          var ldv = item.ldv;
+                          var reference = item.reference;
+                          var measures = [ item.lu,item.la,item.h ].filter(Boolean).join(" x ");
+
+                          colliHTML += '<tr><td>' + [packNr, ldv, reference, measures].filter(Boolean).join("</td><td>") +'</td></tr>';
+                      });
+                  }
+                  else
+                  {
+                      var packNr = 1;
+                      var ldv = response.shipping.ldv;
+                      var reference = response.shipping.reference;
+                      var measures = [ response.shipping.lu,response.shipping.la,response.shipping.h ].filter(Boolean).join(" x ");
+
+                      colliHTML += '<tr><td>' + [packNr, ldv, reference, measures].filter(Boolean).join("</td><td>") +'</td></tr>';
+                  }
+                  $('#colli_table').append(colliHTML);
+
+                  var trackingHTML = '';
+                  if(response.TrackingDettaglio)
+                  {
+                      $.each(response.TrackingDettaglio, function (i, item) {
+                          if(item.message)
+                          {
+                              trackingHTML += '<tr><td>' + item.Data + '</td><td>' + item.Stato + ' (' + item.message + ')</td><td>' + item.Luogo + '</td></tr>';
+                          }
+                          else
+                          {
+                              trackingHTML += '<tr><td>' + item.Data + '</td><td>' + item.Stato + '</td><td>' + item.Luogo + '</td></tr>';
+                          }
+                      });
+                  }
+                  else
+                  {
+                      var trackingHTML = 'Nessuna corrispondenza individuata per la ricerca effettuata!';
+                  }
+
+                  $('#tracking_table').append(trackingHTML);
+                  $('#stato-ldv').append(statoHtml);
+                  $('.overlay-modal').hide();
+		      },
+			error: function() {
+				$('.overlay-modal').hide();
+				var erHtml="Nessuna corrispondenza individuata per la ricerca effettuata!";
+				$('#error').html(erHtml);
+				$('#error').show();
+			}
+
+		    });
+
+
+	});
+
+</script>
+
+			<script>
+            $('td:nth-child(11),th:nth-child(11)').hide();
+		</script>
+	
+</body>
+</html>

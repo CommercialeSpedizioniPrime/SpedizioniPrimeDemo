@@ -49,7 +49,17 @@
         { page: 'shippinglists', sel: '#bordero-table', text: 'In "Lista Distinte" trovi le distinte create: puoi stamparle o esportarle in Excel.' },
         { page: 'shippinglists', sel: 'a[href$="pickups/index.html"]', menu: 'pickups/index.html', text: 'Ultimo controllo: verifica il ritiro del corriere in Ritiri → "Elenco Ritiri".', advance: 'navigate' },
         { page: 'pickups', sel: '#shippings-table', text: 'Qui vedi codice del ritiro, data di inserimento e data prevista.' },
-        { page: 'pickups', center: true, title: 'Complimenti, hai completato i primi passi!', text: 'Ora puoi esplorare liberamente tutte le sezioni della demo: negozi online, contrassegni, report, giacenze. Per ogni dettaglio c\'è il manuale.', final: true }
+        { page: 'pickups', center: true, title: 'Seconda parte: le giacenze', text: 'Quando un pacco non può essere consegnato (destinatario assente, indirizzo errato, rifiuto) il corriere lo mette in giacenza e aspetta istruzioni. Vediamo come gestirla dal portale.', next: 'Continua' },
+        { page: 'pickups', sel: 'a[href$="stocks/index.html"]', menu: 'stocks/index.html', text: 'Apri "Spedizioni" e clicca su "Giacenze".', advance: 'navigate' },
+        { page: 'stocks', sel: '#shippings-table', text: 'Qui trovi le spedizioni in giacenza con destinatario, motivo comunicato dal corriere, data e stato. Una giacenza "Aperta - In attesa di istruzioni" aspetta le tue indicazioni.' },
+        { page: 'stocks', sel: '#shippings-table tbody tr:first-child a.stock-manage', text: 'Clicca su "Gestisci" accanto alla spedizione.', advance: 'navigate' },
+        { page: /^stocks\/\d+$/, url: 'stocks/90000008/index.html', sel: '#stock-reason', text: 'In "Info Giacenza" vedi destinatario, indirizzo, telefono e il motivo della giacenza, con le date di spedizione e di apertura.' },
+        { page: /^stocks\/\d+$/, url: 'stocks/90000008/index.html', sel: '#stock_action, #stock_date', all: true, text: 'Nel riquadro "Gestisci" scegli l\'operazione da effettuare (es. Riconsegna) e la data.' },
+        { page: /^stocks\/\d+$/, url: 'stocks/90000008/index.html', sel: '#stock_preavviso, #stock_phone', all: true, text: 'Con "preavviso telefonico" il corriere chiama prima di riconsegnare: inserisci il numero di telefono.', when: function () { return $('#stock_phone').val().trim().length > 5; } },
+        { page: /^stocks\/\d+$/, url: 'stocks/90000008/index.html', sel: 'input[name=annulla_cod], input[name=spese]', all: true, text: 'Puoi annullare o variare il contrassegno, cambiare il porto (franco o assegnato) e indicare a chi addebitare le spese di giacenza. Nelle Note aggiungi eventuali richieste.' },
+        { page: /^stocks\/\d+$/, url: 'stocks/90000008/index.html', sel: '#stock_confirm', text: 'Clicca su "Conferma": le istruzioni vengono inviate al corriere.', advance: 'click' },
+        { page: /^stocks\/\d+$/, url: 'stocks/90000008/index.html', sel: '#stock-history', text: 'Lo "Storico Azioni" registra l\'istruzione e lo stato passa a "In gestione - Istruzioni inviate". Quando il corriere completa lo svincolo, lo stato diventa "Svincolo confermato".', wait: function () { return $('#stock-history tbody tr').length > 0; } },
+        { page: /^stocks\/\d+$/, url: 'stocks/90000008/index.html', center: true, title: 'Complimenti, hai completato la demo guidata!', text: 'Ora puoi esplorare liberamente tutte le sezioni: negozi online, contrassegni, report, resi. Per ogni dettaglio c\'è il manuale.', final: true }
     ];
 
     var idx = Math.min(st.step || 0, STEPS.length - 1);
@@ -81,15 +91,15 @@ body.tut-on .sidebar-menu > li.tut-ok .treeview-menu > li:not(.tut-ok){opacity:.
 
     function allowedMenu() {
         // nel tutorial restano attive solo le voci del percorso "primi passi"
-        var hrefs = ['shippings/create/index.html', 'shippings/index.html', 'shippinglists/create/index.html', 'shippinglists/index.html', 'pickups/index.html', 'index.html'];
+        var hrefs = ['shippings/create/index.html', 'shippings/index.html', 'shippinglists/create/index.html', 'shippinglists/index.html', 'pickups/index.html', 'stocks/index.html', 'index.html'];
         $('.sidebar-menu > li').each(function () {
             var li = $(this), ok = false;
-            li.find('a').each(function () { var h = $(this).attr('href') || ''; hrefs.forEach(function (x) { if (h.slice(-x.length) === x && !/pickups\/create|shippings\/contrassegni|cancelled|stocks/.test(h)) ok = true; }); });
+            li.find('a').each(function () { var h = $(this).attr('href') || ''; hrefs.forEach(function (x) { if (h.slice(-x.length) === x && !/pickups\/create|shippings\/contrassegni|cancelled/.test(h)) ok = true; }); });
             if (li.is(':first-child') || /Dashboard/.test(li.text())) ok = true;
             li.toggleClass('tut-ok', ok);
             li.find('.treeview-menu > li').each(function () {
                 var h = $(this).find('a').attr('href') || '', ok2 = false;
-                hrefs.forEach(function (x) { if (h.slice(-x.length) === x && !/pickups\/create|shippings\/contrassegni|cancelled|stocks/.test(h)) ok2 = true; });
+                hrefs.forEach(function (x) { if (h.slice(-x.length) === x && !/pickups\/create|shippings\/contrassegni|cancelled/.test(h)) ok2 = true; });
                 $(this).toggleClass('tut-ok', ok2);
             });
         });
@@ -152,9 +162,10 @@ body.tut-on .sidebar-menu > li.tut-ok .treeview-menu > li:not(.tut-ok){opacity:.
 
     function render() {
         var step = STEPS[idx];
-        if (step.page !== route) {
+        var onPage = step.page instanceof RegExp ? step.page.test(route) : step.page === route;
+        if (!onPage) {
             // il visitatore è su un'altra pagina: card centrale con il link alla pagina giusta
-            var url = BASE + (step.page ? step.page + '/index.html' : 'index.html');
+            var url = BASE + (step.url ? step.url : (step.page ? step.page + '/index.html' : 'index.html'));
             mask.style.display = 'block'; hl.style.display = 'none'; card.className = 'center';
             card.innerHTML = '<div class="bar"><i style="width:' + Math.round(100 * idx / (STEPS.length - 1)) + '%"></i></div><div class="body"><div class="step">PASSO ' + (idx + 1) + ' DI ' + STEPS.length + '</div><h4>Torniamo al percorso</h4><p>Il passo successivo si svolge in un\'altra pagina.</p><div class="btns"><button class="exit">Esci dal tutorial</button><button class="prev">Indietro</button><button class="next">Vai alla pagina</button></div></div>';
             card.querySelector('.next').onclick = function () { location.href = url; };

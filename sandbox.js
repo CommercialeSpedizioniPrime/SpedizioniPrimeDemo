@@ -203,6 +203,30 @@
         });
         return out;
     }
+    // ===== Gestione giacenze (manuale: Enterprise/gestione_giacenze) — stato nel browser del visitatore =====
+    (function stocksState() {
+        var st0 = loadState(); var s = st0.stocks || {};
+        var k = 'data/stocks/shippings-table.json';
+        if (D[k]) { var j = $.extend(true, {}, D[k]); j.data.forEach(function (r) { if (s[r.id]) r.status = '<span class="label label-warning" data-stock="' + r.id + '">In gestione - Istruzioni inviate</span>'; }); D[k] = j; }
+        $(function () {
+            var $f = $('#stock-manage-form'); if (!$f.length) return;
+            var id = String($f.data('stock-id'));
+            function show(rec) {
+                $('#stock-status').removeClass('label-danger').addClass('label-warning').text('In gestione - Istruzioni inviate');
+                $('#stock-history tbody').html('<tr><td>' + rec.when + '</td><td>UTENTE DEMO</td><td>' + rec.azione + (rec.preavviso ? ' con preavviso telefonico (' + rec.phone + ')' : '') + (rec.note ? ' - ' + $('<div>').text(rec.note).html() : '') + '</td><td>' + (rec.cod ? 'Annullato' : '-') + '</td><td>Istruzioni inviate</td></tr>');
+                $('#stock-alert').show();
+            }
+            if (s[id]) show(s[id]);
+            $f.on('submit', function (e) {
+                e.preventDefault();
+                if ($('#stock_preavviso').is(':checked') && !$('#stock_phone').val().trim()) { $('#stock_phone').closest('.form-group').addClass('has-error'); $('#stock_phone').focus(); return; }
+                var d = new Date(); var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+                var rec = { azione: $('#stock_action option:selected').text(), date: $('#stock_date').val(), preavviso: $('#stock_preavviso').is(':checked'), phone: $('#stock_phone').val().trim(), cod: $('input[name=annulla_cod]').is(':checked'), note: $('#stock_note').val(), when: pad(d.getDate()) + '/' + pad(d.getMonth() + 1) + '/' + d.getFullYear() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()) };
+                var st = loadState(); st.stocks = st.stocks || {}; st.stocks[id] = rec; saveState(st);
+                show(rec); window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    })();
     (function mergeShipments() {
         var st = loadState(); var extra = shipmentsFromOrders(st); if (!extra.length) return;
         ['data/shippings/shippings-table.json', 'data/shippinglists/create/shippings-table.json'].forEach(function (k) {
