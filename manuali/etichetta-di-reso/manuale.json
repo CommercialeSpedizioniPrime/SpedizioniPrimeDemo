@@ -1,0 +1,424 @@
+{
+ "titolo": "Etichetta di reso",
+ "slug": "etichetta-di-reso",
+ "descrizione": "Etichetta di reso: il ritorno del pacco in pochi clic",
+ "aggiornato": "2026-09-25",
+ "slides": [
+  {
+   "id": "s01",
+   "step": null,
+   "big": true,
+   "hl": [],
+   "img": "img/s01.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    41.251,
+    39.216,
+    34.996,
+    21.569
+   ],
+   "testo": "Etichetta di reso: il ritorno del pacco in pochi clic"
+  },
+  {
+   "id": "s02",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s02.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    18.893,
+    28.583,
+    62.214
+   ],
+   "testo": "Un cliente vuole restituire un pacco? Con i contratti Poste Italiane non serve creare nulla da capo: dall'Elenco Spedizioni generi la lettera di vettura di ritorno della spedizione già consegnata.\n\nPoste ritira il pacco presso il tuo cliente (a domicilio, in un Punto Poste, in un Locker o in Ufficio Postale) e lo consegna al tuo indirizzo di reso. Il reso è una spedizione a sé, addebitata come le altre."
+  },
+  {
+   "id": "s03",
+   "step": 1,
+   "big": false,
+   "hl": [
+    [
+     3.261,
+     26.243,
+     15.255,
+     4.847
+    ]
+   ],
+   "img": "img/s03.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Dal menu \"Spedizioni\" clicca su \"Elenco Spedizioni\"."
+  },
+  {
+   "id": "s04",
+   "step": 2,
+   "big": false,
+   "hl": [
+    [
+     24.321,
+     54.245,
+     6.037,
+     3.462
+    ],
+    [
+     62.67,
+     54.465,
+     5.686,
+     3.489
+    ]
+   ],
+   "img": "img/s04.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    48.832,
+    63.782,
+    28.583,
+    31.357
+   ],
+   "testo": "Individua la spedizione da far rientrare (qui una spedizione Poste già consegnata). Puoi cercarla con i filtri, ad esempio per numero di spedizione o destinatario."
+  },
+  {
+   "id": "s05",
+   "step": 3,
+   "big": false,
+   "hl": [
+    [
+     84.2,
+     53.621,
+     2.726,
+     4.847
+    ]
+   ],
+   "img": "img/s05.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Nella colonna \"Azioni\" le spedizioni Poste senza lettera di vettura di ritorno hanno il bottone verde \"Genera etichetta di reso\". Cliccalo."
+  },
+  {
+   "id": "s06",
+   "step": 4,
+   "big": false,
+   "hl": [
+    [
+     34.68,
+     6.031,
+     30.64,
+     41.512
+    ]
+   ],
+   "img": "img/s06.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Si apre la finestra \"Genera etichetta di reso\" con il numero della spedizione. Poste ritira il pacco presso il destinatario e lo consegna al tuo indirizzo di reso."
+  },
+  {
+   "id": "s07",
+   "step": 5,
+   "big": false,
+   "hl": [
+    [
+     35.654,
+     25.269,
+     28.693,
+     4.847
+    ]
+   ],
+   "img": "img/s07.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    30.627,
+    28.583,
+    38.745
+   ],
+   "testo": "Scegli come il cliente consegnerà il pacco a Poste: ritiro a domicilio (nessun limite), Punto Poste o Locker Punto Poste (meno di 36x37x56 cm e 15 kg), Ufficio Postale (somma dei lati sotto 150 cm, lato più lungo sotto 100 cm, meno di 30 kg)."
+  },
+  {
+   "id": "s08",
+   "step": 6,
+   "big": false,
+   "hl": [
+    [
+     35.654,
+     36.925,
+     28.693,
+     6.001
+    ]
+   ],
+   "img": "img/s08.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Per Punto Poste e Ufficio Postale puoi spuntare \"Paperless\": nessuna etichetta da stampare, il cliente mostra un codice allo sportello."
+  },
+  {
+   "id": "s09",
+   "step": 7,
+   "big": false,
+   "hl": [
+    [
+     52.337,
+     40.502,
+     12.009,
+     5.309
+    ]
+   ],
+   "img": "img/s09.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Clicca su \"Genera etichetta di reso\"."
+  },
+  {
+   "id": "s10",
+   "step": 8,
+   "big": false,
+   "hl": [
+    [
+     17.802,
+     14.571,
+     79.327,
+     7.501
+    ]
+   ],
+   "img": "img/s10.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    48.832,
+    73.364,
+    28.583,
+    21.775
+   ],
+   "testo": "Il portale conferma: la lettera di vettura di ritorno è stata generata."
+  },
+  {
+   "id": "s11",
+   "step": 9,
+   "big": false,
+   "hl": [
+    [
+     24.321,
+     59.9,
+     6.297,
+     3.116
+    ]
+   ],
+   "img": "img/s11.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Nella riga della spedizione il numero di ritorno compare sotto al numero di spedizione, con l'icona a freccia."
+  },
+  {
+   "id": "s12",
+   "step": 10,
+   "big": false,
+   "hl": [
+    [
+     84.2,
+     57.429,
+     2.726,
+     4.847
+    ]
+   ],
+   "img": "img/s12.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Il bottone verde diventa \"Stampa etichetta di reso\": scarica il PDF e invialo al cliente (o inseriscilo nel pacco). Con Paperless comunica al cliente il codice."
+  },
+  {
+   "id": "s13",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s13.webp",
+   "img_box": [
+    31.338,
+    3.261,
+    37.324,
+    93.478
+   ],
+   "card": [
+    68.683,
+    26.67,
+    28.583,
+    46.661
+   ],
+   "testo": "L'etichetta di reso è intestata al tuo indirizzo: il cliente la applica sul pacco da restituire e lo consegna a Poste nel modo scelto.\n\n(Etichetta dimostrativa della demo.)"
+  },
+  {
+   "id": "s14",
+   "step": 11,
+   "big": false,
+   "hl": [
+    [
+     59.672,
+     57.388,
+     17.819,
+     9.393
+    ]
+   ],
+   "img": "img/s14.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    28.78,
+    28.583,
+    42.439
+   ],
+   "testo": "In alternativa, se sai già che il pacco tornerà (es. prova o riparazione), quando crei la spedizione con contratto Poste scegli in \"Servizi accessori\" il servizio \"Andata & Ritorno\": la lettera di vettura di ritorno viene generata subito insieme a quella di andata."
+  },
+  {
+   "id": "s15",
+   "step": 12,
+   "big": false,
+   "hl": [
+    [
+     24.321,
+     54.476,
+     6.297,
+     3.116
+    ],
+    [
+     84.2,
+     52.005,
+     2.726,
+     4.847
+    ]
+   ],
+   "img": "img/s15.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    67.476,
+    28.583,
+    27.663
+   ],
+   "testo": "Anche in questo caso in Elenco Spedizioni trovi il numero di ritorno sotto al numero di spedizione e il bottone \"Stampa etichetta di reso\"."
+  },
+  {
+   "id": "s16",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s16.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    35.783,
+    35.418,
+    45.932,
+    29.163
+   ],
+   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+  }
+ ]
+}

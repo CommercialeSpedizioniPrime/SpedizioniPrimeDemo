@@ -1,0 +1,334 @@
+{
+ "titolo": "Spedizioni estere",
+ "slug": "spedizioni-estere",
+ "descrizione": "",
+ "aggiornato": "2026-09-25",
+ "slides": [
+  {
+   "id": "s01",
+   "step": null,
+   "big": true,
+   "hl": [],
+   "img": "img/s01.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    41.251,
+    39.216,
+    34.996,
+    21.569
+   ],
+   "testo": "Spedizioni estere"
+  },
+  {
+   "id": "s02",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s02.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    12.088,
+    28.583,
+    75.824
+   ],
+   "testo": "Come registrare le spedizioni estere, con qualunque corriere estero disponibile sulla piattaforma. Tre cose da sapere subito:\n\nPaesi coperti: puoi spedire solo verso le nazioni presenti nell'elenco (lo trovi in fondo).\n\nSolo via terra: per garantire i prezzi migliori il servizio estero copre solo destinazioni raggiungibili via terra; le isole (maggiori e minori) sono escluse anche se la nazione è in elenco.\n\nListino estero: deve essere abilitato sul tuo profilo. Contatta il tuo commerciale per attivarlo."
+  },
+  {
+   "id": "s03",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s03.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.404,
+    28.583,
+    23.191
+   ],
+   "testo": "Eccoci in \"Nuova Spedizione\": registrare una spedizione estera è molto simile a una nazionale. Compila i campi come sempre, tenendo conto delle particolarità che seguono."
+  },
+  {
+   "id": "s04",
+   "step": 1,
+   "big": false,
+   "hl": [
+    [
+     44.309,
+     50.692,
+     10.624,
+     7.963
+    ]
+   ],
+   "img": "img/s04.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    32.474,
+    28.583,
+    35.051
+   ],
+   "testo": "PRIMISSIMO PASSAGGIO: nei \"Dati Destinatario\" imposta la nazione nel campo \"Paese\" (in questo esempio Germania). Se il sistema suggerisce qualcosa in automatico, ignora il suggerimento e inserisci i dati manualmente."
+  },
+  {
+   "id": "s05",
+   "step": 2,
+   "big": false,
+   "hl": [
+    [
+     47.257,
+     81.967,
+     7.676,
+     5.078
+    ],
+    [
+     47.257,
+     62.695,
+     7.66,
+     20.658
+    ]
+   ],
+   "img": "img/s05.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    32.474,
+    28.583,
+    35.051
+   ],
+   "testo": "Passaggio diverso dalle nazionali: nel campo \"Provincia\" va inserita la SIGLA della nazione (es. DE per la Germania). Ignora i suggerimenti, scrivi la sigla e premi INVIO. L'elenco completo delle sigle è in fondo."
+  },
+  {
+   "id": "s06",
+   "step": 3,
+   "big": false,
+   "hl": [
+    [
+     20.723,
+     53.578,
+     34.209,
+     45.239
+    ]
+   ],
+   "img": "img/s06.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Ora compila il resto dei campi. Ricorda: a differenza delle spedizioni nazionali, per l'estero TUTTI i campi sono obbligatori."
+  },
+  {
+   "id": "s07",
+   "step": 4,
+   "big": false,
+   "hl": [
+    [
+     32.515,
+     71.235,
+     10.624,
+     4.847
+    ],
+    [
+     20.723,
+     79.313,
+     34.21,
+     12.925
+    ]
+   ],
+   "img": "img/s07.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    25.087,
+    28.583,
+    49.827
+   ],
+   "testo": "Il telefono è cruciale: deve sempre avere il prefisso internazionale (es. +49). Se non lo conosci, cercalo online con \"prefisso internazionale [nazione]\".\n\nIn \"Note\" e \"Rif. Destinatario\" ripeti sempre nome e cognome del destinatario, anche se non hai note da aggiungere."
+  },
+  {
+   "id": "s08",
+   "step": 5,
+   "big": false,
+   "hl": [
+    [
+     63.437,
+     23.572,
+     10.419,
+     4.847
+    ],
+    [
+     62.351,
+     34.074,
+     32.57,
+     4.847
+    ],
+    [
+     79.829,
+     23.572,
+     5.209,
+     4.847
+    ]
+   ],
+   "img": "img/s08.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    48.832,
+    52.7,
+    28.583,
+    42.439
+   ],
+   "testo": "Peso e dimensioni sono obbligatori: inserisci i dati corretti.\n\nDue limitazioni per l'estero: il contrassegno non è disponibile e non si possono fare spedizioni multicollo. Ogni pacco va registrato singolarmente."
+  },
+  {
+   "id": "s09",
+   "step": 6,
+   "big": false,
+   "hl": [
+    [
+     84.016,
+     53.347,
+     10.516,
+     5.309
+    ]
+   ],
+   "img": "img/s09.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    71.17,
+    28.583,
+    23.969
+   ],
+   "testo": "Clicca su \"Seleziona Corriere\": vedrai il preventivo. Poi \"Crea Spedizione\" e il gioco è fatto!"
+  },
+  {
+   "id": "s10",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s10.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    16.949,
+    28.583,
+    66.103
+   ],
+   "testo": "Come funziona il prezzo: dipende da peso e dimensioni, ma per l'estero ogni nazione è raggruppata in una Zona Europa con un listino dedicato. Il prezzo finale dipende quindi da peso, dimensioni e Zona Europa di destinazione.\n\nLe spedizioni estere non possono viaggiare su bancale e hanno limiti stringenti di peso e dimensioni: in linea di massima solo pacchi piccoli o medi. Per tariffe e dettagli consulta il tuo listino estero o il tuo commerciale."
+  },
+  {
+   "id": "s11",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s11.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    7.228,
+    28.583,
+    85.545
+   ],
+   "testo": "Elenco Nazione - Sigla Provincia\nAUSTRIA: AT\nBELGIO: BE\nBULGARIA: BG\nDANIMARCA: DK\nFRANCIA: FR\nGERMANIA: DE\nLETTONIA: LV\nLITUANIA: LT\nLUSSEMBURGO: LU\nPAESI BASSI (OLANDA): NL\nPOLONIA: PL\nPORTOGALLO: PT\nREPUBBLICA CECA: CZ\nREPUBBLICA SLOVACCA: SK\nROMANIA: RO\nSPAGNA: ES\nUNGHERIA: HU"
+  },
+  {
+   "id": "s12",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s12.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    15.004,
+    28.583,
+    69.991
+   ],
+   "testo": "Nazione non in elenco? Contatta il nostro Team Operativo: abbiamo un corriere dedicato per spedire in sicurezza in tutto il mondo.\n\nServono tassativamente:\n- peso della spedizione\n- dimensioni del pacco\n- indirizzo completo di destinazione\n- contenuto del pacco\n- valore della merce\n\nQueste spedizioni passano quasi sempre la dogana: senza questi dati non possiamo procedere."
+  },
+  {
+   "id": "s13",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s13.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    35.783,
+    35.418,
+    45.932,
+    29.163
+   ],
+   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+  }
+ ]
+}

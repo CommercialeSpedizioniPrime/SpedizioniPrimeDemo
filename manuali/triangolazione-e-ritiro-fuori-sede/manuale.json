@@ -1,0 +1,503 @@
+{
+ "titolo": "Triangolazione e ritiro fuori sede",
+ "slug": "triangolazione-e-ritiro-fuori-sede",
+ "descrizione": "",
+ "aggiornato": "2026-09-25",
+ "slides": [
+  {
+   "id": "s01",
+   "step": null,
+   "big": true,
+   "hl": [],
+   "img": "img/s01.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    41.251,
+    39.216,
+    34.996,
+    21.569
+   ],
+   "testo": "Triangolazione\ne ritiro fuori sede"
+  },
+  {
+   "id": "s02",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s02.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    25.475,
+    28.583,
+    49.049
+   ],
+   "testo": "Triangolazione: il corriere ritira la merce presso un terzo (ad esempio il tuo fornitore) e la consegna al tuo cliente.\n\nRitiro fuori sede: il corriere ritira presso un altro indirizzo e consegna a te.\n\nIn entrambi i casi la spedizione si registra da \"Nuova Spedizione\" cambiando i dati del mittente."
+  },
+  {
+   "id": "s03",
+   "step": 1,
+   "big": false,
+   "hl": [
+    [
+     3.261,
+     22.781,
+     15.255,
+     4.847
+    ]
+   ],
+   "img": "img/s03.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Apri il menu \"Spedizioni\" e clicca su \"Nuova Spedizione\"."
+  },
+  {
+   "id": "s04",
+   "step": 2,
+   "big": false,
+   "hl": [
+    [
+     20.723,
+     22.418,
+     34.21,
+     28.62
+    ]
+   ],
+   "img": "img/s04.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "In \"Dati mittente\" trovi di default i tuoi dati, cioè la tua sede: per una spedizione normale non li tocchi."
+  },
+  {
+   "id": "s05",
+   "step": 3,
+   "big": false,
+   "hl": [
+    [
+     20.723,
+     22.418,
+     22.417,
+     4.847
+    ]
+   ],
+   "img": "img/s05.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Per una triangolazione o un ritiro fuori sede sostituisci il \"Rif. Mittente\" con il nome di chi consegnerà il pacco al corriere, ad esempio il tuo fornitore."
+  },
+  {
+   "id": "s06",
+   "step": 4,
+   "big": false,
+   "hl": [
+    [
+     20.723,
+     30.497,
+     34.21,
+     4.847
+    ],
+    [
+     20.723,
+     38.113,
+     34.21,
+     4.847
+    ]
+   ],
+   "img": "img/s06.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Inserisci Città, CAP, Provincia e Indirizzo del luogo dove il corriere deve ritirare. Digitando la città compaiono i suggerimenti con CAP e provincia."
+  },
+  {
+   "id": "s07",
+   "step": 5,
+   "big": false,
+   "hl": [
+    [
+     20.723,
+     46.192,
+     22.416,
+     4.847
+    ]
+   ],
+   "img": "img/s07.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Inserisci Email e Telefono di riferimento per il ritiro: una sola email e un solo numero."
+  },
+  {
+   "id": "s08",
+   "step": 6,
+   "big": false,
+   "hl": [
+    [
+     21.697,
+     51.616,
+     6.751,
+     3.693
+    ],
+    [
+     32.84,
+     54.27,
+     21.118,
+     4.847
+    ]
+   ],
+   "img": "img/s08.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    26.934,
+    28.583,
+    46.133
+   ],
+   "testo": "Spunta \"Richiedi ritiro\" e imposta Data Ritiro e Intervallo orario: senza la spunta il corriere non passerà a ritirare.\n\nNota: la modifica del mittente e la prenotazione del ritiro sono disponibili solo per i contratti Poste Italiane."
+  },
+  {
+   "id": "s09",
+   "step": 7,
+   "big": false,
+   "hl": [
+    [
+     20.723,
+     53.578,
+     34.209,
+     45.239
+    ]
+   ],
+   "img": "img/s09.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Triangolazione: in \"Dati Destinatario\" inserisci i dati del tuo cliente, come per una spedizione normale."
+  },
+  {
+   "id": "s10",
+   "step": 8,
+   "big": false,
+   "hl": [
+    [
+     20.723,
+     53.578,
+     34.209,
+     45.239
+    ]
+   ],
+   "img": "img/s10.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Ritiro fuori sede: in \"Dati Destinatario\" inserisci i tuoi dati, cioè l'indirizzo dove vuoi ricevere la merce."
+  },
+  {
+   "id": "s11",
+   "step": 9,
+   "big": false,
+   "hl": [
+    [
+     63.437,
+     23.572,
+     30.121,
+     4.847
+    ],
+    [
+     62.351,
+     34.074,
+     32.57,
+     4.847
+    ]
+   ],
+   "img": "img/s11.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    63.782,
+    28.583,
+    31.357
+   ],
+   "testo": "In \"Dati spedizione\" indica colli, peso e misure precise di ciascun collo: se il pacco lo prepara un terzo, fatti dare peso e dimensioni corrette."
+  },
+  {
+   "id": "s12",
+   "step": 10,
+   "big": false,
+   "hl": [
+    [
+     84.016,
+     53.347,
+     10.516,
+     5.309
+    ]
+   ],
+   "img": "img/s12.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    73.364,
+    28.583,
+    21.775
+   ],
+   "testo": "Clicca su \"Seleziona Corriere\" per vedere il preventivo."
+  },
+  {
+   "id": "s13",
+   "step": 11,
+   "big": false,
+   "hl": [
+    [
+     66.424,
+     37.159,
+     7.271,
+     7.795
+    ]
+   ],
+   "img": "img/s13.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Scegli un contratto Poste Italiane: è quello che consente mittente diverso e ritiro a domicilio."
+  },
+  {
+   "id": "s14",
+   "step": 12,
+   "big": false,
+   "hl": [
+    [
+     84.535,
+     54.293,
+     9.997,
+     5.309
+    ]
+   ],
+   "img": "img/s14.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Clicca su \"Crea Spedizione\": la lettera di vettura viene creata."
+  },
+  {
+   "id": "s15",
+   "step": 13,
+   "big": false,
+   "hl": [
+    [
+     62.67,
+     60.697,
+     6.4,
+     3.489
+    ],
+    [
+     24.321,
+     60.477,
+     6.037,
+     3.462
+    ]
+   ],
+   "img": "img/s15.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    71.17,
+    28.583,
+    23.969
+   ],
+   "testo": "In \"Elenco Spedizioni\" la spedizione compare con stato \"In Lavorazione\". Cliccando sul N. Spedizione..."
+  },
+  {
+   "id": "s16",
+   "step": 14,
+   "big": false,
+   "hl": [
+    [
+     22.671,
+     52.862,
+     54.659,
+     5.597
+    ]
+   ],
+   "img": "img/s16.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    63.782,
+    28.583,
+    31.357
+   ],
+   "testo": "...vedi il tracking: \"Spedizione generata. In attesa di ritiro.\" Ricorda di creare la distinta giornaliera da \"Crea Distinta\" per trasmettere i dati al corriere."
+  },
+  {
+   "id": "s17",
+   "step": 15,
+   "big": false,
+   "hl": [
+    [
+     3.261,
+     36.398,
+     15.255,
+     4.847
+    ],
+    [
+     19.49,
+     47.76,
+     75.951,
+     5.886
+    ]
+   ],
+   "img": "img/s17.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    67.476,
+    28.583,
+    27.663
+   ],
+   "testo": "Verifica il ritiro in \"Ritiri\" → \"Elenco Ritiri\": trovi codice, data di inserimento e data prevista del ritiro."
+  },
+  {
+   "id": "s18",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s18.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    35.783,
+    35.418,
+    45.932,
+    29.163
+   ],
+   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+  }
+ ]
+}

@@ -1777,3 +1777,14 @@ a.pipeline-footer:hover {
 .row-actions .row-action-plain { color: #999; }
 .row-actions .row-action-plain:hover,
 .row-actions .row-action-plain:focus { color: #3c8dbc; background-color: #f4f6f9; }
+
+/* v2026.30: regole .row-actions aggiunte (bottoni in form, slot per l'azione opzionale, rosso per cancella) */
+.row-actions form { display: inline-block; margin: 0; }
+.row-actions button { display: inline-block; width: 30px; height: 30px; line-height: 30px; padding: 0; margin-right: 4px; border: 0; background: transparent; text-align: center; font-size: 14px; border-radius: 4px; }
+.row-actions .row-action-red    { color: #dd4b39; background-color: #fbe9e7; }
+.row-actions .row-action-red:hover,   .row-actions .row-action-red:focus   { color: #fff; background-color: #dd4b39; }
+.row-actions form:last-child button { margin-right: 0; margin-left: 4px; }
+.row-actions svg { width: 14px; height: 14px; vertical-align: middle; }
+.row-actions .row-action-slot { display: inline-block; min-width: 30px; height: 30px; margin-right: 4px; vertical-align: middle; white-space: nowrap; }
+.row-actions .row-action-slot > :last-child { margin-right: 0; }
+.row-actions .is-disabled { opacity: 0.45; pointer-events: none; cursor: not-allowed; }

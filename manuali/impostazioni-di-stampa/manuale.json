@@ -1,0 +1,316 @@
+{
+ "titolo": "Impostazioni di stampa",
+ "slug": "impostazioni-di-stampa",
+ "descrizione": "",
+ "aggiornato": "2026-09-25",
+ "slides": [
+  {
+   "id": "s01",
+   "step": null,
+   "big": true,
+   "hl": [],
+   "img": "img/s01.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    41.251,
+    39.216,
+    34.996,
+    21.569
+   ],
+   "testo": "Impostazioni di stampa\ndelle etichette"
+  },
+  {
+   "id": "s02",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s02.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.557,
+    28.583,
+    26.885
+   ],
+   "testo": "Le etichette vengono generate in formato A6, una per pagina. Se stampi su fogli A4 con una normale stampante, puoi mettere 4 etichette per foglio impostando la stampa dal browser o da Adobe Reader. Vediamo come."
+  },
+  {
+   "id": "s03",
+   "step": 1,
+   "big": false,
+   "hl": [
+    [
+     3.261,
+     26.243,
+     15.255,
+     4.847
+    ]
+   ],
+   "img": "img/s03.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Dal menu \"Spedizioni\" clicca su \"Elenco Spedizioni\"."
+  },
+  {
+   "id": "s04",
+   "step": 2,
+   "big": false,
+   "hl": [
+    [
+     20.686,
+     52.052,
+     3.895,
+     27.697
+    ],
+    [
+     20.686,
+     46.513,
+     3.895,
+     6.924
+    ]
+   ],
+   "img": "img/s04.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Seleziona le spedizioni da stampare con le caselle a sinistra di ogni riga, oppure usa la casella in alto per selezionarle tutte."
+  },
+  {
+   "id": "s05",
+   "step": 3,
+   "big": false,
+   "hl": [
+    [
+     87.261,
+     53.321,
+     8.244,
+     5.309
+    ]
+   ],
+   "img": "img/s05.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    48.832,
+    71.17,
+    28.583,
+    23.969
+   ],
+   "testo": "Clicca su \"Stampa PDF\": viene generato un unico PDF con tutte le etichette selezionate."
+  },
+  {
+   "id": "s06",
+   "step": 4,
+   "big": false,
+   "hl": [
+    [
+     84.2,
+     53.552,
+     2.726,
+     4.847
+    ]
+   ],
+   "img": "img/s06.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Per una sola etichetta usa invece l'icona della stampante in corrispondenza della spedizione."
+  },
+  {
+   "id": "s07",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s07.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    40.251,
+    28.583,
+    19.497
+   ],
+   "testo": "Il PDF contiene un'etichetta per pagina: se hai una stampante per etichette A6 (termica) stampalo così com'è."
+  },
+  {
+   "id": "s08",
+   "step": 5,
+   "big": false,
+   "hl": [
+    [
+     33.313,
+     28.4,
+     16.69,
+     43.815
+    ]
+   ],
+   "img": "img/s08.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Con Google Chrome: apri il PDF nel browser, clicca con il tasto destro (o sull'icona della stampante in alto a destra) e scegli \"Stampa...\"."
+  },
+  {
+   "id": "s09",
+   "step": 6,
+   "big": false,
+   "hl": [
+    [
+     43.453,
+     37.784,
+     17.397,
+     5.605
+    ]
+   ],
+   "img": "img/s09.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Nella finestra di stampa apri \"Altre impostazioni\" e imposta \"Pagine per foglio: 4\". L'anteprima mostra 4 etichette su un foglio A4."
+  },
+  {
+   "id": "s10",
+   "step": 7,
+   "big": false,
+   "hl": [
+    [
+     43.453,
+     47.28,
+     17.397,
+     5.605
+    ],
+    [
+     13.777,
+     11.405,
+     24.519,
+     60.472
+    ]
+   ],
+   "img": "img/s10.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "In \"Scala\" scegli \"Adatta ad area stampabile\", così le etichette riempiono il foglio. Poi clicca su \"Stampa\"."
+  },
+  {
+   "id": "s11",
+   "step": 8,
+   "big": false,
+   "hl": [
+    [
+     7.11,
+     36.375,
+     30.335,
+     10.142
+    ]
+   ],
+   "img": "img/s11.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Con Adobe Acrobat Reader: apri il PDF, vai su Stampa, in \"Gestione e dimensioni pagina\" scegli \"Multiple\" con 2 per 2 pagine per foglio e orientamento Verticale, poi Stampa."
+  },
+  {
+   "id": "s12",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s12.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    35.783,
+    35.418,
+    45.932,
+    29.163
+   ],
+   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+  }
+ ]
+}

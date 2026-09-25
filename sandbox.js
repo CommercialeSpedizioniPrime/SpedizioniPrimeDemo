@@ -13,6 +13,8 @@
  *  - /api/courier/contrassegnotype/N  -> sandbox/rates/contrassegnotype_N.json
  *  - POST .../ajax_multipdf           -> ok (la pagina apre poi shippings/download_temp = etichette placeholder)
  *  - form Report Spedizioni           -> sandbox/reports/shippings.csv | .xlsx
+ *  - form Nuova Spedizione            -> la spedizione compare in Elenco Spedizioni (stato nel browser); con "Andata & Ritorno" anche l'etichetta di reso
+ *  - finestra "Genera etichetta di reso" (spedizioni Poste) -> LDV di ritorno + "Stampa etichetta di reso" sulla riga (stato nel browser)
  */
 (function ($) {
     if (!$ || !$.ajaxTransport) return;
@@ -227,19 +229,94 @@
             });
         });
     })();
+    // Spedizioni create a mano da "Nuova Spedizione": come sul portale compaiono in cima all'Elenco Spedizioni
+    // (stato "In Lavorazione") e in Crea Distinta. Con il servizio accessorio "Andata & Ritorno" (contratto Poste)
+    // la riga mostra anche il numero della lettera di vettura di ritorno e il bottone "Stampa etichetta di reso" (v2026.30).
+    var CONTRACTS = { 6: { vector_id: 5, name: 'Interno', slug: 'interno', contract: 'Contratto Interno DEMO' }, 86: { vector_id: 17, name: 'PosteDeliveryBusiness', slug: 'postedeliverybusiness', contract: 'Contratto Poste DEMO' }, 999: { vector_id: 99, name: 'GLS', slug: 'gls', contract: 'Contratto GLS DEMO' } };
+    function manualShipments(st) {
+        var tplJ = D['data/shippings/shippings-table.json']; if (!tplJ || !tplJ.data.length) return [];
+        return (st.manual || []).map(function (m) {
+            var r = $.extend({}, tplJ.data[0]); var c = CONTRACTS[m.contract] || CONTRACTS[6];
+            r.id = 90002000 + m.n; r.increment_id = m.n;
+            r.ldv = "<a href='#' class='track' data-id='" + m.ldv + "' >" + m.ldv + "</a>" + (m.ret ? '<br><small title="Etichetta di reso"><i class="fa fa-reply"></i> ' + m.ret + '</small>' : '');
+            r.return_ldv = m.ret || null; r.vector_id = c.vector_id; r.vector_contract_id = m.contract;
+            r.vector_service_id = m.ret ? 170000179 : null; r.vector_services = m.services || [];
+            r.nominativo = esc(m.name) + '<br /><small>' + esc(m.city + ', ' + m.cap + ' (' + m.prov + '), IT') + '</small>';
+            r.indirizzo = m.street; r.cap = m.cap; r.citta = m.city; r.provincia = m.prov; r.tel_dest = m.tel || '0000000000'; r.email_dest = m.email || '';
+            r.order_number = m.order || ' '; r.original_order_id = m.order || null; r.rif_dest = m.rif || null;
+            r.created_at = m.date; r.status = '<span class="label label-default" data-toggle="tooltip" title="' + m.date.slice(0, 10) + '">In Lavorazione</span>';
+            r.shipping_list_id = null; r.colli = m.colli || 1; r.weight = m.weight || 1; r.contrassegno = m.cod || ''; r.contrassegno_type = m.cod ? 'CON' : null;
+            r.shipped_at = null; r.consigned_at = null;
+            r.checkbox = "<input type='checkbox' class='minimal'  value='" + r.id + "' name='shippings[]' print_format='PDF' />";
+            var slot = m.ret ? '<span class="row-action-slot"><a href="' + BASE + 'sandbox/labels/ECIT00000102.pdf" target="_blank" title="Stampa etichetta di reso" class="row-action-teal"><i class="fa fa-reply"></i></a></span> '
+                : (m.contract === 86 ? '<span class="row-action-slot"><button type="button" class="row-action-teal poste-reverse" data-id="' + r.id + '" data-ldv="' + m.ldv + '" title="Genera etichetta di reso"><i class="fa fa-undo"></i></button></span> ' : '');
+            r.action = '<div class="row-actions">' + slot + '<a href="' + BASE + 'sandbox/labels/ECIT00000010.pdf" target="_blank" title="Stampa PDF" class="row-action-blue"><i class="fa fa-print"></i></a></div>';
+            return r;
+        }).reverse();
+    }
+    $(function () {
+        var $f = $('form[action$="shippings/index.html"]').filter(function () { return $(this).find('#show-corriers').length > 0; });
+        if (!$f.length) return;
+        $f.on('submit', function () {
+            var st = loadState(); st.manual = st.manual || [];
+            var k = st.manual.length; var n = 201 + k;
+            var pad = function (x) { return 'ECIT' + ('00000000' + x).slice(-8); };
+            var services = $('#vector_services option:selected').map(function () { return $(this).text().trim(); }).get();
+            var reso = $('#vector_services').val() ? $('#vector_services').val().indexOf('170000179') >= 0 : false;
+            var d = new Date(); var date = ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + '/' + d.getFullYear() + ' ' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+            var v = function (sel) { return ($(sel).val() || '').toString().trim(); };
+            st.manual.push({ n: n, ldv: pad(n), ret: reso ? pad(n + 100) : null, date: date, contract: parseInt($('#vector_contracts input:radio:checked').val(), 10) || 6, services: services,
+                name: v('[name=nominativo]') || 'DESTINATARIO DEMO', city: (v('[name=citta]') || 'ROMA').split(' (')[0], cap: v('[name=cap]') || '00100', prov: v('[name=provincia]') || 'RM', street: v('[name=indirizzo]') || 'VIA ESEMPIO 1',
+                tel: v('[name=tel_dest]'), email: v('[name=email_dest]'), order: v('[name=original_order_id]'), rif: v('[name=rif_dest]'),
+                colli: parseInt(v('[name=colli]'), 10) || 1, weight: parseFloat(v('[name=weight]')) || 1, cod: v('[name=contrassegno]') && parseFloat(v('[name=contrassegno]')) > 0 ? 'XX.XX' : '' });
+            saveState(st);
+        });
+    });
+    // ===== "Genera etichetta di reso" (portale v2026.30): per le spedizioni Poste senza LDV di ritorno. Stato nel browser del visitatore =====
+    function applyReso(st) {
+        var rs = st.reso || {}; if (!Object.keys(rs).length) return;
+        ['data/shippings/shippings-table.json', 'data/shippinglists/create/shippings-table.json'].forEach(function (k) {
+            if (!D[k]) return; var j = $.extend(true, {}, D[k]);
+            j.data.forEach(function (r) {
+                var rec = rs[r.id]; if (!rec || r.return_ldv) return;
+                r.return_ldv = rec.ret; r.vector_services = ['Reverse'];
+                r.ldv = r.ldv + '<br><small title="Etichetta di reso"><i class="fa fa-reply"></i> ' + rec.ret + '</small>';
+                r.action = String(r.action).replace(/<span class="row-action-slot">[\s\S]*?<\/span>/, '<span class="row-action-slot"><a href="' + BASE + 'sandbox/labels/ECIT00000102.pdf" target="_blank" title="Stampa etichetta di reso" class="row-action-teal"><i class="fa fa-reply"></i></a></span>');
+            });
+            D[k] = j;
+        });
+    }
+    $(function () {
+        var $f = $('#posteReverseForm'); if (!$f.length) return;
+        $f.on('submit', function (e) {
+            e.preventDefault();
+            var m = ($f.attr('action') || '').match(/shippings\/(\d+)\/reverse/); if (!m) return;
+            var id = m[1], ldv = $('#posteReverseLdv').text();
+            var st = loadState(); st.reso = st.reso || {};
+            var ret = ldv.replace(/(\d+)$/, function (d) { return ('00000000' + (parseInt(d, 10) + 100)).slice(-d.length); });
+            st.reso[id] = { ret: ret, channel: $('#posteReverseChannel').val(), channelName: $('#posteReverseChannel option:selected').text().trim(), paperless: $('#posteReversePaperless input').is(':checked'), when: new Date().toISOString() };
+            saveState(st);
+            $('#posteReverseModal').modal('hide');
+            applyReso(st);
+            var $t = $('#shippings-table'); if ($t.length && $.fn.DataTable && $.fn.DataTable.isDataTable($t[0])) $t.DataTable().ajax.reload(null, false);
+            $('.content-header').first().after(alertBox('success', '<i class="icon fa fa-check"></i> Etichetta di reso generata per la spedizione <b>' + esc(ldv) + '</b>: lettera di vettura di ritorno <b>' + esc(ret) + '</b>' + (st.reso[id].paperless ? ' (paperless: il destinatario mostra il codice allo sportello)' : ', stampala con il bottone "Stampa etichetta di reso"') + '.'));
+        });
+    });
     (function mergeShipments() {
-        var st = loadState(); var extra = shipmentsFromOrders(st); if (!extra.length) return;
+        var st = loadState(); var extra = manualShipments(st).concat(shipmentsFromOrders(st)); if (!extra.length) return;
         ['data/shippings/shippings-table.json', 'data/shippinglists/create/shippings-table.json'].forEach(function (k) {
             if (!D[k]) return; var j = $.extend(true, {}, D[k]);
             j.data = extra.concat(j.data); j.recordsTotal = j.data.length; j.recordsFiltered = j.data.length; D[k] = j;
         });
         extra.forEach(function (r) {
             var ldv = $('<div>').html(r.ldv).text();
-            if (!D['tracking/' + ldv]) D['tracking/' + ldv] = { TrackingDettaglio: [{ Data: r.created_at, Stato: 'Spedizione generata. In attesa di ritiro.', Luogo: 'NAPOLI' }], pin_required: false, ldv: ldv, vector_id: 5, vector_name: 'Interno', statusCode: 0,
-                shipping: { ldv: ldv, status: 0, nominativo: $('<div>').html(r.nominativo).find('b').text() || $('<div>').html(r.nominativo).text(), indirizzo: '', tel_dest: '0000000000', email_dest: '', contrassegno: 0, insurance_value: 0, colli: String(r.colli), weight: String(r.weight), lu: 0, la: 0, h: 0, reference: null, vector_contract: { id: 6, vector_id: 5, name: 'Contratto Interno DEMO', slug: 'interno' } },
+            var c = CONTRACTS[r.vector_contract_id] || CONTRACTS[6];
+            if (!D['tracking/' + ldv]) D['tracking/' + ldv] = { TrackingDettaglio: [{ Data: r.created_at, Stato: 'Spedizione generata. In attesa di ritiro.', Luogo: 'NAPOLI' }], pin_required: false, ldv: ldv, vector_id: c.vector_id, vector_name: c.name, statusCode: 0,
+                shipping: { ldv: ldv, status: 0, nominativo: $('<div>').html(r.nominativo).find('b').text() || $('<div>').html(r.nominativo).text().split('\n')[0], indirizzo: r.indirizzo || '', tel_dest: r.tel_dest || '0000000000', email_dest: r.email_dest || '', contrassegno: r.contrassegno ? 1 : 0, insurance_value: 0, colli: String(r.colli), weight: String(r.weight), lu: 0, la: 0, h: 0, reference: null, vector_contract: { id: r.vector_contract_id, vector_id: c.vector_id, name: c.contract, slug: c.slug } },
                 createdBy: 'UTENTE DEMO', order: { order_id: r.order_number }, packs: null };
         });
     })();
+    applyReso(loadState());
     // Ordini gia' spediti nella demo: nella lista ordini mostrano il numero di spedizione
     (function markShippedOrders() {
         var st = loadState();

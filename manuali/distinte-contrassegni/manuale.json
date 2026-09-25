@@ -1,0 +1,282 @@
+{
+ "titolo": "Distinte contrassegni",
+ "slug": "distinte-contrassegni",
+ "descrizione": "",
+ "aggiornato": "2026-09-25",
+ "slides": [
+  {
+   "id": "s01",
+   "step": null,
+   "big": true,
+   "hl": [],
+   "img": "img/s01.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    41.251,
+    39.216,
+    34.996,
+    21.569
+   ],
+   "testo": "Distinte contrassegni"
+  },
+  {
+   "id": "s02",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s02.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.71,
+    28.583,
+    30.579
+   ],
+   "testo": "Le distinte contrassegni riepilogano gli importi dei contrassegni incassati dal corriere per le tue spedizioni e il loro stato di pagamento. In queste slide vedi dove trovarle, come leggerle e come stamparle o esportarle."
+  },
+  {
+   "id": "s03",
+   "step": 1,
+   "big": false,
+   "hl": [
+    [
+     3.261,
+     40.091,
+     15.255,
+     4.847
+    ]
+   ],
+   "img": "img/s03.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Dal menu \"Spedizioni\" clicca su \"Contrassegni\"."
+  },
+  {
+   "id": "s04",
+   "step": 2,
+   "big": false,
+   "hl": [
+    [
+     19.749,
+     23.756,
+     13.827,
+     5.309
+    ],
+    [
+     51.558,
+     29.526,
+     9.867,
+     40.969
+    ]
+   ],
+   "img": "img/s04.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Con il filtro \"Data distinta\" scegli il periodo: Oggi, Ieri, Ultimi 7 o 30 giorni, Questo mese, Mese scorso, Ultimi 90 giorni o un intervallo personalizzato."
+  },
+  {
+   "id": "s05",
+   "step": 3,
+   "big": false,
+   "hl": [
+    [
+     19.49,
+     42.221,
+     75.951,
+     5.77
+    ]
+   ],
+   "img": "img/s05.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    48.832,
+    67.476,
+    28.583,
+    27.663
+   ],
+   "testo": "La tabella mostra per ogni distinta: numero, data di creazione, totale dei contrassegni, metodo di pagamento, stato, data di pagamento e azioni."
+  },
+  {
+   "id": "s06",
+   "step": 4,
+   "big": false,
+   "hl": [
+    [
+     48.053,
+     46.606,
+     13.928,
+     44.085
+    ]
+   ],
+   "img": "img/s06.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "\"Metodo pagamento\" indica come ti viene liquidato il contrassegno: CON o CONT, secondo il tuo contratto."
+  },
+  {
+   "id": "s07",
+   "step": 5,
+   "big": false,
+   "hl": [
+    [
+     61.202,
+     46.606,
+     23.176,
+     44.085
+    ]
+   ],
+   "img": "img/s07.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "\"Stato\": In lavorazione (arancione) finché la distinta non è stata liquidata; Pagato (verde) quando il pagamento è stato effettuato, con la data di pagamento accanto."
+  },
+  {
+   "id": "s08",
+   "step": 6,
+   "big": false,
+   "hl": [
+    [
+     84.118,
+     47.76,
+     4.804,
+     3.462
+    ],
+    [
+     88.338,
+     47.76,
+     3.765,
+     3.462
+    ]
+   ],
+   "img": "img/s08.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "In \"Azioni\" puoi stampare la distinta in PDF con \"Stampa\" oppure scaricarla in Excel con \"Excel\"."
+  },
+  {
+   "id": "s09",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s09.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.404,
+    28.583,
+    23.191
+   ],
+   "testo": "La stampa PDF riporta il numero e la data della distinta, l'elenco delle spedizioni con destinatario e importo del contrassegno, il totale e il metodo di pagamento."
+  },
+  {
+   "id": "s10",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s10.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    48.832,
+    68.254,
+    28.583,
+    26.885
+   ],
+   "testo": "Il file Excel contiene una riga per spedizione con: ldv, rif_mittente, contrassegno, pagato, destinatario, bda, note, order_num, rif_destinatario e Data ldv. Utile per la riconciliazione contabile."
+  },
+  {
+   "id": "s11",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s11.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    35.783,
+    35.418,
+    45.932,
+    29.163
+   ],
+   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+  }
+ ]
+}

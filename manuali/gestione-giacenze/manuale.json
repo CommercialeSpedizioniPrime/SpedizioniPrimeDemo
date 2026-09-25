@@ -1,0 +1,436 @@
+{
+ "titolo": "Gestione giacenze",
+ "slug": "gestione-giacenze",
+ "descrizione": "",
+ "aggiornato": "2026-09-25",
+ "slides": [
+  {
+   "id": "s01",
+   "step": null,
+   "big": true,
+   "hl": [],
+   "img": "img/s01.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    41.251,
+    39.216,
+    34.996,
+    21.569
+   ],
+   "testo": "Gestione delle giacenze"
+  },
+  {
+   "id": "s02",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s02.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    17.921,
+    28.583,
+    64.159
+   ],
+   "testo": "Una spedizione va in giacenza quando non può essere consegnata: indirizzo errato, destinatario assente, rifiuto della consegna. Il corriere la trattiene e aspetta istruzioni.\n\nDal portale puoi correggere i dati di consegna, comunicare le istruzioni di riconsegna al corriere e seguire lo stato della gestione. Con GLS, Poste Italiane, Liccardi e il circuito Interno le istruzioni arrivano automaticamente al sistema del corriere."
+  },
+  {
+   "id": "s03",
+   "step": 1,
+   "big": false,
+   "hl": [
+    [
+     3.261,
+     36.629,
+     15.255,
+     4.847
+    ]
+   ],
+   "img": "img/s03.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Dal menu \"Spedizioni\" clicca su \"Giacenze\"."
+  },
+  {
+   "id": "s04",
+   "step": 2,
+   "big": false,
+   "hl": [
+    [
+     19.49,
+     42.221,
+     75.951,
+     5.77
+    ]
+   ],
+   "img": "img/s04.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    48.832,
+    67.476,
+    28.583,
+    27.663
+   ],
+   "testo": "La \"Lista giacenze\" mostra per ogni spedizione: numero, destinatario, città, motivo, data e ora, totale, stato e azioni."
+  },
+  {
+   "id": "s05",
+   "step": 3,
+   "big": false,
+   "hl": [
+    [
+     45.358,
+     46.606,
+     11.126,
+     21.119
+    ],
+    [
+     68.674,
+     46.606,
+     14.303,
+     21.119
+    ]
+   ],
+   "img": "img/s05.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    48.832,
+    63.782,
+    28.583,
+    31.357
+   ],
+   "testo": "\"Motivo\" è la causa comunicata dal corriere. \"Stato\" indica a che punto è la gestione: \"Aperta - In attesa di istruzioni\" vuol dire che il corriere aspetta le tue indicazioni."
+  },
+  {
+   "id": "s06",
+   "step": 4,
+   "big": false,
+   "hl": [
+    [
+     84.081,
+     47.645,
+     6.751,
+     5.309
+    ]
+   ],
+   "img": "img/s06.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Clicca su \"Gestisci\" accanto alla spedizione da sbloccare."
+  },
+  {
+   "id": "s07",
+   "step": 5,
+   "big": false,
+   "hl": [
+    [
+     19.425,
+     16.071,
+     12.399,
+     16.388
+    ]
+   ],
+   "img": "img/s07.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "In \"Info Giacenza\" trovi destinatario, indirizzo, telefono, il motivo della giacenza e le date di spedizione e di apertura della giacenza."
+  },
+  {
+   "id": "s08",
+   "step": 6,
+   "big": false,
+   "hl": [
+    [
+     19.425,
+     53.578,
+     36.807,
+     4.847
+    ]
+   ],
+   "img": "img/s08.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Nel riquadro \"Gestisci\" scegli l'operazione da effettuare (es. \"Riconsegna\") e la data."
+  },
+  {
+   "id": "s09",
+   "step": 7,
+   "big": false,
+   "hl": [
+    [
+     19.425,
+     54.501,
+     36.807,
+     7.271
+    ]
+   ],
+   "img": "img/s09.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Con \"preavviso telefonico\" il corriere contatta il destinatario prima della riconsegna: inserisci il numero di telefono corretto."
+  },
+  {
+   "id": "s10",
+   "step": 8,
+   "big": false,
+   "hl": [
+    [
+     19.425,
+     62.579,
+     1.623,
+     11.541
+    ],
+    [
+     29.292,
+     75.458,
+     7.985,
+     2.885
+    ],
+    [
+     19.425,
+     82.313,
+     36.807,
+     4.847
+    ]
+   ],
+   "img": "img/s10.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    28.78,
+    28.583,
+    42.439
+   ],
+   "testo": "Puoi anche annullare o variare l'importo del contrassegno, cambiare la spedizione in Porto Franco (a carico del mittente) o Porto Assegnato (a carico del destinatario) e indicare a chi addebitare le spese di giacenza. In \"Note\" aggiungi eventuali richieste."
+  },
+  {
+   "id": "s11",
+   "step": 9,
+   "big": false,
+   "hl": [
+    [
+     49.935,
+     87.507,
+     6.297,
+     5.309
+    ]
+   ],
+   "img": "img/s11.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Clicca su \"Conferma\": le istruzioni vengono inviate direttamente al sistema del corriere."
+  },
+  {
+   "id": "s12",
+   "step": 10,
+   "big": false,
+   "hl": [
+    [
+     58.699,
+     20.802,
+     36.807,
+     14.772
+    ],
+    [
+     21.957,
+     41.449,
+     11.593,
+     3.489
+    ]
+   ],
+   "img": "img/s12.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    26.273,
+    71.17,
+    28.583,
+    23.969
+   ],
+   "testo": "Lo \"Storico Azioni\" registra l'istruzione inviata e lo stato passa a \"In gestione - Istruzioni inviate\"."
+  },
+  {
+   "id": "s13",
+   "step": 11,
+   "big": false,
+   "hl": [
+    [
+     69.194,
+     47.98,
+     11.593,
+     3.489
+    ]
+   ],
+   "img": "img/s13.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    63.782,
+    28.583,
+    31.357
+   ],
+   "testo": "Nella lista lo stato è aggiornato. Quando il corriere completa lo svincolo, lo stato diventa \"In gestione - Svincolo confermato\"; a gestione conclusa la giacenza risulta \"Chiusa\"."
+  },
+  {
+   "id": "s14",
+   "step": 12,
+   "big": false,
+   "hl": [
+    [
+     33.706,
+     23.756,
+     13.762,
+     5.309
+    ]
+   ],
+   "img": "img/s14.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Con il filtro \"Status\" vedi solo le giacenze in un certo stato, ad esempio quelle ancora in attesa di istruzioni."
+  },
+  {
+   "id": "s15",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s15.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    24.725,
+    28.583,
+    50.549
+   ],
+   "testo": "Consigli:\n- controlla che i dati forniti siano corretti e completi, per evitare altri ritardi;\n- invia le istruzioni al corriere il prima possibile;\n- controlla regolarmente lo stato delle giacenze fino allo svincolo.\n\nPer i corrieri senza integrazione diretta le istruzioni vengono trasferite al corriere dal nostro team, che poi conferma lo svincolo sul portale."
+  },
+  {
+   "id": "s16",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s16.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    35.783,
+    35.418,
+    45.932,
+    29.163
+   ],
+   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+  }
+ ]
+}

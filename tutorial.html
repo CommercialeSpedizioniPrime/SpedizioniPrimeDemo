@@ -30,7 +30,9 @@
 <script>
   document.getElementById('start').addEventListener('click', function (e) {
     e.preventDefault();
-    try { localStorage.setItem('spedisci_tutorial', JSON.stringify({ active: true, step: 0 })); localStorage.removeItem('spedisci_sandbox_v1'); } catch (x) {}
+    // variabili di percorso dal link (es. tutorial.html?ritiro=sede&canale=negozio): decidono quali passi mostrare
+    var vars = {}; try { new URLSearchParams(location.search).forEach(function (val, key) { vars[key] = val; }); } catch (x) {}
+    try { localStorage.setItem('spedisci_tutorial', JSON.stringify({ active: true, step: 0, vars: vars })); localStorage.removeItem('spedisci_sandbox_v1'); } catch (x) {}
     location.href = 'index.html';
   });
   document.getElementById('free').addEventListener('click', function () {

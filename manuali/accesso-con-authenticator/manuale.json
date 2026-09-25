@@ -1,0 +1,302 @@
+{
+ "titolo": "Accesso con Authenticator",
+ "slug": "accesso-con-authenticator",
+ "descrizione": "Accesso con Google Authenticator",
+ "aggiornato": "2026-09-25",
+ "slides": [
+  {
+   "id": "s01",
+   "step": null,
+   "big": true,
+   "hl": [],
+   "img": "img/s01.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    41.251,
+    39.216,
+    34.996,
+    21.569
+   ],
+   "testo": "Accesso con\nGoogle Authenticator"
+  },
+  {
+   "id": "s02",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s02.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    17.921,
+    28.583,
+    64.159
+   ],
+   "testo": "Il portale offre un metodo di accesso alternativo al codice via email: Google Authenticator.\n\nPerché? Invece di aspettare l'email, usi un codice generato direttamente sul tuo smartphone.\n\nCome funziona? L'app crea un nuovo codice ogni 30 secondi, come alcuni servizi SPID. Il codice si usa subito per entrare: accesso più veloce e sicuro."
+  },
+  {
+   "id": "s03",
+   "step": 1,
+   "big": false,
+   "hl": [
+    [
+     3.261,
+     73.559,
+     15.255,
+     4.847
+    ]
+   ],
+   "img": "img/s03.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Nel menu \"Impostazioni\" clicca su \"Abilita Google 2FA App\"."
+  },
+  {
+   "id": "s04",
+   "step": 2,
+   "big": false,
+   "hl": [],
+   "img": "img/s04.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Ti si presenta questa schermata, con il codice QR da inquadrare con l'app (o, in alternativa, il codice testuale da inserire a mano)."
+  },
+  {
+   "id": "s05",
+   "step": 3,
+   "big": false,
+   "hl": [],
+   "img": "img/s05.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    64.458,
+    71.17,
+    32.808,
+    23.969
+   ],
+   "testo": "Sul tuo smartphone vai sul Play Store (o App Store), cerca \"Google Authenticator\" e installalo."
+  },
+  {
+   "id": "s06",
+   "step": 4,
+   "big": false,
+   "hl": [],
+   "img": "img/s06.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    64.458,
+    67.476,
+    32.808,
+    27.663
+   ],
+   "testo": "Avvia Google Authenticator, entra con il tuo account Google, clicca su \"Aggiungi un codice\" e poi su \"Scansiona un codice QR\"."
+  },
+  {
+   "id": "s07",
+   "step": 5,
+   "big": false,
+   "hl": [
+    [
+     7.961,
+     24.911,
+     14.489,
+     26.866
+    ]
+   ],
+   "img": "img/s07.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Si attiva la fotocamera: inquadra il codice QR mostrato dal portale."
+  },
+  {
+   "id": "s08",
+   "step": 6,
+   "big": false,
+   "hl": [
+    [
+     7.338,
+     51.5,
+     54.373,
+     6.924
+    ],
+    [
+     7.338,
+     62.025,
+     7.634,
+     6.37
+    ]
+   ],
+   "img": "img/s08.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    32.474,
+    28.583,
+    35.051
+   ],
+   "testo": "Nell'app compare la voce \"Spedisci.Online: NOMETUOACCOUNT\" con un codice a 6 cifre: inseriscilo nel campo \"Inserisci OTP dall'app\" e clicca su \"Abilita 2FA\" per collegare l'app al portale."
+  },
+  {
+   "id": "s09",
+   "step": 7,
+   "big": false,
+   "hl": [
+    [
+     15.087,
+     35.469,
+     44.048,
+     9.274
+    ]
+   ],
+   "img": "img/s09.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Da ora la schermata di accesso è questa: dopo email e password inserisci il codice che leggi su Google Authenticator, invece di cercarlo nell'email."
+  },
+  {
+   "id": "s10",
+   "step": 8,
+   "big": false,
+   "hl": [
+    [
+     3.261,
+     73.559,
+     15.255,
+     4.847
+    ]
+   ],
+   "img": "img/s10.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Preferisci tornare al codice via email? Nel menu \"Impostazioni\" clicca su \"Disabilita Google 2FA App\"..."
+  },
+  {
+   "id": "s11",
+   "step": 9,
+   "big": false,
+   "hl": [
+    [
+     7.338,
+     28.789,
+     54.373,
+     6.038
+    ],
+    [
+     7.338,
+     34.328,
+     8.569,
+     6.37
+    ]
+   ],
+   "img": "img/s11.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "...inserisci l'OTP generato dall'app e clicca su \"Disabilita 2FA\". Il codice tornerà ad arrivare via email."
+  },
+  {
+   "id": "s12",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s12.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    35.783,
+    35.418,
+    45.932,
+    29.163
+   ],
+   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+  }
+ ]
+}

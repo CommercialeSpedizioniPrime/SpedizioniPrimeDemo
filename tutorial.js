@@ -23,6 +23,10 @@
 
     var MANUALE = 'https://docs.spedisci.online';
     var $ = window.jQuery;
+    // Variabili di percorso ("fork" del tutorial): arrivano dal link di ingresso, es. tutorial.html?ritiro=sede
+    // e restano nello stato. Ogni passo puo' avere: only(vars) -> true/false (incluso o saltato), text come funzione di vars.
+    var VARS = st.vars || {};
+    function v(name, def) { return VARS[name] === undefined || VARS[name] === '' ? def : VARS[name]; }
 
     // ---- definizione dei passi (in ordine) ----
     var STEPS = [
@@ -43,6 +47,12 @@
         { page: 'shippings', sel: '#shippings-table tbody tr:first-child a.track', text: 'Clicca sul numero di spedizione in blu per aprire il tracking.', advance: 'click' },
         { page: 'shippings', sel: '.modal.in .modal-content', text: 'Qui vedi destinatario e cronologia degli eventi. Chiudi la finestra per continuare.', wait: function () { return $('.modal.in').length > 0; }, when: function () { return $('.modal.in').length === 0; }, hint: 'Chiudi la finestra del tracking: il pulsante Avanti si attiva da solo.' },
         { page: 'shippings', sel: '#shippings-table thead th:nth-child(2), .print_multiple', all: true, text: 'Per stampare le etichette: l\'icona della stampante sulla riga, oppure seleziona più spedizioni e clicca "Stampa PDF".' },
+        // variabile reso (default si; ?reso=no salta): "Genera etichetta di reso" sulle spedizioni Poste (portale v2026.30)
+        { page: 'shippings', center: true, only: function (vars) { return v('reso', 'si') !== 'no'; }, title: 'Un cliente vuole fare un reso?', text: 'Con i contratti Poste Italiane lo gestisci da qui in pochi clic: il portale genera la lettera di vettura di ritorno e Poste ritira il pacco dal tuo cliente e te lo riconsegna. Il reso è una spedizione a sé, addebitata come le altre.', next: 'Vediamo come' },
+        { page: 'shippings', sel: '.poste-reverse[data-ldv="ECIT00000002"]', only: function (vars) { return v('reso', 'si') !== 'no'; }, text: 'La spedizione ECIT00000002 è consegnata e il destinatario vuole restituire il pacco. Clicca sul bottone verde "Genera etichetta di reso" sulla sua riga.', advance: 'click' },
+        { page: 'shippings', sel: '#posteReverseModal .modal-content', only: function (vars) { return v('reso', 'si') !== 'no'; }, text: 'Scegli come il tuo cliente consegnerà il pacco a Poste: ritiro a domicilio, Punto Poste, Locker o Ufficio Postale (attenzione ai limiti di misura e peso indicati). Per Punto Poste e Ufficio Postale puoi spuntare "Paperless": nessuna etichetta da stampare, il cliente mostra un codice allo sportello.', wait: function () { return $('#posteReverseModal.in').length > 0; }, hint: 'Se hai chiuso la finestra, riapri "Genera etichetta di reso" con il bottone verde.' },
+        { page: 'shippings', sel: '#posteReverseForm button[type=submit]', only: function (vars) { return v('reso', 'si') !== 'no'; }, text: 'Clicca su "Genera etichetta di reso".', advance: 'click', wait: function () { return $('#posteReverseModal.in').length > 0; } },
+        { page: 'shippings', sel: '#shippings-table tbody tr:has(.track[data-id="ECIT00000002"]) small[title="Etichetta di reso"], #shippings-table tbody tr:has(.track[data-id="ECIT00000002"]) .row-action-teal', all: true, only: function (vars) { return v('reso', 'si') !== 'no'; }, text: 'Fatto: sotto al numero di spedizione compare il numero della lettera di vettura di ritorno e il bottone verde ora è "Stampa etichetta di reso". Stampala e inviala al cliente (o mettila nel pacco), oppure con Paperless comunicagli il codice.', wait: function () { return $('#shippings-table tbody tr:has(.track[data-id="ECIT00000002"]) small[title="Etichetta di reso"]').length > 0; } },
         { page: 'shippings', sel: 'a[href$="shippinglists/create/index.html"]', menu: 'shippinglists/create/index.html', text: 'A fine giornata i dati vanno trasmessi al corriere: clicca su "Crea Distinta".', advance: 'navigate' },
         { page: 'shippinglists/create', sel: '#contract_id, [data-original-title="Seleziona tutto"]', all: true, text: 'Scegli il contratto, poi clicca sul quadratino "Seleziona tutto" per includere tutte le spedizioni in attesa.', when: function () { return $('#shippings-table tbody input[type=checkbox]:checked').length > 0; } },
         { page: 'shippinglists/create', sel: 'input[type=submit][value="Crea Distinta"]', text: 'Clicca su "Crea Distinta". Ripeti per ogni contratto con spedizioni in attesa.', advance: 'navigate' },
@@ -62,6 +72,8 @@
         { page: /^stocks\/\d+$/, url: 'stocks/90000008/index.html', center: true, title: 'Complimenti, hai completato la demo guidata!', text: 'Ora puoi esplorare liberamente tutte le sezioni: negozi online, contrassegni, report, resi. Per ogni dettaglio c\'è il manuale.', final: true }
     ];
 
+    STEPS = STEPS.filter(function (p) { return !p.only || p.only(VARS); });
+    STEPS.forEach(function (p) { if (typeof p.text === 'function') p.text = p.text(VARS); });
     var idx = Math.min(st.step || 0, STEPS.length - 1);
 
     // ---- stile ----
@@ -138,7 +150,7 @@ body.tut-on .sidebar-menu > li.tut-ok .treeview-menu > li:not(.tut-ok){opacity:.
         var left, top;
         if (r.right + 20 + cw < vw) { left = r.right + 20; top = r.top; }
         else if (r.left - 20 - cw > 0) { left = r.left - 20 - cw; top = r.top; }
-        else { left = Math.max(10, Math.min(r.left, vw - cw - 10)); top = r.bottom + 16; }
+        else { left = Math.max(10, Math.min(r.left, vw - cw - 10)); top = r.bottom + 16; if (top + ch > vh - 10 && r.top - 16 - ch > 10) top = r.top - 16 - ch; }
         if (top + ch > vh - 10) top = Math.max(10, vh - ch - 10);
         if (top < 10) top = 10;
         card.style.left = (left + sx) + 'px'; card.style.top = (top + sy) + 'px';
@@ -146,6 +158,9 @@ body.tut-on .sidebar-menu > li.tut-ok .treeview-menu > li:not(.tut-ok){opacity:.
 
     function scrollTo(step) {
         var r = target(step); if (!r) return;
+        // il contenuto scorre dentro .content-wrapper (layout-shell), non nella finestra: scrollIntoView funziona in entrambi i casi
+        var el = $(step.sel).filter(':visible').first()[0];
+        if (el && el.scrollIntoView) { try { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); return; } catch (e) {} }
         var y = r.top + window.pageYOffset - Math.max(40, (window.innerHeight - (r.bottom - r.top)) / 2);
         window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
     }
@@ -199,7 +214,7 @@ body.tut-on .sidebar-menu > li.tut-ok .treeview-menu > li:not(.tut-ok){opacity:.
         clearInterval(poller);
         var seen = !step.wait || step.wait();
         poller = setInterval(function () {
-            if (!seen) { if (step.wait()) seen = true; else { card.style.visibility = 'hidden'; hl.style.display = 'none'; return; } }
+            if (!seen) { if (step.wait()) { seen = true; setTimeout(function () { scrollTo(step); }, 50); } else { card.style.visibility = 'hidden'; hl.style.display = 'none'; return; } }
             card.style.visibility = 'visible';
             if (step.when && next) next.disabled = !step.when();
             place(step);

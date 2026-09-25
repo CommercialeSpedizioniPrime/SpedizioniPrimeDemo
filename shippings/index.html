@@ -1541,5 +1541,54 @@ $(function(){
 
 </script>
 
+
+<div class="modal fade" id="posteReverseModal" data-backdrop="static">
+  <div class="modal-dialog" style="width: 460px;">
+    <div class="modal-content">
+      <form method="POST" id="posteReverseForm" action="">
+        <input type="hidden" name="_token" value="sandbox" autocomplete="off">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+          <h4 class="modal-title">Genera etichetta di reso <small id="posteReverseLdv"></small></h4>
+        </div>
+        <div class="modal-body">
+          <p>Poste ritira il pacco presso il destinatario di questa spedizione e lo consegna al tuo indirizzo di reso. Il reso &egrave; una spedizione a s&eacute;, addebitata come le altre.</p>
+          <div class="form-group">
+            <label for="posteReverseChannel">Come il destinatario consegna il pacco a Poste</label>
+            <select name="channel" id="posteReverseChannel" class="form-control">
+              <option value="APT000928" data-paperless="0">Ritiro a domicilio</option>
+              <option value="APT000979" data-paperless="1">Punto Poste</option>
+              <option value="APT000980" data-paperless="0">Locker Punto Poste</option>
+              <option value="APT000981" data-paperless="1">Ufficio Postale</option>
+            </select>
+            <small class="help-block">Punto Poste e Locker: meno di 36x37x56 cm e 15 kg. Ufficio Postale: somma dei lati sotto 150 cm, lato pi&ugrave; lungo sotto 100 cm, meno di 30 kg. Ritiro a domicilio: nessun limite.</small>
+          </div>
+          <div class="checkbox" id="posteReversePaperless" style="display: none;">
+            <label><input type="checkbox" name="paperless" value="1"> Paperless: nessuna etichetta da stampare, il destinatario mostra un codice allo sportello</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Annulla</button>
+          <button type="submit" class="btn btn-primary">Genera etichetta di reso</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).on('click', '.poste-reverse', function () {
+    $('#posteReverseForm').attr('action', '/shippings/' + $(this).data('id') + '/reverse');
+    $('#posteReverseLdv').text($(this).data('ldv'));
+    $('#posteReverseModal').modal('show');
+  });
+  $('#posteReverseChannel').on('change', function () {
+    var paperless = $(this.options[this.selectedIndex]).data('paperless') == 1;
+    $('#posteReversePaperless').toggle(paperless);
+    if (!paperless) {
+      $('#posteReversePaperless input').prop('checked', false);
+    }
+  }).trigger('change');
+</script>
 </body>
 </html>

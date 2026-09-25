@@ -1,0 +1,354 @@
+{
+ "titolo": "Accesso a due fattori",
+ "slug": "accesso-a-due-fattori",
+ "descrizione": "Accesso con codice di verifica via email",
+ "aggiornato": "2026-09-25",
+ "slides": [
+  {
+   "id": "s01",
+   "step": null,
+   "big": true,
+   "hl": [],
+   "img": "img/s01.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    41.251,
+    39.216,
+    34.996,
+    21.569
+   ],
+   "testo": "Accesso con codice\ndi verifica via email"
+  },
+  {
+   "id": "s02",
+   "step": 1,
+   "big": false,
+   "hl": [
+    [
+     56.946,
+     42.94,
+     22.461,
+     6.693
+    ],
+    [
+     56.946,
+     53.558,
+     22.461,
+     6.693
+    ],
+    [
+     56.946,
+     65.791,
+     22.461,
+     7.386
+    ]
+   ],
+   "img": "img/s02.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    16.87,
+    28.583,
+    23.969
+   ],
+   "testo": "La schermata di accesso: inserisci email e password come sempre, poi clicca su \"Accedi\"."
+  },
+  {
+   "id": "s03",
+   "step": 2,
+   "big": false,
+   "hl": [
+    [
+     15.919,
+     19.395,
+     50.816,
+     36.099
+    ]
+   ],
+   "img": "img/s03.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Dopo email e password compare la schermata \"Autentificazione a Due Fattori\": nello stesso momento il sistema invia un codice alla tua casella di posta."
+  },
+  {
+   "id": "s04",
+   "step": 3,
+   "big": false,
+   "hl": [
+    [
+     5.468,
+     7.185,
+     41.59,
+     5.738
+    ]
+   ],
+   "img": "img/s04.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    26.934,
+    28.583,
+    46.133
+   ],
+   "testo": "Apri la tua email e cerca il messaggio di noreply@spedisci.online con oggetto \"Il tuo codice di autenticazione a due fattori\".\n\nNota: alcuni servizi (es. Gmail) raggruppano le email simili: apri sempre l'ultima per avere il codice più recente."
+  },
+  {
+   "id": "s05",
+   "step": 4,
+   "big": false,
+   "hl": [
+    [
+     13.222,
+     19.519,
+     5.676,
+     4.287
+    ]
+   ],
+   "img": "img/s05.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Nell'email trovi un codice temporaneo di 6 cifre, valido solo per questo accesso e per 10 minuti. Copialo."
+  },
+  {
+   "id": "s06",
+   "step": 5,
+   "big": false,
+   "hl": [
+    [
+     15.919,
+     37.836,
+     50.816,
+     10.063
+    ],
+    [
+     15.919,
+     48.684,
+     6.271,
+     6.809
+    ]
+   ],
+   "img": "img/s06.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Torna sul portale, incolla il codice nel campo \"Codice 2FA\" e clicca su \"Verifica\"."
+  },
+  {
+   "id": "s07",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s07.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    43.195,
+    28.583,
+    13.609
+   ],
+   "testo": "Fatto! Sei entrato nel tuo account."
+  },
+  {
+   "id": "s08",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s08.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.71,
+    28.583,
+    30.579
+   ],
+   "testo": "Problemi di accesso?\n\nSe non ricevi il codice o resti bloccato nella schermata di verifica, cancella i dati di navigazione del browser. Vediamo come fare con Google Chrome."
+  },
+  {
+   "id": "s09",
+   "step": 6,
+   "big": false,
+   "hl": [
+    [
+     5.468,
+     30.376,
+     29.531,
+     5.644
+    ]
+   ],
+   "img": "img/s09.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    32.474,
+    28.583,
+    35.051
+   ],
+   "testo": "Apri il menu di Chrome con i tre puntini in alto a destra e clicca su \"Cronologia\", poi di nuovo \"Cronologia\".\n\nScorciatoia: CTRL + H."
+  },
+  {
+   "id": "s10",
+   "step": 7,
+   "big": false,
+   "hl": [
+    [
+     5.468,
+     18.725,
+     11.49,
+     4.847
+    ]
+   ],
+   "img": "img/s10.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Nella pagina Cronologia, a sinistra, clicca su \"Elimina dati navigazione\"."
+  },
+  {
+   "id": "s11",
+   "step": 8,
+   "big": false,
+   "hl": [
+    [
+     17.376,
+     20.578,
+     15.846,
+     5.705
+    ],
+    [
+     7.655,
+     26.626,
+     38.082,
+     26.227
+    ],
+    [
+     37.06,
+     63.889,
+     8.069,
+     6.785
+    ]
+   ],
+   "img": "img/s11.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    30.627,
+    28.583,
+    38.745
+   ],
+   "testo": "Nella finestra scegli l'intervallo \"Ultima ora\", spunta almeno \"Cookie e altri dati dei siti\" e \"Immagini e file memorizzati nella cache\", poi clicca su \"Elimina dati\". Così il browser dimentica i dati di accesso temporanei che creano confusione."
+  },
+  {
+   "id": "s12",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s12.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    42.098,
+    28.583,
+    15.803
+   ],
+   "testo": "Riprova: torna sul portale, aggiorna la pagina e inserisci di nuovo email e password."
+  },
+  {
+   "id": "s13",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s13.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    35.783,
+    35.418,
+    45.932,
+    29.163
+   ],
+   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+  }
+ ]
+}

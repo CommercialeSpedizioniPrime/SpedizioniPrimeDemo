@@ -1,0 +1,422 @@
+{
+ "titolo": "Configurazione TikTok Shop",
+ "slug": "configurazione-tiktok-shop",
+ "descrizione": "",
+ "aggiornato": "2026-09-25",
+ "slides": [
+  {
+   "id": "s01",
+   "step": null,
+   "big": true,
+   "hl": [],
+   "img": "img/s01.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    41.251,
+    39.216,
+    34.996,
+    21.569
+   ],
+   "testo": "Configurazione\nTikTok Shop"
+  },
+  {
+   "id": "s02",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s02.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    29.169,
+    28.583,
+    41.661
+   ],
+   "testo": "Questo tutorial ti guida nella configurazione iniziale del tuo account TikTok Shop con il portale e nella successiva impostazione del modello di spedizione dentro TikTok.\n\nÈ fondamentale seguire entrambe le parti, altrimenti gli ordini vengono importati con i dati del destinatario censurati."
+  },
+  {
+   "id": "s03",
+   "step": 1,
+   "big": false,
+   "hl": [
+    [
+     3.261,
+     31.321,
+     15.255,
+     4.847
+    ]
+   ],
+   "img": "img/s03.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Dal menu principale apri \"Importa Ordini\" e clicca su \"Collega Negozio\"."
+  },
+  {
+   "id": "s04",
+   "step": 2,
+   "big": false,
+   "hl": [
+    [
+     70.079,
+     26.387,
+     12.334,
+     5.309
+    ]
+   ],
+   "img": "img/s04.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    48.832,
+    71.17,
+    28.583,
+    23.969
+   ],
+   "testo": "Si apre la pagina \"Negozi Online\". Clicca sul pulsante \"Collega negozio online\"."
+  },
+  {
+   "id": "s05",
+   "step": 3,
+   "big": false,
+   "hl": [
+    [
+     32.083,
+     70.773,
+     8.309,
+     15.118
+    ]
+   ],
+   "img": "img/s05.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Tra le piattaforme disponibili seleziona TikTok."
+  },
+  {
+   "id": "s06",
+   "step": 4,
+   "big": false,
+   "hl": [
+    [
+     54.252,
+     29.458,
+     6.427,
+     5.309
+    ]
+   ],
+   "img": "img/s06.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Ora clicca su \"Collega\"."
+  },
+  {
+   "id": "s07",
+   "step": 5,
+   "big": false,
+   "hl": [],
+   "img": "img/s07.webp",
+   "img_box": [
+    1.667,
+    4.307,
+    96.667,
+    91.386
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Si apre la schermata di accesso di TikTok. Completa l'autorizzazione direttamente su TikTok per collegare il tuo account TikTok Shop al portale."
+  },
+  {
+   "id": "s08",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s08.webp",
+   "img_box": [
+    1.667,
+    4.307,
+    96.667,
+    91.386
+   ],
+   "card": [
+    26.273,
+    27.322,
+    28.583,
+    45.355
+   ],
+   "testo": "ATTENZIONE - passaggio fondamentale su TikTok\n\nLa seconda parte va fatta nel TikTok Shop Seller Center: se il modello di spedizione non viene impostato come \"Gestito dal Venditore\", gli ordini importati avranno nome e indirizzo del destinatario censurati con asterischi (es. \"S*** M****\") e non potranno essere evasi."
+  },
+  {
+   "id": "s09",
+   "step": 6,
+   "big": false,
+   "hl": [
+    [
+     1.953,
+     18.008,
+     9.445,
+     14.247
+    ]
+   ],
+   "img": "img/s09.webp",
+   "img_box": [
+    1.667,
+    4.143,
+    96.667,
+    91.714
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Accedi a TikTok Shop Seller Center. Dalla Home clicca su \"Ordini\" e, nel menu a tendina, su \"Gestione Spedizioni\"."
+  },
+  {
+   "id": "s10",
+   "step": 7,
+   "big": false,
+   "hl": [
+    [
+     24.662,
+     35.427,
+     18.595,
+     7.192
+    ],
+    [
+     84.99,
+     35.427,
+     12.208,
+     7.192
+    ]
+   ],
+   "img": "img/s10.webp",
+   "img_box": [
+    1.667,
+    4.64,
+    96.667,
+    90.721
+   ],
+   "card": [
+    48.832,
+    63.782,
+    28.583,
+    31.357
+   ],
+   "testo": "Nella schermata delle spedizioni scegli il metodo di gestione: se è impostato \"Gestito da TikTok\", cambialo in \"Gestito dal Venditore\" cliccando su \"Cambia opzione\"."
+  },
+  {
+   "id": "s11",
+   "step": 8,
+   "big": false,
+   "hl": [
+    [
+     29.816,
+     48.984,
+     38.009,
+     7.24
+    ]
+   ],
+   "img": "img/s11.webp",
+   "img_box": [
+    1.667,
+    3.385,
+    96.667,
+    93.229
+   ],
+   "card": [
+    68.683,
+    67.476,
+    28.583,
+    27.663
+   ],
+   "testo": "Selezionato \"Spedito dal venditore\", ti viene chiesto di associare un modello a questa scelta: clicca su \"Crea Nuovo Modello\"."
+  },
+  {
+   "id": "s12",
+   "step": 9,
+   "big": false,
+   "hl": [
+    [
+     79.114,
+     35.266,
+     15.147,
+     7.24
+    ]
+   ],
+   "img": "img/s12.webp",
+   "img_box": [
+    1.667,
+    3.639,
+    96.667,
+    92.721
+   ],
+   "card": [
+    48.832,
+    73.364,
+    28.583,
+    21.775
+   ],
+   "testo": "Clicca su \"Aggiungi nuovo modello\"."
+  },
+  {
+   "id": "s13",
+   "step": 10,
+   "big": false,
+   "hl": [
+    [
+     21.114,
+     31.578,
+     52.663,
+     8.454
+    ],
+    [
+     21.114,
+     43.565,
+     52.663,
+     8.454
+    ]
+   ],
+   "img": "img/s13.webp",
+   "img_box": [
+    1.667,
+    3.946,
+    96.667,
+    92.109
+   ],
+   "card": [
+    68.683,
+    63.782,
+    28.583,
+    31.357
+   ],
+   "testo": "Imposta i dettagli del modello:\nNome: un nome identificativo (es. \"Spedizioni Prime\").\nSpedito da: il tuo nome o un nome a tua scelta."
+  },
+  {
+   "id": "s14",
+   "step": 11,
+   "big": false,
+   "hl": [
+    [
+     39.595,
+     19.254,
+     15.768,
+     7.829
+    ],
+    [
+     39.595,
+     48.548,
+     15.768,
+     7.829
+    ],
+    [
+     89.313,
+     82.388,
+     6.534,
+     6.566
+    ]
+   ],
+   "img": "img/s14.webp",
+   "img_box": [
+    1.667,
+    4.859,
+    96.667,
+    90.282
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Imposta la tariffa forfettaria per zona: quanto vuoi che i tuoi acquirenti paghino la spedizione per ciascuna zona proposta da TikTok. Poi clicca su \"Invia\" per salvare il modello."
+  },
+  {
+   "id": "s15",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s15.webp",
+   "img_box": [
+    1.667,
+    4.307,
+    96.667,
+    91.386
+   ],
+   "card": [
+    68.683,
+    32.863,
+    28.583,
+    34.273
+   ],
+   "testo": "Fatto: Spedizioni Prime è aggiunto come spedizioniere con il modello associato all'opzione \"Gestito dal Venditore\".\n\nAttenzione: la modifica ha effetto solo sugli ordini generati da questo momento in poi."
+  },
+  {
+   "id": "s16",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s16.webp",
+   "img_box": [
+    3.261,
+    3.261,
+    93.478,
+    93.478
+   ],
+   "card": [
+    35.783,
+    35.418,
+    45.932,
+    29.163
+   ],
+   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+  }
+ ]
+}

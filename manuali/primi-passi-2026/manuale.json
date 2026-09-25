@@ -1,0 +1,1016 @@
+{
+ "titolo": "Primi passi",
+ "slug": "primi-passi-2026",
+ "descrizione": "Benvenuto sul portale Spedizioni Prime",
+ "aggiornato": "2026-09-25",
+ "slides": [
+  {
+   "id": "s01",
+   "step": null,
+   "big": true,
+   "hl": [],
+   "img": "img/s01.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    41.251,
+    39.216,
+    34.996,
+    21.569
+   ],
+   "testo": "Benvenuto sul portale\nSpedizioni Prime"
+  },
+  {
+   "id": "s02",
+   "step": 2,
+   "big": false,
+   "hl": [
+    [
+     83.968,
+     2.568,
+     14.769,
+     7.155
+    ]
+   ],
+   "img": "img/s02.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "In alto a destra trovi il nome del tuo account. Da qui puoi anche uscire con \"Esci\"."
+  },
+  {
+   "id": "s03",
+   "step": 3,
+   "big": false,
+   "hl": [
+    [
+     17.711,
+     31.205,
+     80.021,
+     15.776
+    ]
+   ],
+   "img": "img/s03.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    48.832,
+    60.088,
+    28.583,
+    35.051
+   ],
+   "testo": "La Dashboard riassume le tue spedizioni: in attesa di spedizione, in lavorazione, spedite, in transito e bloccate. Nel riquadro \"Richiede la tua attenzione\" trovi le spedizioni ferme, ad esempio in giacenza."
+  },
+  {
+   "id": "s04",
+   "step": 4,
+   "big": false,
+   "hl": [
+    [
+     1.667,
+     22.781,
+     15.775,
+     4.847
+    ]
+   ],
+   "img": "img/s04.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "Per creare una nuova spedizione apri nel menu \"Spedizioni\" e clicca su \"Nuova Spedizione\"."
+  },
+  {
+   "id": "s05",
+   "step": 5,
+   "big": false,
+   "hl": [
+    [
+     19.725,
+     22.418,
+     23.182,
+     28.62
+    ]
+   ],
+   "img": "img/s05.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "In \"Dati mittente\" trovi i tuoi dati, cioè il punto di ritiro dove il corriere passerà a ritirare."
+  },
+  {
+   "id": "s06",
+   "step": 6,
+   "big": false,
+   "hl": [
+    [
+     19.725,
+     30.497,
+     23.181,
+     20.542
+    ]
+   ],
+   "img": "img/s06.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    26.934,
+    28.583,
+    46.133
+   ],
+   "testo": "Se vuoi far partire la merce da un altro indirizzo, modifica questi campi con l'indirizzo alternativo di ritiro.\n\nNota: la modifica del mittente e la prenotazione del ritiro sono disponibili solo per i contratti Poste Italiane."
+  },
+  {
+   "id": "s07",
+   "step": 7,
+   "big": false,
+   "hl": [
+    [
+     20.731,
+     51.616,
+     6.981,
+     3.693
+    ]
+   ],
+   "img": "img/s07.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Ricorda di spuntare la casella \"Richiedi ritiro\" quando generi una spedizione, altrimenti il corriere non passerà a ritirare."
+  },
+  {
+   "id": "s08",
+   "step": 8,
+   "big": false,
+   "hl": [
+    [
+     32.255,
+     53.578,
+     10.315,
+     4.847
+    ]
+   ],
+   "img": "img/s08.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Imposta la \"Data Ritiro\". Alcuni corrieri permettono il ritiro nello stesso giorno, purché richiesto entro le ore 12:00."
+  },
+  {
+   "id": "s09",
+   "step": 9,
+   "big": false,
+   "hl": [
+    [
+     32.255,
+     53.578,
+     10.315,
+     4.847
+    ]
+   ],
+   "img": "img/s09.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Altri corrieri chiedono la prenotazione il giorno prima per il giorno dopo: in quel caso imposta la data di domani, altrimenti vedrai un errore."
+  },
+  {
+   "id": "s10",
+   "step": 10,
+   "big": false,
+   "hl": [
+    [
+     43.778,
+     53.578,
+     10.315,
+     4.847
+    ]
+   ],
+   "img": "img/s10.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    32.474,
+    28.583,
+    35.051
+   ],
+   "testo": "L'\"Intervallo orario\" è solo indicativo: non vincola il corriere a passare in quella fascia, è una preferenza. Se non riesce a passare nella fascia indicata, passerà appena possibile."
+  },
+  {
+   "id": "s11",
+   "step": 11,
+   "big": false,
+   "hl": [
+    [
+     19.725,
+     53.578,
+     35.376,
+     45.239
+    ]
+   ],
+   "img": "img/s11.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    39.112,
+    28.583,
+    21.775
+   ],
+   "testo": "Veniamo ai \"Dati Destinatario\"."
+  },
+  {
+   "id": "s12",
+   "step": 12,
+   "big": false,
+   "hl": [
+    [
+     19.725,
+     53.578,
+     23.182,
+     4.847
+    ]
+   ],
+   "img": "img/s12.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Nel campo \"Nominativo\" inserisci il nome e cognome presente al citofono, oppure il nome dell'attività dove consegnare preceduto dalla sigla \"C/O\"."
+  },
+  {
+   "id": "s13",
+   "step": 13,
+   "big": false,
+   "hl": [
+    [
+     19.725,
+     53.578,
+     23.182,
+     4.847
+    ],
+    [
+     19.725,
+     85.891,
+     35.377,
+     4.847
+    ],
+    [
+     19.725,
+     93.969,
+     23.182,
+     4.847
+    ]
+   ],
+   "img": "img/s13.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Se spedisci presso un'attività, scrivi \"C/O NomeAttività\" nel Nominativo e il nome della persona interessata nei campi \"Note\" e \"Rif. Destinatario\"."
+  },
+  {
+   "id": "s14",
+   "step": 14,
+   "big": false,
+   "hl": [
+    [
+     19.725,
+     55.309,
+     17.084,
+     4.847
+    ],
+    [
+     19.725,
+     58.771,
+     17.118,
+     4.155
+    ]
+   ],
+   "img": "img/s14.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    32.474,
+    28.583,
+    35.051
+   ],
+   "testo": "Digitando nel campo \"Città\" il comune di destinazione compaiono i suggerimenti con CAP e provincia. Clicca quello che corrisponde all'indirizzo del destinatario: CAP e Provincia si compilano da soli."
+  },
+  {
+   "id": "s15",
+   "step": 15,
+   "big": false,
+   "hl": [
+    [
+     19.725,
+     63.156,
+     35.377,
+     4.847
+    ],
+    [
+     19.725,
+     79.313,
+     35.377,
+     4.847
+    ]
+   ],
+   "img": "img/s15.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "Nel campo \"Indirizzo\" vanno inseriti ESCLUSIVAMENTE il nome della strada e il numero civico. Isolato, nome del parco, scala, interno ecc. vanno nel campo \"Note\"."
+  },
+  {
+   "id": "s16",
+   "step": 16,
+   "big": false,
+   "hl": [
+    [
+     19.725,
+     71.235,
+     10.986,
+     4.847
+    ],
+    [
+     31.919,
+     71.235,
+     10.986,
+     4.847
+    ]
+   ],
+   "img": "img/s16.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    34.321,
+    28.583,
+    31.357
+   ],
+   "testo": "I campi \"Email\" e \"Telefono\" devono contenere una sola email e un solo numero di telefono. Saranno usati per le notifiche, se il corriere ha attivo il servizio."
+  },
+  {
+   "id": "s17",
+   "step": 17,
+   "big": false,
+   "hl": [
+    [
+     44.114,
+     71.235,
+     10.986,
+     4.847
+    ]
+   ],
+   "img": "img/s17.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Lascia \"Notifica SMS\" su \"No\" se hai gli SMS gratuiti. Il servizio SMS a pagamento richiede una ricarica a parte."
+  },
+  {
+   "id": "s18",
+   "step": 18,
+   "big": false,
+   "hl": [
+    [
+     19.725,
+     79.313,
+     35.377,
+     4.847
+    ],
+    [
+     19.725,
+     87.391,
+     23.182,
+     4.847
+    ]
+   ],
+   "img": "img/s18.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    30.627,
+    28.583,
+    38.745
+   ],
+   "testo": "Tutte le altre informazioni vanno in \"Note\" e \"Rif. Destinatario\". Ogni campo ha limiti di lunghezza imposti dal corriere: il testo in eccesso non viene visualizzato. In \"Rif. Ordine\" puoi indicare il numero d'ordine del tuo e-commerce."
+  },
+  {
+   "id": "s19",
+   "step": 19,
+   "big": false,
+   "hl": [
+    [
+     63.896,
+     23.572,
+     31.148,
+     4.847
+    ],
+    [
+     62.772,
+     34.074,
+     33.681,
+     4.847
+    ]
+   ],
+   "img": "img/s19.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    49.007,
+    28.583,
+    46.133
+   ],
+   "testo": "In \"Dati spedizione\" indica:\n- il numero di colli\n- il peso totale\n- l'importo del contrassegno\n- il valore da assicurare\n- le misure precise in cm di ciascun collo\nPuoi aggiungere contenuto, tipo di contenuto e valore merce."
+  },
+  {
+   "id": "s20",
+   "step": 20,
+   "big": false,
+   "hl": [
+    [
+     85.176,
+     53.347,
+     10.875,
+     5.309
+    ]
+   ],
+   "img": "img/s20.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    48.832,
+    52.7,
+    28.583,
+    42.439
+   ],
+   "testo": "Il passo successivo è visualizzare il preventivo cliccando su \"Seleziona Corriere\".\n\nPeso, misure e indirizzo precisi danno un preventivo veritiero: qualsiasi approssimazione può generare addebiti successivi."
+  },
+  {
+   "id": "s21",
+   "step": 21,
+   "big": false,
+   "hl": [
+    [
+     58.324,
+     19.533,
+     39.405,
+     64.42
+    ]
+   ],
+   "img": "img/s21.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    26.273,
+    32.474,
+    28.583,
+    35.051
+   ],
+   "testo": "In \"Seleziona contratto\" vedi i corrieri disponibili con il relativo prezzo. Scegli il contratto e, se ti servono, aggiungi i servizi accessori previsti dal corriere: il riquadro \"Costi\" si aggiorna."
+  },
+  {
+   "id": "s22",
+   "step": 22,
+   "big": false,
+   "hl": [
+    [
+     85.713,
+     53.37,
+     10.338,
+     5.309
+    ]
+   ],
+   "img": "img/s22.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    71.17,
+    28.583,
+    23.969
+   ],
+   "testo": "Clicca su \"Crea Spedizione\" per confermare: la lettera di vettura viene creata."
+  },
+  {
+   "id": "s23",
+   "step": 23,
+   "big": false,
+   "hl": [
+    [
+     19.686,
+     52.514,
+     4.028,
+     6.924
+    ],
+    [
+     88.532,
+     41.319,
+     8.525,
+     5.309
+    ],
+    [
+     85.367,
+     59.092,
+     2.819,
+     4.847
+    ]
+   ],
+   "img": "img/s23.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    48.832,
+    60.088,
+    28.583,
+    35.051
+   ],
+   "testo": "In \"Elenco Spedizioni\" stampi le etichette: una alla volta con l'icona della stampante in corrispondenza della spedizione, oppure seleziona più spedizioni (o \"seleziona tutto\") e clicca \"Stampa PDF\"."
+  },
+  {
+   "id": "s24",
+   "step": 24,
+   "big": false,
+   "hl": [
+    [
+     85.367,
+     53.621,
+     2.819,
+     4.847
+    ]
+   ],
+   "img": "img/s24.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    48.832,
+    56.394,
+    28.583,
+    38.745
+   ],
+   "testo": "Un cliente vuole restituire un pacco? Sulle spedizioni Poste Italiane trovi il bottone verde \"Genera etichetta di reso\": il portale crea la lettera di vettura di ritorno e Poste ritira il pacco dal cliente e te lo riconsegna."
+  },
+  {
+   "id": "s25",
+   "step": 25,
+   "big": false,
+   "hl": [
+    [
+     34.157,
+     6.031,
+     31.685,
+     41.512
+    ]
+   ],
+   "img": "img/s25.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    30.627,
+    28.583,
+    38.745
+   ],
+   "testo": "Nella finestra scegli come il cliente consegnerà il pacco a Poste (domicilio, Punto Poste, Locker o Ufficio Postale) e clicca \"Genera etichetta di reso\": poi la stampi dallo stesso bottone. Tutti i dettagli nel tutorial \"Etichetta di reso\"."
+  },
+  {
+   "id": "s26",
+   "step": 26,
+   "big": false,
+   "hl": [
+    [
+     23.445,
+     54.245,
+     6.243,
+     3.462
+    ],
+    [
+     62.565,
+     47.551,
+     9.318,
+     69.606
+    ]
+   ],
+   "img": "img/s26.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    16.87,
+    28.583,
+    23.969
+   ],
+   "testo": "Nella colonna \"Stato\" vedi un'anteprima dello stato di consegna. Cliccando sul \"N. Spedizione\" in blu..."
+  },
+  {
+   "id": "s27",
+   "step": 27,
+   "big": false,
+   "hl": [],
+   "img": "img/s27.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    38.015,
+    28.583,
+    23.969
+   ],
+   "testo": "...si apre la tracciatura dettagliata del pacco: dati del destinatario e cronologia degli eventi."
+  },
+  {
+   "id": "s28",
+   "step": 28,
+   "big": false,
+   "hl": [
+    [
+     18.718,
+     21.38,
+     78.005,
+     29.403
+    ]
+   ],
+   "img": "img/s28.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    48.832,
+    56.394,
+    28.583,
+    38.745
+   ],
+   "testo": "Con i filtri visualizzi solo le spedizioni con criteri specifici. Se non vedi una spedizione creata, controlla i filtri impostati (ad esempio il periodo di date). Cliccando sulle intestazioni delle colonne ordini le spedizioni."
+  },
+  {
+   "id": "s29",
+   "step": 29,
+   "big": false,
+   "hl": [
+    [
+     63.102,
+     60.697,
+     6.619,
+     3.489
+    ],
+    [
+     1.667,
+     29.705,
+     15.775,
+     4.847
+    ]
+   ],
+   "img": "img/s29.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    16.87,
+    28.583,
+    38.745
+   ],
+   "testo": "La spedizione appena creata ha stato \"In Lavorazione\": i dati non sono ancora stati trasmessi al corriere. Per trasmetterli, ed evitare errori nella tracciabilità, devi creare la distinta giornaliera da \"Crea Distinta\"."
+  },
+  {
+   "id": "s30",
+   "step": 30,
+   "big": false,
+   "hl": [
+    [
+     47.583,
+     23.756,
+     14.231,
+     5.309
+    ]
+   ],
+   "img": "img/s30.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    30.627,
+    28.583,
+    38.745
+   ],
+   "testo": "Crea la distinta una volta al giorno, quando hai finito di registrare le spedizioni. Scegli il \"Contratto\": nella tabella compaiono le spedizioni di quel contratto in attesa di chiusura. Ripeti per ogni contratto utilizzato."
+  },
+  {
+   "id": "s31",
+   "step": 31,
+   "big": false,
+   "hl": [
+    [
+     18.382,
+     35.181,
+     2.887,
+     4.847
+    ],
+    [
+     89.405,
+     34.95,
+     7.653,
+     5.309
+    ]
+   ],
+   "img": "img/s31.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    63.782,
+    28.583,
+    31.357
+   ],
+   "testo": "Clicca sul quadratino \"Seleziona tutto\" e poi su \"Crea Distinta\". Ripeti la procedura per tutti i contratti con spedizioni in attesa di chiusura."
+  },
+  {
+   "id": "s32",
+   "step": 32,
+   "big": false,
+   "hl": [
+    [
+     17.778,
+     48.868,
+     79.884,
+     7.271
+    ]
+   ],
+   "img": "img/s32.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    48.832,
+    63.782,
+    28.583,
+    31.357
+   ],
+   "testo": "In \"Lista Distinte\" trovi le distinte create, con vettore, contratto, data, numero di spedizioni e colli: da qui puoi stamparle o esportarle in Excel."
+  },
+  {
+   "id": "s33",
+   "step": 33,
+   "big": false,
+   "hl": [
+    [
+     1.667,
+     36.398,
+     15.775,
+     4.847
+    ]
+   ],
+   "img": "img/s33.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    36.168,
+    28.583,
+    27.663
+   ],
+   "testo": "Ti consigliamo sempre di verificare di aver predisposto correttamente il ritiro del corriere dalla sezione \"Ritiri\" → \"Elenco Ritiri\"."
+  },
+  {
+   "id": "s34",
+   "step": 34,
+   "big": false,
+   "hl": [
+    [
+     22.837,
+     47.76,
+     10.539,
+     5.886
+    ],
+    [
+     73.902,
+     47.76,
+     10.196,
+     5.886
+    ],
+    [
+     83.293,
+     47.76,
+     8.825,
+     5.886
+    ]
+   ],
+   "img": "img/s34.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    68.683,
+    71.17,
+    28.583,
+    23.969
+   ],
+   "testo": "Qui visualizzi il codice di ritiro, la data di inserimento e la data prevista di ritiro."
+  },
+  {
+   "id": "s35",
+   "step": null,
+   "big": false,
+   "hl": [],
+   "img": "img/s35.webp",
+   "img_box": [
+    1.667,
+    3.261,
+    96.667,
+    93.478
+   ],
+   "card": [
+    35.783,
+    35.418,
+    45.932,
+    29.163
+   ],
+   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+  }
+ ]
+}
