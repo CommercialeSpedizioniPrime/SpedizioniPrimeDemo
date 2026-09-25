@@ -8,7 +8,7 @@
  *  - /cities?query=..                 -> capoluoghi con CAP generico (filtro per prefisso)
  *  - /shippings/taric?query=..        -> elenco TARIC (filtro "contiene")
  *  - /shippings/searches, /shippings/history/shipfrom -> []
- *  - POST /api/rates                  -> sandbox/rates/rates.json (Interno, PosteDelivery, GLS, prezzi XX.XX)
+ *  - POST /api/rates                  -> sandbox/rates/rates.json (Spedizioni Prime, PosteDelivery, GLS, prezzi XX.XX)
  *  - POST /shippings/preview_cost     -> sandbox/rates/preview_cost.json (prezzi XX.XX)
  *  - /api/courier/contrassegnotype/N  -> sandbox/rates/contrassegnotype_N.json
  *  - POST .../ajax_multipdf           -> ok (la pagina apre poi shippings/download_temp = etichette placeholder)
@@ -232,7 +232,7 @@
     // Spedizioni create a mano da "Nuova Spedizione": come sul portale compaiono in cima all'Elenco Spedizioni
     // (stato "In Lavorazione") e in Crea Distinta. Con il servizio accessorio "Andata & Ritorno" (contratto Poste)
     // la riga mostra anche il numero della lettera di vettura di ritorno e il bottone "Stampa etichetta di reso" (v2026.30).
-    var CONTRACTS = { 6: { vector_id: 5, name: 'Interno', slug: 'interno', contract: 'Contratto Interno DEMO' }, 86: { vector_id: 17, name: 'PosteDeliveryBusiness', slug: 'postedeliverybusiness', contract: 'Contratto Poste DEMO' }, 999: { vector_id: 99, name: 'GLS', slug: 'gls', contract: 'Contratto GLS DEMO' } };
+    var CONTRACTS = { 6: { vector_id: 5, name: 'Spedizioni Prime', slug: 'interno', contract: 'Spedizioni Prime' }, 86: { vector_id: 17, name: 'PosteDeliveryBusiness', slug: 'postedeliverybusiness', contract: 'Contratto Poste DEMO' }, 999: { vector_id: 99, name: 'GLS', slug: 'gls', contract: 'Contratto GLS DEMO' } };
     function manualShipments(st) {
         var tplJ = D['data/shippings/shippings-table.json']; if (!tplJ || !tplJ.data.length) return [];
         return (st.manual || []).map(function (m) {

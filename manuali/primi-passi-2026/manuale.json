@@ -585,17 +585,17 @@
    "big": false,
    "hl": [
     [
-     58.324,
+     58.049,
      19.533,
-     39.405,
-     64.42
+     38.105,
+     65.958
     ]
    ],
    "img": "img/s21.webp",
    "img_box": [
-    1.667,
     3.261,
-    96.667,
+    3.261,
+    93.478,
     93.478
    ],
    "card": [
@@ -612,17 +612,17 @@
    "big": false,
    "hl": [
     [
-     85.713,
-     53.37,
-     10.338,
+     84.535,
+     53.293,
+     9.997,
      5.309
     ]
    ],
    "img": "img/s22.webp",
    "img_box": [
-    1.667,
     3.261,
-    96.667,
+    3.261,
+    93.478,
     93.478
    ],
    "card": [
@@ -766,9 +766,9 @@
    "hl": [],
    "img": "img/s27.webp",
    "img_box": [
-    1.667,
     3.261,
-    96.667,
+    3.261,
+    93.478,
     93.478
    ],
    "card": [
@@ -845,17 +845,17 @@
    "big": false,
    "hl": [
     [
-     47.583,
+     47.663,
      23.756,
-     14.231,
+     13.762,
      5.309
     ]
    ],
    "img": "img/s30.webp",
    "img_box": [
-    1.667,
     3.261,
-    96.667,
+    3.261,
+    93.478,
     93.478
    ],
    "card": [
@@ -872,23 +872,23 @@
    "big": false,
    "hl": [
     [
-     18.382,
+     19.425,
      35.181,
-     2.887,
+     2.791,
      4.847
     ],
     [
-     89.405,
+     88.105,
      34.95,
-     7.653,
+     7.4,
      5.309
     ]
    ],
    "img": "img/s31.webp",
    "img_box": [
-    1.667,
     3.261,
-    96.667,
+    3.261,
+    93.478,
     93.478
    ],
    "card": [
@@ -905,17 +905,17 @@
    "big": false,
    "hl": [
     [
-     17.778,
+     18.841,
      48.868,
-     79.884,
+     77.249,
      7.271
     ]
    ],
    "img": "img/s32.webp",
    "img_box": [
-    1.667,
     3.261,
-    96.667,
+    3.261,
+    93.478,
     93.478
    ],
    "card": [
@@ -1010,7 +1010,7 @@
     45.932,
     29.163
    ],
-   "testo": "Vuoi fare pratica senza rischi?\nProva la demo del portale:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/\n\nManuale completo: https://docs.spedisci.online"
+   "testo": "Ti serve un'altra guida?\nTrovi tutti i manuali qui:\nhttps://commercialespedizioniprime.github.io/SpedizioniPrimeDemo/manuali/\n\nManuale completo: https://docs.spedisci.online"
   }
  ]
 }
